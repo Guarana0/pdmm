@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Galeria{% endblock %}
+{% block description %}Galeria de fotos{% endblock %}
+{% block keywords %}galeria, fotos, imagens{% endblock %}
+
+{% block content %}
+  <div class="flex min-h-screen relative">
+    <!-- Galeria alternada !!!!!!-->
+    <div class="flex flex-col gap-4 pt-5 max-w-7xl mx-auto w-full ">
+      <!-- Linha  -->
+      <div class="flex gap-4 h-64">
+        <img src="imagem1.jpg" alt="Imagem 1" class="flex-[2] object-cover border border-black rounded" />
+        <img src="imagem2.jpg" alt="Imagem 2" class="flex-1 object-cover border border-black rounded" />
+      </div>
+      <!-- Linha 2 -->
+      <div class="flex gap-4 h-64">
+        <img src="ima3.jpg" alt="Im 3" class="flex-1 object-cover border border-black rounded" />
+        <img src="imem4.jpg" alt="Im 4" class="flex-[2] object-cover border border-black rounded" />
+      </div>
+      <!-- Linha 3 -->
+      <div class="flex gap-4 h-64">
+        <img src="ima1.jpg" alt="Imagem 5" class="flex-[2] object-cover border border-black rounded" />
+        <img src="imagem2.jpg" alt="Im 6" class="flex-1 object-cover border border-black rounded" />
+      </div>
+      <!-- Linha 4 -->
+      <div class="flex gap-4 h-64">
+        <img src="ima3.jpg" alt="Img 7" class="flex-1 object-cover border border-black rounded" />
+        <img src="ima4.jpg" alt="Im 8" class="flex-[2] object-cover border border-black rounded" />
+      </div>
+    </div>
+  </div>
+{% endblock %}

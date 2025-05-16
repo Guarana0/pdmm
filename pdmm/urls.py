@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import home  # Importe a view 'home' do seu aplicativo 'core'
+from core import views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home, name='home'),  # Mapeia a URL raiz para a view 'home'
+    path('', views.home, name='home'),
+    path('autores/', views.autores, name='autores'),
+    path('noticias/', views.noticias, name='noticias'),
+    path('revistas/', views.revistas, name='revistas'),
+    path('galeria/', views.galeria, name='galeria'),
+    path('livros/', views.livros, name='livros'),
 ]
