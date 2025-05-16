@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal do Modernismo Mineiro</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
 </head>
-<body>
-    <div class="container mx-auto py-8">
-        {% block content %}
-        {% endblock %}
-    </div>
+<body class="bg-gray-100">
+
+  <div class="flex min-h-screen relative">
+
+    <!-- Toggle oculto no mesmo container da sidebar -->
+    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+
+    <!-- Sidebar -->
+    <aside class="bg-blue-900 text-white w-64 space-y-3 px-4 py-6 hidden peer-checked:block lg:block fixed lg:relative z-20">
+      <nav>
+        <a href="#" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">🏠</span> Início
+        </a>
+        <a href="#" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">✍️</span> Autores
+        </a>
+        <a href="#" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">👩‍💻</span> Revistas
+        </a>
+        <a href="#" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">📝</span> Galeria
+        </a>
+        <a href="#" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">📰</span> Notícias
+           <a href="#" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">📚</span> Livros
+          
+        </a>
+      </nav>
+      <!--botao de tema-->
+     <div class="mt-auto flex justify-center py-6 pt-180">
+        <div class="w-16 h-8 bg-white rounded-full flex items-center px-1 cursor-pointer">
+          <div class="w-6 h-6 bg-[#073B73] rounded-full transition-all duration-300"></div>
+        </div>
+      </div>
+    </aside>
+
+    <label for="menu-toggle" class="lg:hidden mb-4 cursor-pointer p-2 text-blue-900 text-3xl">
+  ☰
+    </label>
+
+ </div>
+
 </body>
 </html>
