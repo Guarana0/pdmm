@@ -1,8 +1,91 @@
 {% extends 'base.html' %}
-
-{% block title %}Início{% endblock %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block description %}Pagina de Inicio{% endblock %}
+{% block keywords %}autores, literatura, informação, tempo, noticias, livros, fotos{% endblock %}
 
 {% block content %}
-    <h1>Bem-vindo ao sistema!</h1>
-    <p>Esta é a página inicial.</p>
+    <!-- Conteúdo principal -->
+    <main class="flex-1 p-8 lg:p-12 space-y-12 max-w-screen-xl mx-auto">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-xl font-bold mb-4 text-center">Principais Noticias</h2>
+        <div class="flex justify-center items-center h-full">
+            <div class="relative overflow-hidden rounded-lg shadow-lg" style="height: 400px; width: 400px;">
+          <!-- Slides do carrossel -->
+          <div id="carousel-container" class="flex transition-transform duration-1000 ease-in-out h-full">
+              <!-- Slide 1 -->
+              <div class="carousel-slide min-w-full relative">
+            <img src="/api/placeholder/800/400" alt="Evento cultural" class="w-full h-full object-cover">
+            <div class="absolute top-5 left-5 bg-blue-600 text-white px-2 py-1 text-sm font-semibold rounded">
+                EVENTO
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+                <h2 class="text-xl font-bold mb-2">53° Festival de Inverno UFMG, que destacou o modernismo mineiro.</h2>
+                <p class="text-sm">Evento reuniu artistas e pesquisadores em uma programação diversificada.</p>
+            </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="carousel-slide min-w-full relative">
+            <img src="/api/placeholder/800/400" alt="Campus universitário" class="w-full h-full object-cover">
+            <div class="absolute top-5 left-5 bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">
+                CAMPUS
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+                <h2 class="text-xl font-bold mb-2">Novos espaços de convivência são inaugurados no museu de literatura</h2>
+                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing?</p>
+            </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-slide min-w-full relative">
+            <img src="/api/placeholder/800/400" alt="Pesquisa científica" class="w-full h-full object-cover">
+            <div class="absolute top-5 left-5 bg-green-600 text-white px-2 py-1 text-sm font-semibold rounded">
+                PESQUISA
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+                <h2 class="text-xl font-bold mb-2">Grupo de pesquisa desenvolve nova tecnologia para catalogar artistas</h2>
+                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+              </div>
+          </div>
+            </div>
+        </div>
+    </div>
+      <!-- Introdução -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <img src="/img/modernismo.jpg" alt="Imagem sobre modernismo mineiro" class="w-full h-90 bg-black object-cover">
+        <div>
+          <h2 class="text-xl font-bold">Introdução ao Modernismo Mineiro</h2>
+          <p class="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.</p>
+        </div>
+      </section>
+      <!-- Imagens da semana -->
+      <section>
+        <h2 class="text-xl font-bold mb-4 text-center">Imagens da Semana</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
+          <img src="/img/imagem1.jpg" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+          <img src="/img/imagem2.jpg" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+          <img src="/img/imagem3.jpg" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+          <img src="/img/imagem4.jpg" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+        </div>
+      </section>
+      <!-- Obras da semana -->
+      <section>
+        <h2 class="text-xl font-bold mb-4 text-center">Obras da Semana</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
+          <img src="/img/obra1.jpg" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+          <img src="/img/obra2.jpg" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+          <img src="/img/obra3.jpg" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+          <img src="/img/obra4.jpg" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+        </div>
+      </section>
+      <!-- Linha do tempo -->
+      <section class="flex items-center gap-4">
+        <div class="h-2 w-full bg-gray-300 flex items-center justify-between px-4">
+          <div class="w-4 h-4 bg-[#071b74] rounded-full" title="1922"></div>
+          <div class="w-4 h-4 bg-[#071b74] rounded-full" title="1930"></div>
+          <div class="w-4 h-4 bg-[#071b74] rounded-full" title="1942"></div>
+          <div class="w-4 h-4 bg-[#071b74] rounded-full" title="1950"></div>
+        </div>
+      </section>
+    </main>
 {% endblock %}
