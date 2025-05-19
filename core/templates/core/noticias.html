@@ -1,9 +1,140 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Noticias{% endblock %}
-{% block description %}Galeria de fotos{% endblock %}
-{% block keywords %}galeria, fotos, imagens{% endblock %}
+{% block description %}Noticias relacionadas a literatura{% endblock %}
+{% block keywords %}Noticias,Literatura,Informacao{% endblock %}
 
 {% block content %}
-    <h1>OI</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notícias </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <input type="checkbox" id="menu-toggle" class="peer hidden" />
+      <aside
+        class="bg-blue-900 text-white w-64 space-y-3 px-4 py-6 hidden peer-checked:block lg:block fixed lg:relative z-20"
+      >
+        <nav>
+          <a
+            href="#"
+            class="hover:bg-blue-600 py-2 px-3 rounded flex items-center"
+          >
+            <span class="mr-2">🏠</span> Início
+          </a>
+          <a
+            href="#"
+            class="hover:bg-blue-600 py-2 px-3 rounded flex items-center"
+          >
+            <span class="mr-2">✍️</span> Autores
+          </a>
+          <a
+            href="#"
+            class="hover:bg-blue-600 py-2 px-3 rounded flex items-center"
+          >
+            <span class="mr-2">👩‍💻</span> Revistas
+          </a>
+          <a
+            href="#"
+            class="hover:bg-blue-600 py-2 px-3 rounded flex items-center"
+          >
+            <span class="mr-2">📝</span> Galeria
+          </a>
+          <a
+            href="#"
+            class="hover:bg-blue-600 py-2 px-3 rounded flex items-center"
+          >
+            <span class="mr-2">📰</span> Notícias
+          </a>
+          <a
+            href="#"
+            class="hover:bg-blue-600 py-2 px-3 rounded flex items-center"
+          >
+            <span class="mr-2">📚</span> Livro
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Conteúdo principal -->
+      <main class="flex-1 p-4 lg:ml-5">
+        <!-- Botão menu mobile -->
+        <label
+          for="menu-toggle"
+          class="lg:hidden mb-4 cursor-pointer p-2 text-blue-900 text-3xl"
+        >
+          ☰
+        </label>
+
+        <!-- Título -->
+        <h1 class="text-2xl font-bold mb-6">Notícias literarias</h1>
+
+        <!-- Lista de notícias -->
+        <div class="space-y-4">
+          <!-- Item de notícia -->
+          <div
+            class="flex items-center bg-white rounded shadow-lg overflow-hidden border-1 xl:pr-50 hover:bg-gray-400 "
+          >
+            <div
+              class="w-24 h-24 bg-gray-200 "
+              alt="Img da noti"
+            ></div>
+            <div class="flex-1 p-4">
+              <span class="text-blue-800 text-sm font-semibold">GENERO DA NOTICIA</span>
+              <h2 class="text-base font-bold ">
+                O Modernismo Mineiro
+              </h2>
+              <!--data-->
+              <p class="text-sm text-gray-600">06/05/2008</p>
+            </div>
+          </div>
+          <!--comeca aq para copiar a noticia-->
+          <div class="space-y-4">
+          <!-- Item de notícia -->
+          <div
+            class="flex items-center bg-white rounded shadow-lg overflow-hidden border-1 xl:pr-50 hover:bg-gray-400  "
+          >
+            <div
+              class="w-24 h-24 bg-gray-200 "
+              alt="Img da noti"
+            ></div>
+            <div class="flex-1 p-4">
+              <span class="text-blue-800 text-sm font-semibold">GENERO DA NOTICIA</span>
+              <h2 class="text-base font-bold ">
+                O Modernismo Mineiro
+              </h2>
+              <!--data-->
+              <p class="text-sm text-gray-600">06/05/2008</p>
+            </div>
+          </div>
+          <!--termina aq-->
+
+           <div class="space-y-4">
+          <!-- Item de notícia -->
+          <div
+            class="flex items-center bg-white rounded shadow-lg overflow-hidden border-1 xl:pr-50 hover:bg-gray-400 "
+          >
+            <div
+              class="w-24 h-24 bg-gray-200 "
+              alt="Img da noti"
+            ></div>
+            <div class="flex-1 p-4">
+              <span class="text-blue-800 text-sm font-semibold">GENERO DA NOTICIA</span>
+              <h2 class="text-base font-bold ">
+                O Modernismo Mineiro
+              </h2>
+              <!--data-->
+              <p class="text-sm text-gray-600">06/05/2008</p>
+            </div>
+          </div>
+          
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
 {% endblock %}
