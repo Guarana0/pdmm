@@ -3,3 +3,92 @@
 {% block title %}Acervo de Livros{% endblock %}
 {% block description %}Nosso Acervo de Livros do modernismo mineiro{% endblock %}
 {% block keywords %}Noticias,Literatura,Informacao{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livros</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10 px-4">
+<!--config basica da pag-->
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    
+    <!-- caixa de livros (comeca aq)-->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
+      <div class="h-48 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400 text-4xl"></span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600">Autor</p>
+        <h3 class="font-semibold text-black">Título </h3>
+        <p class="text-sm text-gray-400">Data de publi</p>
+      </div>
+    </div>
+    <!--termina aq-->
+
+    
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="h-48 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400 text-4xl"></span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600">Autor</p>
+        <h3 class="font-semibold text-black">Título</h3>
+        <p class="text-sm text-gray-400">Data de publi</p>
+      </div>
+    </div>
+
+    
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="h-48 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400 text-4xl"></span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600">Autor</p>
+        <h3 class="font-semibold text-black">Título do Livro</h3>
+        <p class="text-sm text-gray-400">Data de publi</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="h-48 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400 text-4xl"></span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600">Autor</p>
+        <h3 class="font-semibold text-black">Títuloo</h3>
+        <p class="text-sm text-gray-400">Data de publi</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="h-48 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400 text-4xl"></span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600">Autor</p>
+        <h3 class="font-semibold text-black">Título </h3>
+        <p class="text-sm text-gray-400">Data de publi</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="h-48 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400 text-4xl"></span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600">Autor</p>
+        <h3 class="font-semibold text-black">Título</h3>
+        <p class="text-sm text-gray-400">Data da publi</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+{% endblock %}
