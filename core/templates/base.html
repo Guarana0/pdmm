@@ -6,6 +6,7 @@
   <title>{% block title %}Base{% endblock %}</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="{% static 'js/home.js' %}"></script>
   <link rel="icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
   <link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
 </head>
@@ -17,8 +18,8 @@
     <input type="checkbox" id="menu-toggle" class="hidden peer" />
 
     <!-- Sidebar -->
-    <aside class="bg-blue-900 text-white w-64 space-y-0 px-4 py-6 hidden peer-checked:block lg:block fixed lg:relative z-20 ">
-      <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+    <aside class="bg-gradient-to-tr from-black to-blue-900 text-white w-64 space-y-0 px-4 py-6 hidden peer-checked:block lg:block fixed lg:relative z-20">
+    <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
 
       <nav>
         <a href="{% url 'home' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
@@ -32,7 +33,7 @@
         </a>
         <a href="{% url 'galeria' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
           <span class="mr-2">📝</span> Galeria
-        </a>
+        </a> 
         <a href="{% url 'noticias' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
           <span class="mr-2">📰</span> Notícias
            <a href="{% url 'livros' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
@@ -51,7 +52,7 @@
       ☰
     </label>
 
-    <!-- Adicione o bloco de conteúdo aqui -->
+   
     <main class="flex-1 p-8">
       {% block content %}{% endblock %}
     </main>
