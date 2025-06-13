@@ -7,8 +7,8 @@ admin.site.login = views.MyAdminLoginView.as_view()
 
 urlpatterns = [
     path('admin/', admin.site.urls), # Esta linha agora usará sua view de login
-    path('admin/registro', admin.site.urls),
-    
+    path('registro/', views.registro),
+    path('login/', views.login_view),
     path('', views.home, name='home'),
     path('autores/', views.autores, name='autores'),
     path('noticias/', views.noticias, name='noticias'),

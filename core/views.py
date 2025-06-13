@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 
 
-class MyAdminLoginView(LoginView): # <--- ESTA É A CLASSE QUE ESTAMOS FALANDO!
+class MyAdminLoginView(LoginView):
     template_name = 'admin/login.html'
-    #form_class = MyCustomAuthenticationForm # Se você criar um formulário de login personalizado
+    #form_class = MyCustomAuthenticationForm
 
 class MyAdminRegisterView(LoginView):
     template_name = 'admin/registro.html'
@@ -27,3 +29,9 @@ def galeria(request):
 
 def livros(request):
     return render(request, 'core/livros.html')
+
+def registro(request):
+    return render(request, 'admin/registro.html')
+
+def login_view(request):
+    return render(request, 'admin/login.html')
