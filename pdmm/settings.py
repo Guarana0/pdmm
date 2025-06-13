@@ -13,13 +13,19 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+STATIC_URL = '/static/'
+
+# Caminhos onde o Django VAI PROCURAR por arquivos estáticos
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/static'), # Adicione esta linha
-    # os.path.join(BASE_DIR, 'static_global'), # Se você tivesse uma pasta static global na raiz do projeto
+    os.path.join(BASE_DIR, 'static'), # Adicione esta linha se não existir
 ]
+
+# Caminho onde o Django VAI COLETAR todos os arquivos estáticos para produção
+# Este é o diretório de destino para 'python manage.py collectstatic'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -43,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -60,8 +67,8 @@ ROOT_URLCONF = 'pdmm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,  # Certifique-se de que esta linha está como True
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
