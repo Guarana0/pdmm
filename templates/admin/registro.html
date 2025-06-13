@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background: #f0f4f8; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+  <!-- Fundo do formulário -->
+  <div style="background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+
+    <!-- Cabeçalho -->
+    <div class="cabecalho" style="text-align: center; margin-bottom: 20px;">
+      <img src="{{LOGO_SRC}}" alt="Logo" style="height: 60px; margin-bottom: 10px;">
+      <h2 style="margin: 0; font-size: 24px; color: #333;">Registro</h2>
+    </div>
+
+    <!-- Formulário -->
+    <form>
+
+      <!-- nome -->
+      <div class="campo-nome" style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #444;">Nome Completo</label>
+        <input type="text" name="nome" placeholder="Seu nome" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+      </div>
+
+      <!-- Campo email -->
+      <div class="campo-email" style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #444;">E-mail</label>
+        <input type="email" name="email" placeholder="seu@email.com" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+      </div>
+
+      <!-- senha -->
+      <div class="campo-senha" style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #444;">Senha</label>
+        <input type="password" name="senha" placeholder="Crie uma senha" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+      </div>
+
+      <!-- Requisitossenha -->
+      <div class="requisitos-senha" style="background: #f9f9f9; padding: 10px; border-radius: 8px; font-size: 14px; color: #555; margin-bottom: 15px;">
+        <strong>Requisitos da senha:</strong>
+        <ul style="margin: 5px 0 0 20px;">
+          <li>Mínimo de 8 caracteres</li>
+          <li>Pelo menos 1 número</li>
+          <li>Pelo menos 1 letra maiúscula</li>
+        </ul>
+      </div>
+
+      <!-- confirmar senha -->
+      <div class="campo-confirmar" style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px; color: #444;">Confirmar Senha</label>
+        <input type="password" name="confirmar" placeholder="Repita a senha" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+      </div>
+
+      <!-- Botão -->
+      <div class="botoes" style="text-align: center;">
+        <button type="submit" style="background: #10b981; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+          Criar Conta
+        </button>
+
+        <p style="margin-top: 15px; font-size: 14px; color: #555;">
+          Já tem uma conta?
+          <a href="#" style="color: #10b981; text-decoration: none;">Faça login</a>
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
