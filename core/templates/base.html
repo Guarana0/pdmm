@@ -135,6 +135,7 @@
     <input type="checkbox" id="menu-toggle" class="hidden peer" />
 
     <!-- Sidebar -->
+<<<<<<< HEAD
       <aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50">
         <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
 
@@ -167,6 +168,31 @@
             </nav>
         </div>
               <!--botao de tema-->
+=======
+    <aside class="bg-gradient-to-tr from-black to-blue-900 text-white w-64 space-y-0 px-4 py-6 hidden peer-checked:block lg:block fixed lg:relative z-20">
+    <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+
+      <nav>
+        <a href="{% url 'home' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">🏠</span> Início
+        </a>
+        <a href="{% url 'autores' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">✍️</span> Autores
+        </a>
+        <a href="{% url 'revistas' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">👩‍💻</span> Revistas
+        </a>
+        <a href="{% url 'galeria' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">📝</span> Galeria
+        </a> 
+        <a href="{% url 'noticias' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">📰</span> Notícias
+           <a href="{% url 'livros' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
+          <span class="mr-2">📚</span> Livros
+        </a>
+      </nav>
+      <!--botao de tema-->
+>>>>>>> origin/main
      <div class="mt-auto flex justify-center py-6 pt-180">
         <div class="w-16 h-8 bg-white rounded-full flex items-center px-1 cursor-pointer">
           <div class="w-6 h-6 bg-[#073B73] rounded-full transition-all duration-300"></div>
@@ -178,8 +204,13 @@
       ☰
     </label>
 
+<<<<<<< HEAD
     <!-- Adicione o bloco de conteúdo aqui -->
     <main class="flex-1 p-8 ml-64">
+=======
+   
+    <main class="flex-1 p-8">
+>>>>>>> origin/main
       {% block content %}{% endblock %}
     </main>
 
