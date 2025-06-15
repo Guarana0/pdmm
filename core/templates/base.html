@@ -6,10 +6,128 @@
   <title>{% block title %}Base{% endblock %}</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="{% static 'js/home.js' %}"></script>
   <link rel="icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
   <link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+      .sidebar-gradient {
+          background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #1e40af 60%, #2563eb 100%);
+      }
+        .card-shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .card-shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .gradient-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .gradient-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .gradient-purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            min-height: 44px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.05);
+        }
+
+        .calendar-today {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .calendar-event::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 6px;
+            height: 6px;
+            background: #f59e0b;
+            border-radius: 50%;
+        }
+
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f5f9;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .stat-icon {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+
+        .nav-link {
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-right: 3px solid #3b82f6;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 h-full">
 
   <div class="flex min-h-screen relative">
 
@@ -17,42 +135,51 @@
     <input type="checkbox" id="menu-toggle" class="hidden peer" />
 
     <!-- Sidebar -->
-    <aside class="bg-blue-900 text-white w-64 space-y-0 px-4 py-6 hidden peer-checked:block lg:block fixed lg:relative z-20 ">
-      <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+      <aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50">
+        <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
 
-      <nav>
-        <a href="{% url 'home' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
-          <span class="mr-2">🏠</span> Início
-        </a>
-        <a href="{% url 'autores' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
-          <span class="mr-2">✍️</span> Autores
-        </a>
-        <a href="{% url 'revistas' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
-          <span class="mr-2">👩‍💻</span> Revistas
-        </a>
-        <a href="{% url 'galeria' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
-          <span class="mr-2">📝</span> Galeria
-        </a>
-        <a href="{% url 'noticias' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
-          <span class="mr-2">📰</span> Notícias
-           <a href="{% url 'livros' %}" class="hover:bg-blue-600 py-2 px-3 rounded flex items-center">
-          <span class="mr-2">📚</span> Livros
-        </a>
-      </nav>
-      <!--botao de tema-->
+        <div class="p-6">
+            <nav class="space-y-2">
+                <a href="{% url 'home' %}" class="nav-link active flex items-center p-3 rounded-lg">
+                    <i class="fas fa-chart-pie mr-3 w-5"></i>
+                    Inicio
+                </a>
+                <a href="{% url 'autores' %}" class="nav-link flex items-center p-3 rounded-lg">
+                    <i class="fas fa-book-open mr-3 w-5"></i>
+                    Autores
+                </a>
+                <a href="{% url 'revistas' %}" class="nav-link flex items-center p-3 rounded-lg">
+                    <i class="fas fa-users mr-3 w-5"></i>
+                    Revistas
+                </a>
+                <a href="{% url 'galeria' %}" class="nav-link flex items-center p-3 rounded-lg">
+                    <i class="fas fa-chart-bar mr-3 w-5"></i>
+                    Galeria
+                </a>
+                <a href="{% url 'noticias' %}" class="nav-link flex items-center p-3 rounded-lg">
+                    <i class="fas fa-calendar-alt mr-3 w-5"></i>
+                    Noticias
+                </a>
+                <a href="{% url 'livros' %}" class="nav-link flex items-center p-3 rounded-lg">
+                    <i class="fas fa-cog mr-3 w-5"></i>
+                    Livros
+                </a>
+            </nav>
+        </div>
+              <!--botao de tema-->
      <div class="mt-auto flex justify-center py-6 pt-180">
         <div class="w-16 h-8 bg-white rounded-full flex items-center px-1 cursor-pointer">
           <div class="w-6 h-6 bg-[#073B73] rounded-full transition-all duration-300"></div>
         </div>
       </div>
-    </aside>
+      </aside>
 
     <label for="menu-toggle" class="lg:hidden mb-4 cursor-pointer p-2 text-blue-900 text-3xl">
       ☰
     </label>
 
     <!-- Adicione o bloco de conteúdo aqui -->
-    <main class="flex-1 p-8">
+    <main class="flex-1 p-8 ml-64">
       {% block content %}{% endblock %}
     </main>
 

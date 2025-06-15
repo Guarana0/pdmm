@@ -1,15 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from .models import Autores
+
 
 
 class MyAdminLoginView(LoginView):
     template_name = 'admin/login.html'
-    #form_class = MyCustomAuthenticationForm
-
-class MyAdminRegisterView(LoginView):
-    template_name = 'admin/registro.html'
+    
 
 
 def home(request):
@@ -17,6 +16,10 @@ def home(request):
 
 def autores(request):
     return render(request, 'core/autores.html')
+
+def autor_detail(request, slug):
+    autor = get_object_or_404(Autores, slug=slug)
+    return render(request, 'core/autor_detail.html', {'autor': autor})
 
 def noticias(request):
     return render(request, 'core/noticias.html')

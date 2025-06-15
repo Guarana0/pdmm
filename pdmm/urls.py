@@ -6,11 +6,16 @@ from core import views # ou a importação que você usou
 admin.site.login = views.MyAdminLoginView.as_view()
 
 urlpatterns = [
+    # Acessa dos Admins
     path('admin/', admin.site.urls), # Esta linha agora usará sua view de login
-    path('registro/', views.registro),
-    path('login/', views.login_view),
+    path("accounts/", include("django.contrib.auth.urls")),
+    
+    # Acesso geral da pagina
     path('', views.home, name='home'),
-    path('autores/', views.autores, name='autores'),
+    
+     path('autores/', views.autores, name='autores'),
+     path('autores/<slug:slug>/', views.autor_detail, name='autor_detail'),
+    
     path('noticias/', views.noticias, name='noticias'),
     path('revistas/', views.revistas, name='revistas'),
     path('galeria/', views.galeria, name='galeria'),
