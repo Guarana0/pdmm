@@ -49,7 +49,8 @@
           </div>
             </div>
         </div>
-    </div>
+      </div>
+
       <!-- Introdução -->
       <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <img src="/img/modernismo.jpg" alt="Imagem sobre modernismo mineiro" class="w-full h-full bg-black object-cover">
@@ -67,18 +68,18 @@
           </p>
         </div>
       </section>
-      <!-- Imagens da semana -->
-    
+
+<!-- Imagens da semana -->    
 <section>
   <div class="flex justify-between items-center mb-4">
     <h2 class="text-xl font-bold text-center lg:text-left">Imagens da Semana</h2>
     <a href="{% url 'revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
   </div>
   <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-    <img src="/img/imagem1.jpg" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    <img src="/img/imagem2.jpg" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    <img src="/img/imagem3.jpg" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    <img src="/img/imagem4.jpg" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/fotoMinas.jpg' %}" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/registro.jpg' %}" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
   </div>
 </section>
 
@@ -89,26 +90,37 @@
     <a href="{% url 'revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
   </div>
   <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-    <img src="/img/obra1.jpg" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    <img src="/img/obra2.jpg" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    <img src="/img/obra3.jpg" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    <img src="/img/obra4.jpg" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/galinhaCega.jpg' %}" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/bauDeOssos.jpg' %}" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/sentimentoDoMundo.jpg' %}" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/brejaDasAlmas.jpg' %}" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
   </div>
 </section>
    
       <!-- Linha do tempo -->
       <br>
-      <h2 class="text-xl font-bold mb-4 text-center">Linha do Tempo</h2>
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Linha do Tempo Histórica</h2>
 
-      <section class="flex items-center gap-4 px-6">
-        <div class="h-2 w-full bg-gray-300 flex items-center justify-between relative">
-          <!-- Marcadores -->
-          <div class="w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1922" aria-label="1922"></div>
-          <div class="w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1930" aria-label="1930"></div>
-          <div class="w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1942" aria-label="1942"></div>
-          <div class="w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1950" aria-label="1950"></div>
-        </div>
-      </section>
+<section class="flex items-center justify-center py-8 px-6">
+  <div class="h-2 w-full bg-gray-300 flex items-center justify-between relative max-w-4xl">
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1922" aria-label="Marco importante em 1922"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1922</span>
+    </div>
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1930" aria-label="Marco importante em 1930"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1930</span>
+    </div>
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1942" aria-label="Marco importante em 1942"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1942</span>
+    </div>
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1950" aria-label="Marco importante em 1950"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1950</span>
+    </div>
+  </div>
+</section>
       
     </main>
 {% endblock %}

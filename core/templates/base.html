@@ -148,9 +148,14 @@
                     <i class="fas fa-book-open mr-3 w-5"></i>
                     Autores
                 </a>
-                <a href="{% url 'revistas' %}" class="nav-link flex items-center p-3 rounded-lg">
-                    <i class="fas fa-users mr-3 w-5"></i>
-                    Revistas
+                <a id="mainRevistasLink" href="{% url 'revistas' %}" class="nav-link flex items-center p-3 rounded-lg">
+                <i class="fas fa-users mr-3 w-5"></i>
+                Revistas 
+                <span id="submenuContainer" class="submenu-container">
+                    <a id="revistaVerdeLink" href="#" class="text-blue-400 hover:underline submenu-item">Verde</a>
+                    <a id="revistaDiarioLink" href="#" class="text-blue-400 hover:underline submenu-item">Diario de Minas</a>
+                    <a id="revistaLeiteLink" href="#" class="text-blue-400 hover:underline submenu-item">Leite Criollo</a>
+                </span>
                 </a>
                 <a href="{% url 'galeria' %}" class="nav-link flex items-center p-3 rounded-lg">
                     <i class="fas fa-chart-bar mr-3 w-5"></i>
@@ -185,7 +190,7 @@
       {% block content %}{% endblock %}
     </main>
   </div>
-  <footer class="bg-gradient-to-r from-black via-gray-900 to-gray-800 text-gray-300 py-12 px-6">
+  <footer class="bg-black text-gray-300 py-12 px-6">
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
   

@@ -16,16 +16,14 @@
       </div>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-        <!-- Autores com link igual ao João Alphonsus -->
-        
         <a href="{% url 'autor_detail' slug='carlos-drummond' %}" class="block bg-white p-4 rounded shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-1">
-          <img src="/api/placeholder/300/200" alt="Carlos Drummond" class="w-full h-40 lg:h-48 object-cover rounded">
+          <img src="{% static 'img/carlosDrummond.jpg' %}" alt="Carlos Drummond" class="w-full h-40 lg:h-48 object-cover rounded">
           <h2 class="text-center mt-4 text-lg font-semibold text-black">Carlos Drummond</h2>
           <p class="text-gray-600 text-sm text-center mt-2">Poeta Modernista</p>
         </a>
         
         <a href="{% url 'autor_detail' slug='joao-alphonsus' %}" class="block bg-white p-4 rounded shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-1">
-          <img src="/api/placeholder/300/200" alt="João Alphonsus" class="w-full h-40 lg:h-48 object-cover rounded">
+          <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="João Alphonsus" class="w-full h-40 lg:h-48 object-cover rounded">
           <h2 class="text-center mt-4 text-lg font-semibold text-black">João Alphonsus</h2>
           <p class="text-gray-600 text-sm text-center mt-2">Escritor Mineiro</p>
         </a>
