@@ -1,5 +1,0 @@
-Django==4.2
-djangorestframework==3.14
-gunicorn
-psycopg2-binary
-django-widget-tweaks
