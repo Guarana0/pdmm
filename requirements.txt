@@ -1,0 +1,7 @@
+djangorestframework==3.14
+
+gunicornAdd commentMore actions
+
+psycopg2-binary
+
+django-widget-tweaks
