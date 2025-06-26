@@ -1,6 +1,6 @@
 djangorestframework==3.14
 
-gunicornAdd commentMore actions
+gunicorn
 
 psycopg2-binary
 
