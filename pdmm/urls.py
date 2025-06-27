@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
 from core import views # ou a importação que você usou
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 # SOBRESCREVER A VIEW DE LOGIN DO ADMIN
 admin.site.login = views.MyAdminLoginView.as_view()
@@ -22,3 +25,5 @@ urlpatterns = [
     path('livros/', views.livros, name='livros'),
     # ... outras URLs ...
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
