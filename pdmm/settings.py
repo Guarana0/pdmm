@@ -20,7 +20,7 @@ STATIC_URL = '/static/'
 
 # Caminhos onde o Django VAI PROCURAR por arquivos estáticos
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), # Adicione esta linha se não existir
+    os.path.join(BASE_DIR, 'core', 'static'), # Adicione esta linha se não existir
 ]
 
 # Caminho onde o Django VAI COLETAR todos os arquivos estáticos para produção
