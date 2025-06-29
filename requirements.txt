@@ -1,0 +1,9 @@
+djangorestframework==3.14
+
+gunicorn
+
+psycopg2-binary
+
+django-widget-tweaks
+
+whitenoise>=6.6.0

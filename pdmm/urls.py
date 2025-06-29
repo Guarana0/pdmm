@@ -8,6 +8,7 @@ admin.site.login = views.MyAdminLoginView.as_view()
 urlpatterns = [
     # Acessa dos Admins
     path('admin/', admin.site.urls), # Esta linha agora usará sua view de login
+<<<<<<< HEAD
     path("accounts/", include("django.contrib.auth.urls")),
     
     # Acesso geral da pagina
@@ -16,6 +17,12 @@ urlpatterns = [
      path('autores/', views.autores, name='autores'),
      path('autores/<slug:slug>/', views.autor_detail, name='autor_detail'),
     
+=======
+    path('registro/', views.registro),
+    path('login/', views.login_view),
+     path('', include('core.urls')),
+    path('autores/', views.autores, name='autores'),
+>>>>>>> origin/main
     path('noticias/', views.noticias, name='noticias'),
     path('revistas/', views.revistas, name='revistas'),
     path('galeria/', views.galeria, name='galeria'),
