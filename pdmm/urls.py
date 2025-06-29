@@ -14,7 +14,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     
     # Acesso geral da pagina
-    path('', views.home, name='home'),
+    path('', include('core.urls') views.home, name='home'),
     
      path('autores/', views.autores, name='autores'),
      path('autores/<slug:slug>/', views.autor_detail, name='autor_detail'),
