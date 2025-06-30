@@ -167,5 +167,4 @@ LOGGING = {
         "handlers": ["console"],
         "level": "DEBUG",
     },
-}
-PYTHONPATH = /home/site/wwwroot
+},
