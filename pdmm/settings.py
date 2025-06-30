@@ -168,3 +168,4 @@ LOGGING = {
         "level": "DEBUG",
     },
 }
+PYTHONPATH = /home/site/wwwroot
