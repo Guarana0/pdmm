@@ -20,7 +20,7 @@ STATIC_URL = '/static/'
 
 # Caminhos onde o Django VAI PROCURAR por arquivos estáticos
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), # Adicione esta linha se não existir
+    os.path.join(BASE_DIR, 'core', 'static'), # Adicione esta linha se não existir
 ]
 
 # Caminho onde o Django VAI COLETAR todos os arquivos estáticos para produção
@@ -34,25 +34,31 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'django-insecure-e9=a!_ej4(w+ymkx-!4z0qi!@(p27k486yquo#g-ontlj)7oz8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'pdmm-dqcbevcfa8hkauhs.brazilsouth-01.azurewebsites.net',
+    '.azurewebsites.net', # Boa prática para cobrir outros possíveis subdomínios do Azure
+    'localhost',          # Para desenvolvimento local
+    '127.0.0.1',          # Para desenvolvimento local
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'widget_tweaks',
+    'core',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -63,6 +69,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pdmm.urls'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -132,8 +139,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

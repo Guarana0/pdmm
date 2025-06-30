@@ -5,163 +5,122 @@
 {% block keywords %}autores, literatura, informação, tempo, noticias, livros, fotos{% endblock %}
 
 {% block content %}
-<main class="flex-1 p-8 lg:p-12 space-y-12 max-w-screen-2xl mx-auto">
-
-  <!-- Principais Notícias -->
-  <div class="max-w-10xl mx-auto">
-    <h2 class="text-xl font-bold mb-4 text-center">Principais Notícias</h2>
-    <div class="flex justify-center items-center h-full">
-      <div class="relative overflow-hidden rounded-lg shadow-lg max-w-screen-2xl" style="height: 450px; width: 1100px;">
-        <div id="carousel-container" class="flex transition-transform duration-1000 ease-in-out h-full">
-          <!-- Slide 1 -->
-          <div class="carousel-slide min-w-full relative">
+    <!-- Conteúdo principal -->
+    <main class="flex-1 p-8 lg:p-12 space-y-12 max-w-screen-2xl mx-auto">
+    <div class="max-w-10xl mx-auto">
+        <h2 class="text-xl font-bold mb-4 text-center">Principais Noticias</h2>
+        <div class="flex justify-center items-center h-full ">
+            <div class="relative overflow-hidden rounded-lg shadow-lg  max-w-screen-2xl" style="height: 450px; width: 1100px;">
+          <!-- Slides do carrossel -->
+          <div id="carousel-container" class="flex transition-transform duration-1000 ease-in-out h-full">
+              <!-- Slide 1 -->
+              <div class="carousel-slide min-w-full relative">
             <img src="/api/placeholder/800/400" alt="Evento cultural" class="w-full h-full object-cover">
-            <div class="absolute top-5 left-5 bg-blue-600 text-white px-2 py-1 text-sm font-semibold rounded">EVENTO</div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-              <h2 class="text-xl font-bold mb-2">53º Festival de Inverno UFMG, que destacou o modernismo mineiro.</h2>
-              <p class="text-sm">Evento reuniu artistas e pesquisadores em uma programação diversificada.</p>
+            <div class="absolute top-5 left-5 bg-blue-600 text-white px-2 py-1 text-sm font-semibold rounded">
+                EVENTO
             </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="carousel-slide min-w-full relative">
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+                <h2 class="text-xl font-bold mb-2">53° Festival de Inverno UFMG, que destacou o modernismo mineiro.</h2>
+                <p class="text-sm">Evento reuniu artistas e pesquisadores em uma programação diversificada.</p>
+            </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="carousel-slide min-w-full relative">
             <img src="/api/placeholder/800/400" alt="Campus universitário" class="w-full h-full object-cover">
-            <div class="absolute top-5 left-5 bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">CAMPUS</div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-              <h2 class="text-xl font-bold mb-2">Novos espaços de convivência são inaugurados no museu de literatura</h2>
-              <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing?</p>
+            <div class="absolute top-5 left-5 bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">
+                CAMPUS
             </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="carousel-slide min-w-full relative">
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+                <h2 class="text-xl font-bold mb-2">Novos espaços de convivência são inaugurados no museu de literatura</h2>
+                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing?</p>
+            </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-slide min-w-full relative">
             <img src="/api/placeholder/800/400" alt="Pesquisa científica" class="w-full h-full object-cover">
-            <div class="absolute top-5 left-5 bg-green-600 text-white px-2 py-1 text-sm font-semibold rounded">PESQUISA</div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-              <h2 class="text-xl font-bold mb-2">Grupo de pesquisa desenvolve nova tecnologia para catalogar artistas</h2>
-              <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="absolute top-5 left-5 bg-green-600 text-white px-2 py-1 text-sm font-semibold rounded">
+                PESQUISA
             </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+                <h2 class="text-xl font-bold mb-2">Grupo de pesquisa desenvolve nova tecnologia para catalogar artistas</h2>
+                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+              </div>
           </div>
+            </div>
         </div>
       </div>
+
+      <!-- Introdução -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <img src="/img/modernismo.jpg" alt="Imagem sobre modernismo mineiro" class="w-full h-full bg-black object-cover">
+        <div>
+          <h2 class="text-xl font-bold">Introdução ao Modernismo Mineiro</h2>
+          <p class="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+          </p>
+        </div>
+      </section>
+
+<!-- Imagens da semana -->    
+<section>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold text-center lg:text-left">Imagens da Semana</h2>
+    <a href="{% url 'revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
+    <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/fotoMinas.jpg' %}" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/registro.jpg' %}" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+  </div>
+</section>
+
+<!-- Obras da semana -->
+<section>
+  <div class="flex justify-between items-center mb-4 mt-8">
+    <h2 class="text-xl font-bold text-center lg:text-left">Obras da Semana</h2>
+    <a href="{% url 'revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
+    <img src="{% static 'img/galinhaCega.jpg' %}" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/bauDeOssos.jpg' %}" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/sentimentoDoMundo.jpg' %}" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+    <img src="{% static 'img/brejaDasAlmas.jpg' %}" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+  </div>
+</section>
+   
+      <!-- Linha do tempo -->
+      <br>
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Linha do Tempo Histórica</h2>
+
+<section class="flex items-center justify-center py-8 px-6">
+  <div class="h-2 w-full bg-gray-300 flex items-center justify-between relative max-w-4xl">
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1922" aria-label="Marco importante em 1922"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1922</span>
+    </div>
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1930" aria-label="Marco importante em 1930"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1930</span>
+    </div>
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1942" aria-label="Marco importante em 1942"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1942</span>
+    </div>
+    <div class="timeline-marker group relative">
+      <div class="w-6 h-6 bg-[#071b74] rounded-full hover:scale-125 transition-transform duration-200 cursor-pointer shadow-md" title="Ano de 1950" aria-label="Marco importante em 1950"></div>
+      <span class="absolute top-full left-1/2 -translate-x-1/2 mt-3 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200">1950</span>
     </div>
   </div>
-
-  <!-- Introdução -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <img src="/img/modernismo.jpg" alt="Imagem sobre modernismo mineiro" class="w-full h-full bg-black object-cover">
-    <div>
-      <h2 class="text-xl font-bold">Introdução ao Modernismo Mineiro</h2>
-      <p class="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        orem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
-
-      </p>
-    </div>
-  </section>
-
-  <!-- Imagens da semana -->
-  <section>
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold text-center lg:text-left">Imagens da Semana</h2>
-      <a href="{% url 'revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
-    </div>
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-      <img src="/img/imagem1.jpg" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/imagem2.jpg" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/imagem3.jpg" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/imagem4.jpg" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    </div>
-  </section>
-
-  <!-- Obras da semana -->
-  <section>
-    <div class="flex justify-between items-center mb-4 mt-8">
-      <h2 class="text-xl font-bold text-center lg:text-left">Obras da Semana</h2>
-      <a href="{% url 'revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
-    </div>
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-      <img src="/img/obra1.jpg" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/obra2.jpg" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/obra3.jpg" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/obra4.jpg" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-    </div>
-  </section>
-
-  <!-- Linha do tempo -->
-  <h2 class="text-xl font-bold mb-4 text-center">Linha do Tempo</h2>
-  <section class="flex items-center gap-4 px-6 relative" id="timeline">
-    <div class="h-2 w-full bg-gray-300 flex items-center justify-between relative">
-      <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1922" aria-label="1922" data-event="1"></div>
-      <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1930" aria-label="1930" data-event="2"></div>
-      <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1942" aria-label="1942" data-event="3"></div>
-      <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1950" aria-label="1950" data-event="4"></div>
-    </div>
-    <div id="event-card" class="absolute bg-white border border-gray-300 shadow-lg p-4 rounded-lg text-sm z-50 max-w-xs invisible opacity-0 transition-all duration-300"></div>
-  </section>
-
-</main>
-
-<style>
-  #event-card.active {
-    visibility: visible;
-    opacity: 1;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Linha do Tempo
-    const eventCard = document.getElementById('event-card');
-    const timeline = document.getElementById('timeline');
-    const events = {
-      1: { year: '1922', title: 'Semana de Arte Moderna', description: 'Início do Modernismo no Brasil com eventos culturais inovadores.' },
-      2: { year: '1930', title: 'Revolução de 1930', description: 'Mudança política importante que influenciou a cultura e as artes.' },
-      3: { year: '1942', title: 'Publicação de obras modernistas', description: 'Lançamento de livros e revistas importantes do modernismo mineiro.' },
-      4: { year: '1950', title: 'Consolidação do Modernismo', description: 'Modernismo torna-se dominante na cultura mineira e nacional.' }
-    };
-    timeline.querySelectorAll('.timeline-dot').forEach(dot => {
-      dot.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const eventId = dot.getAttribute('data-event');
-        const eventData = events[eventId];
-        eventCard.innerHTML = `<strong class="block text-blue-900">${eventData.year} - ${eventData.title}</strong><p class="mt-1 text-gray-700">${eventData.description}</p>`;
-        eventCard.classList.add('active');
-        const dotRect = dot.getBoundingClientRect();
-        const timelineRect = timeline.getBoundingClientRect();
-        const leftPos = dotRect.left - timelineRect.left + dotRect.width / 2 - eventCard.offsetWidth / 2;
-        const topPos = dotRect.top - timelineRect.top + 40;
-        eventCard.style.left = `${leftPos}px`;
-        eventCard.style.top = `${topPos}px`;
-      });
-    });
-    document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('timeline-dot')) {
-        eventCard.classList.remove('active');
-      }
-    });
-
-    // Carrossel
-    const container = document.getElementById('carousel-container');
-    const slides = container.querySelectorAll('.carousel-slide');
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      updateSlide();
-    }
-    function updateSlide() {
-      const translateX = -currentIndex * 100;
-      container.style.transform = `translateX(${translateX}%)`;
-    }
-    setInterval(nextSlide, 5000);
-  });
-</script>
+</section>
+      
+    </main>
 {% endblock %}
