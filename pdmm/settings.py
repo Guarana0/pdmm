@@ -37,8 +37,7 @@ SECRET_KEY = 'django-insecure-e9=a!_ej4(w+ymkx-!4z0qi!@(p27k486yquo#g-ontlj)7oz8
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '*', # <-- Adicione isso temporariamente para ver se resolve o 400.
-         # ISSO É PARA DEBUG APENAS. REMOVA DEPOIS.
+    '*',
 
     '127.0.0.1',           # Para desenvolvimento local
     'localhost',           # Para desenvolvimento local
@@ -155,3 +154,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/admin/'
 LOGIN_URL = '/accounts/login/'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+}
