@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 STATIC_URL = '/static/'
 
@@ -37,8 +37,6 @@ SECRET_KEY = 'django-insecure-e9=a!_ej4(w+ymkx-!4z0qi!@(p27k486yquo#g-ontlj)7oz8
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '*',
-
     '127.0.0.1',           # Para desenvolvimento local
     'localhost',           # Para desenvolvimento local
     '.azurewebsites.net',  # Permite qualquer subdomínio .azurewebsites.net
@@ -143,7 +141,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+   BASE_DIR / "core" / "static",
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+   BASE_DIR / "core" / "static", # ou caminho absoluto /home/lcunha/pdmm/static
+]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
