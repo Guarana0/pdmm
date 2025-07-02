@@ -11,190 +11,159 @@
   <link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .sidebar-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #1e40af 60%, #2563eb 100%);
+    }
+    .nav-link {
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+    }
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.15);
+      border-right: 3px solid #3b82f6;
+    }
 
-      .sidebar-gradient {
-          background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #1e40af 60%, #2563eb 100%);
+    /* Botão Hamburguer */
+    #menu-toggle { display: none; }
+    label[for="menu-toggle"] {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 2.5rem;
+      color: #073B73;
+      cursor: pointer;
+      background: white;
+      border-radius: 4px;
+      padding: 0 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      z-index: 100;
+      user-select: none;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1023px) {
+      aside.fixed.left-0 {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
       }
-        .card-shadow {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        }
+      #menu-toggle:checked + label + aside {
+        transform: translateX(0);
+      }
+      label[for="menu-toggle"] {
+        display: block;
+      }
+      main.flex-1 {
+        margin-left: 0 !important;
+        padding: 1rem;
+        transition: margin-left 0.3s ease;
+      }
+    }
 
-        .card-shadow-lg {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+    /* Submenu */
+    .submenu {
+      display: none;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      margin-left: 2rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 10;
+    }
 
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    .submenu a {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      border-radius: 4px;
+    }
 
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .gradient-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-        }
-
-        .gradient-success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .gradient-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-
-        .gradient-purple {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            min-height: 44px;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .calendar-day:hover {
-            transform: scale(1.05);
-        }
-
-        .calendar-today {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-        }
-
-        .calendar-event::after {
-            content: '';
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            width: 6px;
-            height: 6px;
-            background: #f59e0b;
-            border-radius: 50%;
-        }
-
-        .custom-scrollbar {
-            scrollbar-width: thin;
-            scrollbar-color: #cbd5e1 #f1f5f9;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 3px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        .stat-icon {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
-        }
-
-        .nav-link {
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(4px);
-        }
-
-        .nav-link.active {
-            background: rgba(255, 255, 255, 0.15);
-            border-right: 3px solid #3b82f6;
-        }
-    </style>
+    .submenu a:hover {
+      background-color: #3b82f6;
+      color: white;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 h-full">
 
   <div class="flex min-h-screen relative">
 
-    <!-- Toggle oculto no mesmo container da sidebar -->
-    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+    <!-- Toggle -->
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="lg:hidden p-2 text-blue-900 text-3xl">☰</label>
 
     <!-- Sidebar -->
-      <aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50">
-        <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+    <aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50">
+      <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
 
-        <div class="p-6">
-            <nav class="space-y-2">
-                <a href="{% url 'home' %}" class="nav-link active flex items-center p-3 rounded-lg">
-                    <i class="fas fa-chart-pie mr-3 w-5"></i>
-                    Inicio
-                </a>
-                <a href="{% url 'autores' %}" class="nav-link flex items-center p-3 rounded-lg">
-                    <i class="fas fa-book-open mr-3 w-5"></i>
-                    Autores
-                </a>
-                <a id="mainRevistasLink" href="{% url 'revistas' %}" class="nav-link flex items-center p-3 rounded-lg">
-                <i class="fas fa-users mr-3 w-5"></i>
-                Revistas 
-                <span id="submenuContainer" class="submenu-container">
-                    <a id="revistaVerdeLink" href="#" class="text-blue-400 hover:underline submenu-item">Verde</a>
-                    <a id="revistaDiarioLink" href="#" class="text-blue-400 hover:underline submenu-item">Diario de Minas</a>
-                    <a id="revistaLeiteLink" href="#" class="text-blue-400 hover:underline submenu-item">Leite Criollo</a>
-                </span>
-                </a>
-                <a href="{% url 'galeria' %}" class="nav-link flex items-center p-3 rounded-lg">
-                    <i class="fas fa-chart-bar mr-3 w-5"></i>
-                    Galeria
-                </a>
-                <a href="{% url 'noticias' %}" class="nav-link flex items-center p-3 rounded-lg">
-                    <i class="fas fa-calendar-alt mr-3 w-5"></i>
-                    Noticias
-                </a>
-                <a href="{% url 'livros' %}" class="nav-link flex items-center p-3 rounded-lg">
-                    <i class="fas fa-cog mr-3 w-5"></i>
-                    Livros
-                </a>
-            </nav>
-        </div>
-        <div style="margin-top: 220px;"></div>
+      <div class="p-6">
+        <nav class="space-y-2">
+          <a href="{% url 'core:home' %}" class="nav-link active flex items-center p-3 rounded-lg">
+            <i class="fas fa-chart-pie mr-3 w-5"></i> Inicio
+          </a>
+          <a href="{% url 'core:autores' %}" class="nav-link flex items-center p-3 rounded-lg">
+            <i class="fas fa-book-open mr-3 w-5"></i> Autores
+          </a>
+          <!-- Menu com submenu -->
+          <div>
+            <a id="revistas-link" class="nav-link flex items-center justify-between p-3 rounded-lg cursor-pointer">
+              <span><i class="fas fa-users mr-3 w-5"></i> Revistas</span>
+              <i class="fas fa-chevron-down"></i>
+            </a>
+            <div id="submenu" class="submenu">
+              <a href="#">Revista 1</a>
+              <a href="#">Revista 2</a>
+              <a href="#">Revista 3</a>
+            </div>
+          </div>
+          <a href="{% url 'core:galeria' %}" class="nav-link flex items-center p-3 rounded-lg">
+            <i class="fas fa-chart-bar mr-3 w-5"></i> Galeria
+          </a>
+          <a href="{% url 'core:noticias' %}" class="nav-link flex items-center p-3 rounded-lg">
+            <i class="fas fa-calendar-alt mr-3 w-5"></i> Noticias
+          </a>
+          <a href="{% url 'core:livros' %}" class="nav-link flex items-center p-3 rounded-lg">
+            <i class="fas fa-cog mr-3 w-5"></i> Livros
+          </a>
+        </nav>
+      </div>
 
-              <!--botao de tema-->
-     <div class="mt-auto flex justify-center py-6 pt-200px">
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+     
+      
+
+      <div class="mt-auto flex justify-center py-6">
         <div class="w-16 h-8 bg-white rounded-full flex items-center px-1 cursor-pointer">
           <div class="w-6 h-6 bg-[#073B73] rounded-full transition-all duration-300"></div>
         </div>
       </div>
-      </aside>
+    </aside>
 
-    <label for="menu-toggle" class="lg:hidden mb-4 cursor-pointer p-2 text-blue-900 text-3xl">
-      ☰
-    </label>
-
-    <!-- Adicione o bloco de conteúdo aqui -->
+    <!-- Conteúdo -->
     <main class="flex-1 p-8 ml-64">
       {% block content %}{% endblock %}
     </main>
   </div>
-  <footer class="bg-black text-gray-300 py-12 px-6">
 
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-  
-      <!-- Sobre o Portal -->
+  <!-- Footer -->
+<footer class="bg-black text-gray-300 py-12 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
       <div>
         <h2 class="text-2xl font-bold text-blue-400 mb-4">PDMM</h2>
         <p class="text-sm leading-relaxed">
@@ -203,28 +172,17 @@
         <p class="mt-4 text-xs text-gray-400 select-none">© 2025 PDMM. Todos os direitos reservados.</p>
         <br>
         <div class="flex space-x-4">
-          <!-- Redes sociais -->
-          <a href="#" aria-label="Facebook" class="hover:text-blue-400 transition transform hover:scale-110">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2a3 3 0 013-3h2v3h-2a1 1 0 00-1 1v2h3l-1 3h-2v7A10 10 0 0022 12z"/>
-            </svg>
+          <a href="#" class="hover:text-blue-400 transition transform hover:scale-110">
+            <svg class="w-6 h-6" fill="currentColor"><path d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2a3 3 0 013-3h2v3h-2a1 1 0 00-1 1v2h3l-1 3h-2v7A10 10 0 0022 12z"/></svg>
           </a>
-          <a href="#" aria-label="Twitter" class="hover:text-blue-400 transition transform hover:scale-110">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-            </svg>
+          <a href="#" class="hover:text-blue-400 transition transform hover:scale-110">
+            <svg class="w-6 h-6" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
           </a>
-          <a href="#" aria-label="Instagram" class="hover:text-blue-400 transition transform hover:scale-110">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1112.63 8a4 4 0 013.37 3.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
-            </svg>
+          <a href="#" class="hover:text-blue-400 transition transform hover:scale-110">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8a4 4 0 013.37 3.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
           </a>
         </div>
       </div>
-  
-      <!-- Links principais -->
       <div>
         <h3 class="text-lg font-semibold mb-3 text-white">Navegação</h3>
         <ul class="space-y-2 text-gray-400 text-sm">
@@ -234,8 +192,6 @@
           <li><a href="#" class="hover:text-blue-400 transition">Contato</a></li>
         </ul>
       </div>
-  
-      <!-- Recursos -->
       <div>
         <h3 class="text-lg font-semibold mb-3 text-white">Recursos</h3>
         <ul class="space-y-2 text-gray-400 text-sm">
@@ -245,17 +201,28 @@
           <li><a href="#" class="hover:text-blue-400 transition">Blog</a></li>
         </ul>
       </div>
-  
-      <!-- Logo (quadrado preto) -->
       <div class="flex flex-col items-start md:items-end justify-center">
         <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-50 h-55 object-contain" />
       </div>
-  
     </div>
-    
   </footer>
-  
 
+  <script>
+    // Fecha menu mobile ao clicar
+    document.querySelectorAll('aside nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        if(menuToggle.checked) menuToggle.checked = false;
+      });
+    });
 
+    // Submenu "Revistas"
+    const revistasLink = document.getElementById('revistas-link');
+    const submenu = document.getElementById('submenu');
+
+    revistasLink.addEventListener('click', () => {
+      submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
 </body>
 </html>
