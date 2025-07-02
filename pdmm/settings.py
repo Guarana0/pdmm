@@ -12,15 +12,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 STATIC_URL = '/static/'
 
 # Caminhos onde o Django VAI PROCURAR por arquivos estáticos
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core', 'static'), # Adicione esta linha se não existir
+    os.path.join(BASE_DIR, 'static'), # Adicione esta linha se não existir
 ]
 
 # Caminho onde o Django VAI COLETAR todos os arquivos estáticos para produção
@@ -37,24 +37,23 @@ SECRET_KEY = 'django-insecure-e9=a!_ej4(w+ymkx-!4z0qi!@(p27k486yquo#g-ontlj)7oz8
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'pdmm-dqcbevcfa8hkauhs.brazilsouth-01.azurewebsites.net',
-    '.azurewebsites.net', # Boa prática para cobrir outros possíveis subdomínios do Azure
-    'localhost',          # Para desenvolvimento local
-    '127.0.0.1',          # Para desenvolvimento local
+    '127.0.0.1',
+    'localhost',
+    'pdmm.onrender.com',
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'widget_tweaks',
-    'core',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +68,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pdmm.urls'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -139,8 +137,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+   BASE_DIR / "core" / "static",
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+   BASE_DIR / "core" / "static", # ou caminho absoluto /home/lcunha/pdmm/static
+]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -151,3 +158,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/admin/'
 LOGIN_URL = '/accounts/login/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}
