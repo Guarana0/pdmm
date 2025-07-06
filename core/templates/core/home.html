@@ -57,28 +57,28 @@
   <!-- Imagens da semana -->
   <section>
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold text-center lg:text-left">Imagens da Semana</h2>
-      <a href="{% url 'core:revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
+      <h2 class="text-xl font-bold text-center lg:text-left">Imagens em destaque</h2>
+      <a href="{% url 'core:galeria' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-      <img src="/img/imagem1.jpg" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/imagem2.jpg" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/imagem3.jpg" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/imagem4.jpg" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/fotoMinas.jpg' %}" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/museuMineiro.jpg' %}" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
     </div>
   </section>
 
   <!-- Obras da semana -->
   <section>
     <div class="flex justify-between items-center mb-4 mt-8">
-      <h2 class="text-xl font-bold text-center lg:text-left">Obras da Semana</h2>
-      <a href="{% url 'core:revistas' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
+      <h2 class="text-xl font-bold text-center lg:text-left">Obras em destaque</h2>
+      <a href="{% url 'core:livros' %}" class="text-blue-600 hover:text-blue-400 text-md">Ver Mais</a>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-      <img src="/img/obra1.jpg" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/obra2.jpg" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/obra3.jpg" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
-      <img src="/img/obra4.jpg" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/bauDeOssos.jpg' %}" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/brejaDasAlmas.jpg' %}" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/sentimentoDoMundo.jpg' %}" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
+      <img src="{% static 'img/galinhaCega.jpg' %}" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover">
     </div>
   </section>
 

@@ -7,4 +7,6 @@ admin.site.login = views.MyAdminLoginView.as_view()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/login/', views.registro, name='login'),
 ]
