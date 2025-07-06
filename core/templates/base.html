@@ -206,23 +206,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    // Fecha menu mobile ao clicar
-    document.querySelectorAll('aside nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        const menuToggle = document.getElementById('menu-toggle');
-        if(menuToggle.checked) menuToggle.checked = false;
-      });
-    });
-
-    // Submenu "Revistas"
-    const revistasLink = document.getElementById('revistas-link');
-    const submenu = document.getElementById('submenu');
-
-    revistasLink.addEventListener('click', () => {
-      submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-    });
-  </script>
 </body>
 </html>
