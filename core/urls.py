@@ -9,6 +9,9 @@ urlpatterns = [
     path('autores/<slug:slug>/', views.autor_detail, name='autor_detail'),
     path('noticias/', views.noticias, name='noticias'),
     path('revistas/', views.revistas, name='revistas'),
+    path('revistas/diarioDeMinas/', views.diario_de_minas, name='diario_de_minas'),
+    path('revistas/leiteCriollo/', views.leiteCriollo, name='leiteCriollo'),
+    path('revistas/revistaVerde/', views.revistaVerde, name='revistaVerde'),
     path('galeria/', views.galeria, name='galeria'),
     path('livros/', views.livros, name='livros'),
     # ... adicione outras URLs específicas do app 'core' aqui se tiver

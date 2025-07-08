@@ -27,6 +27,15 @@ def noticias(request):
 def revistas(request):
     return render(request, 'core/revistas.html')
 
+def diario_de_minas(request):
+    return render(request, 'core/revistas/diarioDeMinas.html')
+
+def leiteCriollo(request):
+    return render(request, 'core/revistas/leiteCriollo.html')
+
+def revistaVerde(request):
+    return render(request, 'core/revistas/revistaVerde.html')
+
 def galeria(request):
     return render(request, 'core/galeria.html')
 
