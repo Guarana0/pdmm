@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       eventCard.style.left = `${leftPos}px`;
       eventCard.style.top = `${topPos}px`;
-    });
   });
 
   document.addEventListener('click', (e) => {
