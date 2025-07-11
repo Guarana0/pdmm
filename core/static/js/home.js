@@ -1,33 +1,60 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Linha do Tempo
-    const eventCard = document.getElementById('event-card');
-    const timeline = document.getElementById('timeline');
-    const events = {
-      1: { year: '1922', title: 'Semana de Arte Moderna', description: 'Início do Modernismo no Brasil com eventos culturais inovadores.' },
-      2: { year: '1930', title: 'Revolução de 1930', description: 'Mudança política importante que influenciou a cultura e as artes.' },
-      3: { year: '1942', title: 'Publicação de obras modernistas', description: 'Lançamento de livros e revistas importantes do modernismo mineiro.' },
-      4: { year: '1950', title: 'Consolidação do Modernismo', description: 'Modernismo torna-se dominante na cultura mineira e nacional.' }
-    };
-    timeline.querySelectorAll('.timeline-dot').forEach(dot => {
-      dot.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const eventId = dot.getAttribute('data-event');
-        const eventData = events[eventId];
-        eventCard.innerHTML = `<strong class="block text-blue-900">${eventData.year} - ${eventData.title}</strong><p class="mt-1 text-gray-700">${eventData.description}</p>`;
-        eventCard.classList.add('active');
-        const dotRect = dot.getBoundingClientRect();
-        const timelineRect = timeline.getBoundingClientRect();
-        const leftPos = dotRect.left - timelineRect.left + dotRect.width / 2 - eventCard.offsetWidth / 2;
-        const topPos = dotRect.top - timelineRect.top + 40;
-        eventCard.style.left = `${leftPos}px`;
-        eventCard.style.top = `${topPos}px`;
-      });
-    });
-    document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('timeline-dot')) {
-        eventCard.classList.remove('active');
+  const eventCard = document.getElementById('event-card');
+  const timeline = document.getElementById('timeline');
+
+  const events = {
+    1: { year: '1922', title: 'Semana de Arte Moderna', description: 'Início do Modernismo no Brasil com eventos culturais inovadores.' },
+    2: { year: '1930', title: 'Revolução de 1930', description: 'Mudança política importante que influenciou a cultura e as artes.' },
+    3: { year: '1942', title: 'Publicação de obras modernistas', description: 'Lançamento de livros e revistas importantes do modernismo mineiro.' },
+    4: { year: '1950', title: 'Consolidação do Modernismo', description: 'Modernismo torna-se dominante na cultura mineira e nacional.' },
+    5: { year: '1964', title: 'Golpe Militar', description: 'Período de censura e repressão, afetando profundamente a produção cultural.' },
+    6: { year: '1985', title: 'Retorno à Democracia', description: 'Renascimento cultural e abertura para novas expressões artísticas.' },
+    7: { year: '2000', title: 'Era Digital', description: 'Novas mídias e formas de expressão revolucionam a arte contemporânea.' },
+    8: { year: '2022', title: 'Centenário da Semana de Arte Moderna', description: 'Reflexões sobre o legado modernista e sua influência atual.' }
+  };
+
+  timeline.querySelectorAll('.timeline-dot').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const eventId = dot.getAttribute('data-event');
+      const eventData = events[eventId];
+
+      eventCard.innerHTML = `
+        <strong class="block text-lg font-semibold mb-1 text-blue-900 dark:text-blue-200">
+          ${eventData.year} - ${eventData.title}
+        </strong>
+        <p class="text-gray-700 dark:text-gray-300">${eventData.description}</p>
+      `;
+
+      eventCard.classList.add('active');
+
+      // Posicionamento com limite lateral
+      const dotRect = dot.getBoundingClientRect();
+      const timelineRect = timeline.getBoundingClientRect();
+
+      let leftPos = dotRect.left - timelineRect.left + dotRect.width / 2 - eventCard.offsetWidth / 2;
+      const topPos = dotRect.top - timelineRect.top + 40;
+
+      // Impede que o card ultrapasse os limites laterais
+      if (leftPos < 0) {
+        leftPos = 0;
       }
+      const maxLeft = timeline.offsetWidth - eventCard.offsetWidth;
+      if (leftPos > maxLeft) {
+        leftPos = maxLeft;
+      }
+
+      eventCard.style.left = `${leftPos}px`;
+      eventCard.style.top = `${topPos}px`;
     });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('timeline-dot')) {
+      eventCard.classList.remove('active');
+    }
+  });
+});
 
     // Carrossel
     const container = document.getElementById('carousel-container');

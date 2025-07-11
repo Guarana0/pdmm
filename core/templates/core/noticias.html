@@ -1,57 +1,81 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
   Noticias
 {% endblock %}
+
 {% block description %}
   Noticias relacionadas a literatura
 {% endblock %}
+
 {% block keywords %}
   Noticias,Literatura,Informacao
 {% endblock %}
+
 {% block content %}
-  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    <div class="flex min-h-screen">
-      <!-- Conteúdo principal -->
-      <main class="flex-1 p-4 lg:ml-5">
-        <!-- Botão menu mobile -->
-        <label for="menu-toggle" class="lg:hidden mb-4 cursor-pointer p-2 text-blue-900 dark:text-blue-300 text-3xl">☰</label>
-        <!-- Título -->
-        <h1 class="text-2xl font-bold mb-6">Notícias literarias</h1>
-        <!-- Lista de notícias -->
-        <div class="space-y-4">
-          <!-- Item de notícia -->
-          <div class="flex items-center bg-white dark:bg-gray-800 rounded shadow-lg overflow-hidden border-1 xl:pr-50 hover:bg-gray-400 dark:hover:bg-gray-700">
-            <div class="w-24 h-24 bg-gray-200 dark:bg-gray-700" alt="Img da noti"></div>
-            <div class="flex-1 p-4">
-              <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold">GENERO DA NOTICIA</span>
-              <h2 class="text-base font-bold">O Modernismo Mineiro</h2>
-              <p class="text-sm text-gray-600 dark:text-gray-400">06/05/2008</p>
-            </div>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+  <div class="flex min-h-screen flex-col">
+    <main class="flex-1 px-8 md:px-16 py-8 max-w-screen-xl mx-auto">
+
+      <!-- Botão menu mobile -->
+      <label for="menu-toggle" class="lg:hidden mb-6 cursor-pointer p-2 text-blue-900 dark:text-blue-300 text-3xl">
+        ☰
+      </label>
+
+      <!-- Título da seção -->
+      <h1 class="text-3xl font-extrabold mb-10 text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700 pb-4 text-left">
+        Notícias Literárias
+      </h1>
+
+      <!-- Lista de notícias -->
+      <div class="space-y-6">
+
+        <!-- Notícia 1 -->
+        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
+          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
+          <div class="flex-1 p-8 flex flex-col justify-center">
+            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">História Literária</span>
+            <h2 class="text-2xl font-bold leading-snug mb-3">O Modernismo Mineiro e sua influência nacional</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">06/05/2008</p>
           </div>
-          <!-- comeca aq para copiar a noticia -->
-          <div class="space-y-4">
-            <div class="flex items-center bg-white dark:bg-gray-800 rounded shadow-lg overflow-hidden border-1 xl:pr-50 hover:bg-gray-400 dark:hover:bg-gray-700">
-              <div class="w-24 h-24 bg-gray-200 dark:bg-gray-700" alt="Img da noti"></div>
-              <div class="flex-1 p-4">
-                <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold">GENERO DA NOTICIA</span>
-                <h2 class="text-base font-bold">O Modernismo Mineiro</h2>
-                <p class="text-sm text-gray-600 dark:text-gray-400">06/05/2008</p>
-              </div>
-            </div>
+        </article>
+
+        <!-- Notícia 2 -->
+        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
+          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
+          <div class="flex-1 p-8 flex flex-col justify-center">
+            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">Evento Literário</span>
+            <h2 class="text-2xl font-bold leading-snug mb-3">Centenário da Semana de Arte Moderna é celebrado em BH</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">12/02/2022</p>
           </div>
-          <div class="space-y-4">
-            <div class="flex items-center bg-white dark:bg-gray-800 rounded shadow-lg overflow-hidden border-1 xl:pr-50 hover:bg-gray-400 dark:hover:bg-gray-700">
-              <div class="w-24 h-24 bg-gray-200 dark:bg-gray-700" alt="Img da noti"></div>
-              <div class="flex-1 p-4">
-                <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold">GENERO DA NOTICIA</span>
-                <h2 class="text-base font-bold">O Modernismo Mineiro</h2>
-                <p class="text-sm text-gray-600 dark:text-gray-400">06/05/2008</p>
-              </div>
-            </div>
+        </article>
+
+        <!-- Notícia 3 -->
+        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
+          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
+          <div class="flex-1 p-8 flex flex-col justify-center">
+            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">Literatura Contemporânea</span>
+            <h2 class="text-2xl font-bold leading-snug mb-3">Jovens autores mineiros se destacam na Flip</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">28/07/2023</p>
           </div>
-        </div>
-      </main>
-    </div>
-  </body>
+        </article>
+
+        <!-- Notícia 4 -->
+        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
+          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
+          <div class="flex-1 p-8 flex flex-col justify-center">
+            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">Lançamento de Livro</span>
+            <h2 class="text-2xl font-bold leading-snug mb-3">Nova obra revisita a poesia modernista em Minas</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">09/03/2024</p>
+          </div>
+        </article>
+
+      </div>
+
+    </main>
+  </div>
+
+</body>
 {% endblock %}

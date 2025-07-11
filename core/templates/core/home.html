@@ -82,22 +82,36 @@
         <img src="{% static 'img/galinhaCega.jpg' %}" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
       </div>
     </section>
-    <!-- Linha do tempo -->
-    <h2 class="text-xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Linha do Tempo</h2>
-    <section class="flex items-center gap-4 px-6 relative" id="timeline">
-      <div class="h-2 w-full bg-gray-300 dark:bg-gray-700 flex items-center justify-between relative">
-        <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1922" aria-label="1922" data-event="1"></div>
-        <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1930" aria-label="1930" data-event="2"></div>
-        <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1942" aria-label="1942" data-event="3"></div>
-        <div class="timeline-dot w-5 h-5 bg-[#071b74] rounded-full hover:scale-110 transition-transform duration-200 cursor-pointer" title="1950" aria-label="1950" data-event="4"></div>
-      </div>
-      <div id="event-card" class="absolute bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-lg p-4 rounded-lg text-sm z-50 max-w-xs invisible opacity-0 transition-all duration-300"></div>
-    </section>
-  </main>
-  <style>
-    #event-card.active {
-      visibility: visible;
-      opacity: 1;
-    }
-  </style>
+ <!-- Linha do Tempo -->
+<h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Linha do Tempo</h2>
+
+<section id="timeline" class="relative px-6 py-8">
+  <!-- Linha base -->
+  <div class="h-2 bg-gray-300 dark:bg-gray-600 rounded-full relative flex items-center justify-between">
+    <!-- Pontos da linha -->
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1922" data-event="1"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1930" data-event="2"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1942" data-event="3"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1950" data-event="4"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1964" data-event="5"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1985" data-event="6"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2000" data-event="7"></div>
+    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2022" data-event="8"></div>
+  </div>
+
+  <!-- Cartão do evento -->
+  <div id="event-card"
+       class="invisible opacity-0 absolute bg-white dark:bg-teal-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-100 shadow-xl p-5 rounded-xl text-sm z-50 max-w-xs transition-all duration-300 pointer-events-none">
+  </div>
+</section>
+
+<!-- Estilo para exibir o cartão -->
+<style>
+  #event-card.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
 {% endblock %}
