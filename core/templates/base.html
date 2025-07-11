@@ -10,7 +10,6 @@
     </title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
-    <script src="{% static 'js/home.js' %}"></script>
     <link rel="icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon" />
     <link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -110,9 +109,9 @@ display=swap" rel="stylesheet" />
                 <i class="fas fa-chevron-down"></i>
               </a>
               <div id="submenu" class="submenu">
-                <a href="#">Diario de Minas</a>
-                <a href="#">Revista Verde</a>
-                <a href="#">Leite Criollo</a>
+                <a href="{% url 'core:diario_de_minas' %}">Diario de Minas</a>
+                <a href="{% url 'core:revistaVerde' %}">Revista Verde</a>
+                <a href="{% url 'core:leiteCriollo' %}">Leite Criollo</a>
               </div>
             </div>
             <a href="{% url 'core:galeria' %}" class="nav-link flex items-center p-3 rounded-lg"><i class="fas fa-images mr-3 w-5"></i> Galeria</a>
@@ -205,45 +204,6 @@ display=swap" rel="stylesheet" />
         </div>
       </div>
     </footer>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('theme-toggle')
-        const themeToggleDot = document.getElementById('theme-toggle-dot')
-        const htmlElement = document.documentElement
-        const mainContent = document.getElementById('main-content') // Pega o elemento <main>
-      
-        // Função para aplicar o tema
-        const applyTheme = (theme) => {
-          // Aplica o tema geral ao HTML (para sidebar, footer, etc.)
-          if (theme === 'dark') {
-            htmlElement.classList.add('dark')
-            themeToggleDot.style.transform = 'translateX(32px)'
-          } else {
-            htmlElement.classList.remove('dark')
-            themeToggleDot.style.transform = 'translateX(0px)'
-          }
-      
-          // Força a cor de fundo do conteúdo principal (<main>)
-          // Cor de fundo para o modo escuro: #111827 (cor de 'bg-gray-900' do Tailwind)
-          // Cor de fundo para o modo claro: #ffffff (cor de 'bg-white')
-          if (mainContent) {
-            mainContent.style.backgroundColor = theme === 'dark' ? '#111827' : '#ffffff'
-            mainContent.style.color = theme === 'dark' ? '#f3f4f6' : '#111827' // Cor do texto
-          }
-        }
-      
-        // Verifica o tema salvo ou preferência do sistema ao carregar a página
-        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        applyTheme(currentTheme)
-      
-        // Adiciona o evento de clique no botão para trocar o tema
-        themeToggle.addEventListener('click', () => {
-          const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark'
-          localStorage.setItem('theme', newTheme)
-          applyTheme(newTheme)
-        })
-      })
-    </script>
+    <script src="{% static 'js/home.js' %}"></script>
   </body>
 </html>

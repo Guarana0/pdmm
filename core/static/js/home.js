@@ -60,3 +60,41 @@ document.addEventListener('DOMContentLoaded', function () {
     revistasLink.addEventListener('click', () => {
       submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('theme-toggle')
+        const themeToggleDot = document.getElementById('theme-toggle-dot')
+        const htmlElement = document.documentElement
+        const mainContent = document.getElementById('main-content') // Pega o elemento <main>
+      
+        // Função para aplicar o tema
+        const applyTheme = (theme) => {
+          // Aplica o tema geral ao HTML (para sidebar, footer, etc.)
+          if (theme === 'dark') {
+            htmlElement.classList.add('dark')
+            themeToggleDot.style.transform = 'translateX(32px)'
+          } else {
+            htmlElement.classList.remove('dark')
+            themeToggleDot.style.transform = 'translateX(0px)'
+          }
+      
+          // Força a cor de fundo do conteúdo principal (<main>)
+          // Cor de fundo para o modo escuro: #111827 (cor de 'bg-gray-900' do Tailwind)
+          // Cor de fundo para o modo claro: #ffffff (cor de 'bg-white')
+          if (mainContent) {
+            mainContent.style.backgroundColor = theme === 'dark' ? '#111827' : '#ffffff'
+            mainContent.style.color = theme === 'dark' ? '#f3f4f6' : '#111827' // Cor do texto
+          }
+        }
+      
+        // Verifica o tema salvo ou preferência do sistema ao carregar a página
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        applyTheme(currentTheme)
+      
+        // Adiciona o evento de clique no botão para trocar o tema
+        themeToggle.addEventListener('click', () => {
+          const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark'
+          localStorage.setItem('theme', newTheme)
+          applyTheme(newTheme)
+        })
+      })

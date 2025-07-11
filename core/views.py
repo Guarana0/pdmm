@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404
 from .models import Autores
+from django.contrib.auth.views import PasswordChangeView
 
 
 
@@ -42,8 +43,20 @@ def galeria(request):
 def livros(request):
     return render(request, 'core/livros.html')
 
-def registro(request):
-    return render(request, 'admin/registro.html')
+class MyAdminPasswordChangeView(PasswordChangeView):
+    """
+    Custom view to handle the admin password change form.
+    """
+    # You must specify a template_name or override get_template_names()
+    template_name = 'admin/password_change_form.html'  # Or your custom template path
+    
+    # You must specify a success_url
+    success_url = reverse_lazy('admin:password_change_done')
 
-def login_view(request):
-    return render(request, 'admin/login.html')
+    # You can add other customizations here if needed
+    # For example, to pass extra context to the template:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add your custom context
+        context['site_title'] = 'My Awesome Site' 
+        return context
