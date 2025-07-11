@@ -10,19 +10,240 @@
   galeria, fotos, imagens
 {% endblock %}
 {% block content %}
-  <div class="flex min-h-screen relative bg-gray-100 dark:bg-gray-900">
-    <!-- Galeria alternada !!!!!! -->
-    <div class="flex flex-col gap-4 pt-5 max-w-7xl mx-auto w-full">
-      <!-- Linha -->
-      <div class="flex gap-4 h-64">
-        <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem 1" class="flex-[2] object-cover border border-black dark:border-gray-400 rounded" />
-        <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem 2" class="flex-1 object-cover border border-black dark:border-gray-400 rounded" />
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+
+    <div class="container mx-auto px-4 py-12">
+
+      <!-- Título da página -->
+    
+
+      <!-- Gallery Section -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+        <!-- Gallery Item 1 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/cafeEstrela.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/cafeEstrela.jpg' %}" 
+                alt="Café Estrela" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Café Estrela</h3>
+              <p class="text-sm text-gray-200">Um lugar especial para momentos únicos</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/arquivoPublico.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/arquivoPublico.jpg' %}" 
+                alt="Arquivo Público" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Arquivo Público</h3>
+              <p class="text-sm text-gray-200">Preservando nossa história e memória</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/museuMineiro.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/museuMineiro.jpg' %}" 
+                alt="Museu Mineiro" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Museu Mineiro</h3>
+              <p class="text-sm text-gray-200">Arte e cultura em cada detalhe</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/fotoMinas.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/fotoMinas.jpg' %}" 
+                alt="Minas Gerais" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Minas Gerais</h3>
+              <p class="text-sm text-gray-200">A beleza natural do nosso estado</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Novos Itens - Ordem invertida -->
+
+        <!-- Gallery Item 5 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/fotoMinas.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/fotoMinas.jpg' %}" 
+                alt="Minas Gerais" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Minas Gerais</h3>
+              <p class="text-sm text-gray-200">A beleza natural do nosso estado</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/museuMineiro.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/museuMineiro.jpg' %}" 
+                alt="Museu Mineiro" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Museu Mineiro</h3>
+              <p class="text-sm text-gray-200">Arte e cultura em cada detalhe</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery Item 7 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/arquivoPublico.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/arquivoPublico.jpg' %}" 
+                alt="Arquivo Público" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Arquivo Público</h3>
+              <p class="text-sm text-gray-200">Preservando nossa história e memória</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery Item 8 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <a href="{% static 'img/cafeEstrela.jpg' %}" class="block">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img 
+                src="{% static 'img/cafeEstrela.jpg' %}" 
+                alt="Café Estrela" 
+                class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+              <h3 class="text-xl font-bold mb-2">Café Estrela</h3>
+              <p class="text-sm text-gray-200">Um lugar especial para momentos únicos</p>
+            </div>
+            <div class="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="rounded-full bg-white/20 p-2 backdrop-blur-sm">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
       </div>
-      <!-- Linha 2 -->
-      <div class="flex gap-4 h-64">
-        <img src="{% static 'img/museuMineiro.jpg' %}" alt="Im 3" class="flex-1 object-cover border border-black dark:border-gray-400 rounded" />
-        <img src="{% static 'img/fotoMinas.jpg' %}" alt="Im 4" class="flex-[2] object-cover border border-black dark:border-gray-400 rounded" />
-      </div>
+
     </div>
   </div>
+
+</body>
+
+<style>
+  .shadow-highlight {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .group:hover img {
+      transform: none !important;
+    }
+    .group:hover {
+      transform: none !important;
+    }
+  }
+</style>
+
 {% endblock %}

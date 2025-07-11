@@ -10,24 +10,35 @@
   autores, literatura, informação
 {% endblock %}
 {% block content %}
-  <main class="flex-1 p-4 lg:p-8 overflow-y-auto bg-gray-100 dark:bg-gray-900">
-    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 lg:mb-8 gap-4">
-      <h1 class="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200">Autores</h1>
-      <div class="flex flex-col sm:flex-row w-full sm:w-auto gap-3">
-        <div class="relative w-full sm:w-auto"></div>
-      </div>
+  <main class="flex-1 p-4 lg:p-8 overflow-y-auto bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Autores</h1>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-      <a href="{% url 'core:autor_detail' slug='carlos-drummond' %}" class="block bg-white dark:bg-gray-800 p-4 rounded shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-1">
-        <img src="{% static 'img/drummond.jpg' %}" alt="Carlos Drummond" class="w-full h-40 lg:h-48 object-cover rounded" />
-        <h2 class="text-center mt-4 text-lg font-semibold text-black dark:text-gray-100">Carlos Drummond</h2>
-        <p class="text-gray-600 dark:text-gray-400 text-sm text-center mt-2">Poeta Modernista</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      <!-- Card: Carlos Drummond -->
+      <a href="{% url 'core:autor_detail' slug='carlos-drummond' %}" class="block bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden">
+        <div class="w-full h-80 bg-gray-200 dark:bg-gray-700">
+          <img src="{% static 'img/drummond.jpg' %}" alt="Carlos Drummond" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-gray-100">Carlos Drummond</h2>
+          <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-1">Poeta Modernista</p>
+        </div>
       </a>
-      <a href="{% url 'core:autor_detail' slug='joao-alphonsus' %}" class="block bg-white dark:bg-gray-800 p-4 rounded shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-1">
-        <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="João Alphonsus" class="w-full h-40 lg:h-48 object-cover rounded" />
-        <h2 class="text-center mt-4 text-lg font-semibold text-black dark:text-gray-100">João Alphonsus</h2>
-        <p class="text-gray-600 dark:text-gray-400 text-sm text-center mt-2">Escritor Mineiro</p>
+
+      <!-- Card: João Alphonsus -->
+      <a href="{% url 'core:autor_detail' slug='joao-alphonsus' %}" class="block bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden">
+        <div class="w-full h-80 bg-gray-200 dark:bg-gray-700">
+          <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="João Alphonsus" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-gray-100">João Alphonsus</h2>
+          <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-1">Escritor Mineiro</p>
+        </div>
       </a>
+
     </div>
   </main>
 {% endblock %}
