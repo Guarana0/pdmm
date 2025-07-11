@@ -1,197 +1,116 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}Acervo de Livros{% endblock %}
-{% block description %}Nosso Acervo de Livros do modernismo mineiro{% endblock %}
-{% block keywords %}Noticias,Literatura,Informacao{% endblock %}
+
 {% block content %}
-<body class="bg-gray-100 dark:bg-gray-900 py-10 px-4 text-gray-900 dark:text-gray-100">
-<!--config basica da pag-->
-<div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
+{# O conteúdo da página começa aqui. Note a ausência da tag <body>. #}
+
+<div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+
+  <!-- Grid para os cards de livros -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+    <!-- Card de Livro 1 -->
+    <a href="{% url 'core:galinhaCega' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
+      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+        <!-- Placeholder para a capa do livro -->
+        <img src="{% static 'img/galinhaCega.jpg' %}" alt="Capa do livro Galinha Cega" class="object-cover w-full h-full rounded-lg">
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">João Alphonsus</p>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Galinha Cega</h3>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1926</p>
+      </div>
+    </a>
+
+    <!-- Card de Livro 2 -->
+    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
+      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Carlos Drummond de Andrade</p>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Alguma Poesia</h3>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1930</p>
+      </div>
+    </a>
+
+    <!-- Card de Livro 3 -->
+    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
+      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Murilo Mendes</p>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Poemas</h3>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1930</p>
+      </div>
+    </a>
+
+    <!-- Card de Livro 4 -->
+    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
+      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Emílio Moura</p>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Canto da Descoberta</h3>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1929</p>
+      </div>
+    </a>
+
+    <!-- Card de Livro 5 -->
+    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
+      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Autor de Exemplo</p>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Título do Livro</h3>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 19XX</p>
+      </div>
+    </a>
+    
+    <!-- Adicione quantos cards mais você precisar, apenas copiando e colando o bloco acima -->
+
+  </div>
+
+  <!-- Paginação Estática (Layout) -->
+  <nav aria-label="Navegação de página" class="flex items-center justify-center mt-12">
+    <ul class="flex items-center -space-x-px h-10 text-base">
+      <!-- Botão Anterior -->
+      <li>
+        <a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span class="sr-only">Anterior</span>
+          <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+        </a>
+      </li>
+      <!-- Página 1 (ativa) -->
+      <li>
+        <a href="#" aria-current="page" class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">1</a>
+      </li>
+      <!-- Página 2 -->
+      <li>
+        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+      </li>
+      <!-- Página 3 -->
+      <li>
+        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
+      </li>
+      <!-- Botão Próximo -->
+      <li>
+        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span class="sr-only">Próximo</span>
+          <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
 </div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<!-- caixa de livros (comeca aq)-->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden
-border-solid">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<!--termina aq-->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título</h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título do Livro</h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Títuloo</h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título </h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data de publi</p>
-</div>
-</div>
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-<div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-<span class="text-gray-400 dark:text-gray-500 text-4xl"></span>
-</div>
-<div class="p-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Autor</p>
-<h3 class="font-semibold text-black dark:text-gray-100">Título</h3>
-<p class="text-sm text-gray-400 dark:text-gray-500">Data da publi</p>
-</div>
-</div>
-<br>
-</div>
-<nav aria-label="Page navigation example flex items-center justify-center ">
-<ul class="flex items-center justify-center space-x-px h-10 text-base ">
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight
-text-gray-500 bg-white dark:bg-gray-800 border border-e-0 border-gray-300
-dark:border-gray-700 rounded-s-lg hover:bg-gray-100 dark:hover:bg-gray-700
-hover:text-gray-700 dark:hover:text-white">
-<span class="sr-only">Previous</span>
-<svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true"
-xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-stroke-width="2" d="M5 1 1 5l4 4"/>
-</svg>
-</a>
-</li>
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500
-bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-100
-dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-white">1</a>
-</li>
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500
-bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-100
-dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-white">2</a>
-</li>
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500
-bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-100
-dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-white">3</a>
-</li>
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500
-bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-100
-dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-white">4</a>
-</li>
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500
-bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-100
-dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-white">5</a>
-</li>
-<li>
-<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500
-bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-e-lg
-hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-white">
-<span class="sr-only">Next</span>
-<svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true"
-xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-stroke-width="2" d="m1 9 4-4-4-4"/>
-</svg>
-</a>
-</li>
-</ul>
-</nav>
-</body>
-</html>
 {% endblock %}

@@ -43,6 +43,9 @@ def galeria(request):
 def livros(request):
     return render(request, 'core/livros.html')
 
+def galinhaCega(request):
+    return render(request, 'core/livros/galinhaCega.html')
+
 class MyAdminPasswordChangeView(PasswordChangeView):
     """
     Custom view to handle the admin password change form.
