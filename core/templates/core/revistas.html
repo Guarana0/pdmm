@@ -1,204 +1,252 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}Revistas{% endblock %}
-{% block description %}Revistas do Modernismo Mineiro{% endblock %}
-{% block keywords %}Noticias,Literatura,Informacao{% endblock %}
-{% block content %}
-
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Livros</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{% block title %}Base{% endblock %}</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/output.css' %}">
+<script src="{% static 'js/home.js' %}"></script>
+<link rel="icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
+<link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&
+display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Inter', sans-serif;
+}
+.sidebar-gradient {
+background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #1e40af 60%, #2563eb
+100%);
+}
+.nav-link {
+transition: all 0.2s ease;
+}
+.nav-link:hover {
+background: rgba(255, 255, 255, 0.1);
+transform: translateX(4px);
+}
+.nav-link.active {
+background: rgba(255, 255, 255, 0.15);
+border-right: 3px solid #3b82f6;
+}
+#menu-toggle { display: none; }
+label[for="menu-toggle"] {
+display: none;
+position: fixed;
+top: 1rem;
+left: 1rem;
+font-size: 2.5rem;
+color: #073B73;
+cursor: pointer;
+background: white;
+border-radius: 4px;
+padding: 0 8px;
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+z-index: 100;
+user-select: none;
+}
+@media (max-width: 1023px) {
+aside.fixed.left-0 {
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+#menu-toggle:checked + label + aside {
+transform: translateX(0);
+}
+label[for="menu-toggle"] {
+display: block;
+}
+main.flex-1 {
+margin-left: 0 !important;
+padding: 1rem;
+transition: margin-left 0.3s ease;
+}
+}
+.submenu {
+display: none;
+flex-direction: column;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 4px;
+margin-left: 2rem;
+margin-top: 0.25rem;
+margin-bottom: 0.5rem;
+position: relative;
+z-index: 10;
+}
+.submenu a {
+padding: 0.3rem 0.5rem;
+font-size: 0.9rem;
+color: #cbd5e1;
+border-radius: 4px;
+}
+.submenu a:hover {
+background-color: #3b82f6;
+color: white;
+}
+</style>
 </head>
-<body class="bg-gray-100 py-10 px-4">
-<!--config basica da pag-->
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-
-    <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-        <div class="h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-gray-400 text-4xl"></span>
-        </div>
-        <div class="p-4">
-          <p class="text-sm text-gray-600">Autor</p>
-          <h3 class="font-semibold text-black">Título </h3>
-          <p class="text-sm text-gray-400">Data de publi</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-        <div class="h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-gray-400 text-4xl"></span>
-        </div>
-        <div class="p-4">
-          <p class="text-sm text-gray-600">Autor</p>
-          <h3 class="font-semibold text-black">Título </h3>
-          <p class="text-sm text-gray-400">Data de publi</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-        <div class="h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-gray-400 text-4xl"></span>
-        </div>
-        <div class="p-4">
-          <p class="text-sm text-gray-600">Autor</p>
-          <h3 class="font-semibold text-black">Título </h3>
-          <p class="text-sm text-gray-400">Data de publi</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-        <div class="h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-gray-400 text-4xl"></span>
-        </div>
-        <div class="p-4">
-          <p class="text-sm text-gray-600">Autor</p>
-          <h3 class="font-semibold text-black">Título </h3>
-          <p class="text-sm text-gray-400">Data de publi</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-        <div class="h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-gray-400 text-4xl"></span>
-        </div>
-        <div class="p-4">
-          <p class="text-sm text-gray-600">Autor</p>
-          <h3 class="font-semibold text-black">Título </h3>
-          <p class="text-sm text-gray-400">Data de publi</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-        <div class="h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-gray-400 text-4xl"></span>
-        </div>
-        <div class="p-4">
-          <p class="text-sm text-gray-600">Autor</p>
-          <h3 class="font-semibold text-black">Título </h3>
-          <p class="text-sm text-gray-400">Data de publi</p>
-        </div>
-      </div>
-    
-    <!-- caixa de livros (comeca aq)-->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden border-solid">
-      <div class="h-48 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-4xl"></span>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600">Autor</p>
-        <h3 class="font-semibold text-black">Título </h3>
-        <p class="text-sm text-gray-400">Data de publi</p>
-      </div>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 h-full">
+<div class="flex min-h-screen relative">
+<!-- Toggle -->
+<input type="checkbox" id="menu-toggle" />
+<label for="menu-toggle" class="lg:hidden p-2 text-blue-900 text-3xl dark:bg-slate-800 dark:text-blue-300">☰</label> <!-- Adicionei a cor do dark mode aqui também -->
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white
+shadow-2xl z-50">
+<img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+<div class="p-6">
+<nav class="space-y-2">
+<a href="{% url 'core:home' %}" class="nav-link active flex items-center p-3
+rounded-lg">
+<i class="fas fa-home mr-3 w-5"></i> Inicio
+</a>
+<a href="{% url 'core:autores' %}" class="nav-link flex items-center p-3 rounded-lg">
+<i class="fas fa-users mr-3 w-5"></i> Autores
+</a>
+<div>
+<a id="revistas-link" class="nav-link flex items-center justify-between p-3 rounded-lg
+cursor-pointer">
+<span><i class="fas fa-book-journal-whills mr-3 w-5"></i> Revistas</span>
+<i class="fas fa-chevron-down"></i>
+</a>
+<div id="submenu" class="submenu">
+<a href="#">Diario de Minas</a>
+<a href="#">Revista Verde</a>
+<a href="#">Leite Criollo</a>
+</div>
+</div>
+<a href="{% url 'core:galeria' %}" class="nav-link flex items-center p-3 rounded-lg">
+<i class="fas fa-images mr-3 w-5"></i> Galeria
+</a>
+<a href="{% url 'core:noticias' %}" class="nav-link flex items-center p-3 rounded-lg">
+<i class="fas fa-newspaper mr-3 w-5"></i> Noticias
+</a>
+<a href="{% url 'core:livros' %}" class="nav-link flex items-center p-3 rounded-lg">
+<i class="fas fa-book-open mr-3 w-5"></i> Livros
+</a>
+</nav>
+</div>
+<div class="mt-auto flex justify-center py-6">
+    <!-- MODIFICAÇÃO: Adicionei os IDs para o JavaScript -->
+    <div id="theme-toggle" class="w-16 h-8 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center px-1 cursor-pointer">
+        <div id="theme-toggle-dot" class="w-6 h-6 bg-[#073B73] dark:bg-white rounded-full transition-transform duration-300 transform"></div>
     </div>
-    <!--termina aq-->
-
-    
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="h-48 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-4xl"></span>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600">Autor</p>
-        <h3 class="font-semibold text-black">Título</h3>
-        <p class="text-sm text-gray-400">Data de publi</p>
-      </div>
-    </div>
-
-    
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="h-48 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-4xl"></span>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600">Autor</p>
-        <h3 class="font-semibold text-black">Título do Livro</h3>
-        <p class="text-sm text-gray-400">Data de publi</p>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="h-48 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-4xl"></span>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600">Autor</p>
-        <h3 class="font-semibold text-black">Títuloo</h3>
-        <p class="text-sm text-gray-400">Data de publi</p>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="h-48 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-4xl"></span>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600">Autor</p>
-        <h3 class="font-semibold text-black">Título </h3>
-        <p class="text-sm text-gray-400">Data de publi</p>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="h-48 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-4xl"></span>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600">Autor</p>
-        <h3 class="font-semibold text-black">Título</h3>
-        <p class="text-sm text-gray-400">Data da publi</p>
-      </div>
-    </div>
+</div>
+</aside>
+<!-- Conteúdo -->
+<main class="flex-1 p-8 ml-64 bg-white dark:bg-gray-900 text-gray-900
+dark:text-gray-100">
+{% block content %}{% endblock %}
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-black dark:bg-gray-950 text-gray-300 dark:text-gray-400 py-12 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+<div>
+<h2 class="text-2xl font-bold text-blue-400 mb-4">PDMM</h2>
+<p class="text-sm leading-relaxed">
+Portal do Modernismo Mineiro: um espaço para estudantes e pesquisadores
+conhecerem e divulgarem as obras do modernismo em Minas Gerais.
+</p>
+<p class="mt-4 text-xs text-gray-400 select-none">© 2025 PDMM. Todos os direitos
+reservados.</p>
 <br>
+<div class="flex space-x-4">
+<a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform
+hover:scale-110">
+<svg class="w-6 h-6" fill="currentColor"><path d="M22 12a10 10 0 10-11.5
+9.9v-7h-2v-3h2v-2a3 3 0 013-3h2v3h-2a1 1 0 00-1 1v2h3l-1 3h-2v7A10 10 0 0022
+12z"/></svg>
+</a>
+<a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform
+hover:scale-110">
+<svg class="w-6 h-6" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53
+4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0
+20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+</a>
+<a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform
+hover:scale-110">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><rect
+width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8a4 4
+0 013.37 3.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-3 text-white">Navegação</h3>
+<ul class="space-y-2 text-gray-400 dark:text-gray-300 text-sm">
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Início</a></li>
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Sobre</a></li>
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Obras</a></li>
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Contato</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-3 text-white">Recursos</h3>
+<ul class="space-y-2 text-gray-400 dark:text-gray-300 text-sm">
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Artigos</a></li>
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Eventos</a></li>
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Galeria</a></li>
+<li><a href="#" class="hover:text-blue-400 dark:hover:text-white
+transition">Blog</a></li>
+</ul>
+</div>
+<div class="flex flex-col items-start md:items-end justify-center">
+<img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-50 h-55 object-contain"
+/>
+</div>
+</div>
+</footer>
 
-  </div>
- 
-  <nav aria-label="Page navigation example flex items-center justify-center ">
-    <ul class="flex flex items-center justify-center space-x-px h-10 text-base ">
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-          <span class="sr-only">Previous</span>
-          <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-      </li>
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-      </li>
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
-    </li>
-      </li>
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-      </li>
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-      </li>
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-          <span class="sr-only">Next</span>
-          <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-        </a>
-      </li>
-    </ul>
-  </nav>
+<!-- MODIFICAÇÃO: Adicionei o script para controlar o tema -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeToggleDot = document.getElementById('theme-toggle-dot');
+      const htmlElement = document.documentElement;
+
+      // Função para aplicar o tema e a posição do botão
+      const applyTheme = (theme) => {
+        if (theme === 'dark') {
+          htmlElement.classList.add('dark');
+          themeToggleDot.style.transform = 'translateX(32px)'; // Move o círculo para a direita
+          // Ajusta a cor do circulo no dark mode
+          themeToggleDot.classList.remove('bg-[#073B73]');
+          themeToggleDot.classList.add('bg-white');
+
+        } else {
+          htmlElement.classList.remove('dark');
+          themeToggleDot.style.transform = 'translateX(0px)'; // Move o círculo para a esquerda
+           // Ajusta a cor do circulo no light mode
+          themeToggleDot.classList.remove('bg-white');
+          themeToggleDot.classList.add('bg-[#073B73]');
+        }
+      };
+
+      // Verifica o tema salvo no localStorage ou a preferência do sistema
+      const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(currentTheme);
+
+      // Adiciona o evento de clique no botão
+      themeToggle.addEventListener('click', () => {
+        const isDarkMode = htmlElement.classList.toggle('dark');
+        const newTheme = isDarkMode ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme); // Aplica a nova posição e cor
+      });
+    });
+</script>
 
 </body>
 </html>
-
-
-
-
-
-{% endblock %}

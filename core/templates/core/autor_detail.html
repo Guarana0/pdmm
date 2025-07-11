@@ -1,63 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-      <!-- pate que tem a image, do autor -->
-      <div class="flex flex-col xl:flex-row gap-6 items-center xl:items-start">
-        <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="Autor" class="w-90 h-60 md:w-52  object-cover border border-black-300 rounded lg:w-100 xl:w-150 ">
-        <p class="text-justify text-sm md:text-base font-medium">
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-          Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...
-        </p>
-      </div>
-
-      <!-- Segundo parágrafo s img-->
-      <p class="mt-6 text-justify text-sm md:text-base font-medium">
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-                Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-                Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-        Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...
-
-      </p>
-
-      <!-- Bibliografia -->
-      <section class="mt-8">
-        <h2 class="text-lg font-bold mb-2">Bibliografia</h2>
-        <ul class="list-disc list-inside space-y-1 text-sm md:text-base font-medium">
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        </ul>
-      </section>
-
-      <!-- Referências -->
-      <section class="mt-6">
-        <h2 class="text-lg font-bold mb-2">Referências</h2>
-        <ul class="list-disc list-inside space-y-1 text-sm md:text-base font-medium">
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-          <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        </ul>
-      </section>
-    </main>
-  </div>
+  <main class="p-4 md:p-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+    <!-- parte que tem a imagem do autor -->
+    <div class="flex flex-col xl:flex-row gap-6 items-center xl:items-start">
+      <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="Autor" class="w-90 h-60 md:w-52 object-cover border border-gray-300 dark:border-gray-600 rounded lg:w-100 xl:w-150" />
+      <p class="text-justify text-sm md:text-base font-medium">Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...</p>
+    </div>
+    <!-- Segundo parágrafo sem imagem -->
+    <p class="mt-6 text-justify text-sm md:text-base font-medium">Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...</p>
+    <!-- Bibliografia -->
+    <section class="mt-8">
+      <h2 class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Bibliografia</h2>
+      <ul class="list-disc list-inside space-y-1 text-sm md:text-base font-medium text-gray-800 dark:text-gray-300">
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+      </ul>
+    </section>
+    <!-- Referências -->
+    <section class="mt-6">
+      <h2 class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Referências</h2>
+      <ul class="list-disc list-inside space-y-1 text-sm md:text-base font-medium text-gray-800 dark:text-gray-300">
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
+      </ul>
+    </section>
+  </main>
 {% endblock %}

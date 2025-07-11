@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Galeria{% endblock %}
-{% block description %}Galeria de fotos{% endblock %}
-{% block keywords %}galeria, fotos, imagens{% endblock %}
-
+{% block title %}
+  Galeria
+{% endblock %}
+{% block description %}
+  Galeria de fotos
+{% endblock %}
+{% block keywords %}
+  galeria, fotos, imagens
+{% endblock %}
 {% block content %}
-  <div class="flex min-h-screen relative">
-    <!-- Galeria alternada !!!!!!-->
-    <div class="flex flex-col gap-4 pt-5 max-w-7xl mx-auto w-full ">
-      <!-- Linha  -->
+  <div class="flex min-h-screen relative bg-gray-100 dark:bg-gray-900">
+    <!-- Galeria alternada !!!!!! -->
+    <div class="flex flex-col gap-4 pt-5 max-w-7xl mx-auto w-full">
+      <!-- Linha -->
       <div class="flex gap-4 h-64">
-        <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem 1" class="flex-[2] object-cover border border-black rounded" />
-        <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem 2" class="flex-1 object-cover border border-black rounded" />
+        <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem 1" class="flex-[2] object-cover border border-black dark:border-gray-400 rounded" />
+        <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem 2" class="flex-1 object-cover border border-black dark:border-gray-400 rounded" />
       </div>
       <!-- Linha 2 -->
       <div class="flex gap-4 h-64">
-        <img src="{% static 'img/museuMineiro.jpg' %}" alt="Im 3" class="flex-1 object-cover border border-black rounded" />
-        <img src="{% static 'img/fotoMinas.jpg' %}" alt="Im 4" class="flex-[2] object-cover border border-black rounded" />
+        <img src="{% static 'img/museuMineiro.jpg' %}" alt="Im 3" class="flex-1 object-cover border border-black dark:border-gray-400 rounded" />
+        <img src="{% static 'img/fotoMinas.jpg' %}" alt="Im 4" class="flex-[2] object-cover border border-black dark:border-gray-400 rounded" />
       </div>
     </div>
   </div>
