@@ -1,33 +1,95 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Autor Detail{% endblock %}
+{% block description %}Detalhes do Autor Modernista Mineiro{% endblock %}
+{% block keywords %}Autor, Modernismo, Literatura{% endblock %}
+
 {% block content %}
-  <main class="p-4 md:p-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200">
-    <!-- parte que tem a imagem do autor -->
-    <div class="flex flex-col xl:flex-row gap-6 items-center xl:items-start">
-      <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="Autor" class="w-90 h-60 md:w-52 object-cover border border-gray-300 dark:border-gray-600 rounded lg:w-100 xl:w-150" />
-      <p class="text-justify text-sm md:text-base font-medium">Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus. Et Vitae Dictum Quis Vulputate Vitae...</p>
-    </div>
-    <!-- Segundo parágrafo sem imagem -->
-    <p class="mt-6 text-justify text-sm md:text-base font-medium">Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus... Lorem Ipsum Dolor Sit Amet Consectetur. Lorem Sit In Nunc Consectetur Eu Sed Cursus...</p>
-    <!-- Bibliografia -->
-    <section class="mt-8">
-      <h2 class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Bibliografia</h2>
-      <ul class="list-disc list-inside space-y-1 text-sm md:text-base font-medium text-gray-800 dark:text-gray-300">
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-      </ul>
-    </section>
-    <!-- Referências -->
-    <section class="mt-6">
-      <h2 class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Referências</h2>
-      <ul class="list-disc list-inside space-y-1 text-sm md:text-base font-medium text-gray-800 dark:text-gray-300">
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-        <li>Lorem Ipsum Dolor Sit Amet Consectetur...</li>
-      </ul>
-    </section>
-  </main>
+<main class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+    <!-- Cabeçalho do Autor: Nome e Tagline -->
+    <header class="text-center mb-8 md:mb-12">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+        João Alphonsus de Guimaraens
+        {# Em um app real, seria: {{ author.name }} #}
+      </h1>
+      <p class="mt-2 text-lg md:text-xl text-gray-600 dark:text-gray-400">
+        Contista, romancista e poeta do Modernismo
+        {# Em um app real, seria: {{ author.tagline }} #}
+      </p>
+    </header>
+
+    <article>
+      <!-- Seção Principal: Biografia com Imagem -->
+      <section class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+        <!-- Imagem do Autor -->
+        <div class="flex-shrink-0">
+          <img 
+            src="{% static 'img/joaoAlphonsus.jpg' %}" 
+            alt="Retrato de João Alphonsus" 
+            class="w-40 h-40 md:w-56 md:h-56 object-cover rounded-lg border-4 border-gray-200 dark:border-gray-700 shadow-lg"
+          />
+          {# Em um app real, seria: src="{{ author.image.url }}" #}
+        </div>
+
+        <!-- Texto da Biografia -->
+        <div class="text-base text-gray-700 dark:text-gray-300 space-y-4 text-justify leading-relaxed">
+          {# O ideal é que parágrafos venham separados do banco de dados e renderizados num loop,
+             ou usar o filtro `|linebreaks` se for um único campo de texto. Ex: {{ author.bio|linebreaks }} #}
+          <p>
+            João Alphonsus de Guimaraens (1901-1944) foi uma figura central na segunda fase do Modernismo brasileiro. Nascido em Conceição do Mato Dentro, Minas Gerais, era filho do poeta simbolista Alphonsus de Guimaraens. Apesar da forte influência paterna, João Alphonsus trilhou seu próprio caminho literário, destacando-se principalmente como contista e romancista.
+          </p>
+          <p>
+            Sua obra é marcada por uma prosa enxuta, análise psicológica profunda dos personagens e um olhar sensível sobre o cotidiano e as relações humanas. Em contos como os de "Galinha Cega" (1935), ele explora a complexidade da alma humana com maestria, abordando temas como a solidão, a frustração e as pequenas tragédias da vida comum. Sua narrativa inovadora e seu estilo preciso o consolidaram como um dos grandes mestres do conto no Brasil.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Seção de Obras (Bibliografia) -->
+      <section class="mt-12 md:mt-16">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3">
+          Principais Obras
+        </h2>
+        {# Em um app real, isso seria um loop: {% for work in works %} ... {% endfor %} #}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card de Obra 1 -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">Galinha Cega</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Contos (1935)</p>
+          </div>
+          <!-- Card de Obra 2 -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">Rola-Moça</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Romance (1938)</p>
+          </div>
+          <!-- Card de Obra 3 -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">Totônio Pacheco</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Novela (1935)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Referências -->
+      <section class="mt-12 md:mt-16">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+          Referências e Leituras
+        </h2>
+        <ul class="space-y-3">
+          {# Em um app real, isso seria um loop: {% for ref in references %} ... {% endfor %} #}
+          <li class="flex items-start">
+            <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            <span class="text-gray-700 dark:text-gray-300">CANDIDO, Antonio. "A nova narrativa". In: ______. A educação pela noite & outros ensaios. São Paulo: Ática, 1987.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            <span class="text-gray-700 dark:text-gray-300">BOSI, Alfredo. História Concisa da Literatura Brasileira. São Paulo: Cultrix, 2017.</span>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+  </div>
+</main>
 {% endblock %}
