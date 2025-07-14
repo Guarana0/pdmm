@@ -1,0 +1,4 @@
+core/static/css/output.css
+package-lock.json
+node_modules/
+staticfiles/

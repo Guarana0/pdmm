@@ -10,108 +10,119 @@
   autores, literatura, informação, tempo, noticias, livros, fotos
 {% endblock %}
 {% block content %}
-  <main class="flex-1 p-8 lg:p-12 space-y-12 max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    <!-- Principais Notícias -->
-    <div class="max-w-10xl mx-auto">
-      <h2 class="text-xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Principais Notícias</h2>
-      <div class="flex justify-center items-center h-full">
-        <div class="relative overflow-hidden rounded-lg shadow-lg max-w-screen-2xl" style="height: 450px; width: 1100px;">
-          <div id="carousel-container" class="flex transition-transform duration-1000 ease-in-out h-full">
-            <!-- Slide 1 -->
-            <div class="carousel-slide min-w-full relative">
-              <img src="/api/placeholder/800/400" alt="Evento cultural" class="w-full h-full object-cover" />
-              <div class="absolute top-5 left-5 bg-blue-600 text-white px-2 py-1 text-sm font-semibold rounded">EVENTO</div>
-              <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-                <h2 class="text-xl font-bold mb-2">53º Festival de Inverno UFMG, que destacou o modernismo mineiro.</h2>
-                <p class="text-sm">Evento reuniu artistas e pesquisadores em uma programação diversificada.</p>
-              </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="carousel-slide min-w-full relative">
-              <img src="/api/placeholder/800/400" alt="Campus universitário" class="w-full h-full object-cover" />
-              <div class="absolute top-5 left-5 bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">CAMPUS</div>
-              <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-                <h2 class="text-xl font-bold mb-2">Novos espaços de convivência são inaugurados no museu de literatura</h2>
-                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing?</p>
-              </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="carousel-slide min-w-full relative">
-              <img src="/api/placeholder/800/400" alt="Pesquisa científica" class="w-full h-full object-cover" />
-              <div class="absolute top-5 left-5 bg-green-600 text-white px-2 py-1 text-sm font-semibold rounded">PESQUISA</div>
-              <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-                <h2 class="text-xl font-bold mb-2">Grupo de pesquisa desenvolve nova tecnologia para catalogar artistas</h2>
-                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              </div>
-            </div>
+<main class="flex-1 p-4 sm:p-6 lg:p-12 space-y-12 max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+  <!-- Principais Notícias -->
+  <div class="w-full">
+    <h2 class="text-xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Principais Notícias</h2>
+    <div class="relative overflow-hidden rounded-lg shadow-lg w-full h-[250px] sm:h-[350px] md:h-[450px]">
+      <div id="carousel-container" class="flex transition-transform duration-1000 ease-in-out h-full w-full">
+        <!-- Slide 1 -->
+        <div class="carousel-slide min-w-full relative">
+          <img src="/api/placeholder/800/400" alt="Evento cultural" class="w-full h-full object-cover" />
+          <div class="absolute top-4 left-4 bg-blue-600 text-white px-2 py-1 text-sm font-semibold rounded">EVENTO</div>
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+            <h2 class="text-lg sm:text-xl font-bold mb-2">53º Festival de Inverno UFMG, que destacou o modernismo mineiro.</h2>
+            <p class="text-sm">Evento reuniu artistas e pesquisadores em uma programação diversificada.</p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide min-w-full relative">
+          <img src="/api/placeholder/800/400" alt="Campus universitário" class="w-full h-full object-cover" />
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">CAMPUS</div>
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+            <h2 class="text-lg sm:text-xl font-bold mb-2">Novos espaços de convivência são inaugurados no museu de literatura</h2>
+            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing?</p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide min-w-full relative">
+          <img src="/api/placeholder/800/400" alt="Pesquisa científica" class="w-full h-full object-cover" />
+          <div class="absolute top-4 left-4 bg-green-600 text-white px-2 py-1 text-sm font-semibold rounded">PESQUISA</div>
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
+            <h2 class="text-lg sm:text-xl font-bold mb-2">Grupo de pesquisa desenvolve nova tecnologia para catalogar artistas</h2>
+            <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- Introdução -->
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <img src="/img/modernismo.jpg" alt="Imagem sobre modernismo mineiro" class="w-full h-full bg-black object-cover rounded border border-gray-300 dark:border-gray-700" />
-      <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">Introdução ao Modernismo Mineiro</h2>
-        <p class="text-sm mt-2 text-gray-800 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.</p>
-      </div>
-    </section>
-    <!-- Imagens da semana -->
-    <section>
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl font-bold text-center lg:text-left text-gray-900 dark:text-gray-100">Imagens em destaque</h2>
-        <a href="{% url 'core:galeria' %}" class="text-blue-600 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-600 text-md">Ver Mais</a>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-        <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-        <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-        <img src="{% static 'img/fotoMinas.jpg' %}" alt="Imagem da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-        <img src="{% static 'img/museuMineiro.jpg' %}" alt="Imagem da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-      </div>
-    </section>
-    <!-- Obras da semana -->
-    <section>
-      <div class="flex justify-between items-center mb-4 mt-8">
-        <h2 class="text-xl font-bold text-center lg:text-left text-gray-900 dark:text-gray-100">Obras em destaque</h2>
-        <a href="{% url 'core:livros' %}" class="text-blue-600 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-600 text-md">Ver Mais</a>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-6 justify-items-center">
-        <img src="{% static 'img/bauDeOssos.jpg' %}" alt="Obra da semana 1" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-        <img src="{% static 'img/brejaDasAlmas.jpg' %}" alt="Obra da semana 2" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-        <img src="{% static 'img/sentimentoDoMundo.jpg' %}" alt="Obra da semana 3" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-        <img src="{% static 'img/galinhaCega.jpg' %}" alt="Obra da semana 4" class="w-full aspect-[3/4] bg-black rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
-      </div>
-    </section>
- <!-- Linha do Tempo -->
-<h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Linha do Tempo</h2>
-
-<section id="timeline" class="relative px-6 py-8">
-  <!-- Linha base -->
-  <div class="h-2 bg-gray-300 dark:bg-gray-600 rounded-full relative flex items-center justify-between">
-    <!-- Pontos da linha -->
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1922" data-event="1"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1930" data-event="2"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1942" data-event="3"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1950" data-event="4"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1964" data-event="5"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1985" data-event="6"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2000" data-event="7"></div>
-    <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2022" data-event="8"></div>
   </div>
 
-  <!-- Cartão do evento -->
-  <div id="event-card"
-       class="invisible opacity-0 absolute bg-white dark:bg-teal-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-100 shadow-xl p-5 rounded-xl text-sm z-50 max-w-xs transition-all duration-300 pointer-events-none">
-  </div>
-</section>
+  <!-- Introdução ao Modernismo Mineiro -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="w-full">
+      <img src="/img/modernismo.jpg" alt="Imagem sobre modernismo mineiro"
+           class="w-full aspect-[4/3] object-cover rounded-xl border border-gray-300 dark:border-gray-700 shadow-xl" />
+    </div>
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Introdução ao Modernismo Mineiro</h2>
+      <p class="text-base text-gray-800 dark:text-gray-300 leading-relaxed">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus quidem consequuntur quisquam dolore natus quasi laborum, mollitia nulla ipsa.
+      </p>
+    </div>
+  </section>
 
-<!-- Estilo para exibir o cartão -->
-<style>
-  #event-card.active {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-</style>
+  <!-- Imagens em destaque -->
+  <section>
+    <div class="flex flex-col sm:flex-row sm:justify-between items-center mb-4 gap-2">
+      <h2 class="text-xl font-bold text-center sm:text-left text-gray-900 dark:text-gray-100">Imagens em destaque</h2>
+      <a href="{% url 'core:galeria' %}" class="text-blue-600 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-600 text-md">Ver Mais</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <img src="{% static 'img/cafeEstrela.jpg' %}" alt="Imagem da semana 1"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+      <img src="{% static 'img/arquivoPublico.jpg' %}" alt="Imagem da semana 2"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+      <img src="{% static 'img/fotoMinas.jpg' %}" alt="Imagem da semana 3"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+      <img src="{% static 'img/museuMineiro.jpg' %}" alt="Imagem da semana 4"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+    </div>
+  </section>
 
+  <!-- Obras em destaque -->
+  <section>
+    <div class="flex flex-col sm:flex-row sm:justify-between items-center mb-4 mt-8 gap-2">
+      <h2 class="text-xl font-bold text-center sm:text-left text-gray-900 dark:text-gray-100">Obras em destaque</h2>
+      <a href="{% url 'core:livros' %}" class="text-blue-600 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-600 text-md">Ver Mais</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <img src="{% static 'img/bauDeOssos.jpg' %}" alt="Obra da semana 1"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+      <img src="{% static 'img/brejaDasAlmas.jpg' %}" alt="Obra da semana 2"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+      <img src="{% static 'img/sentimentoDoMundo.jpg' %}" alt="Obra da semana 3"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+      <img src="{% static 'img/galinhaCega.jpg' %}" alt="Obra da semana 4"
+           class="w-full aspect-[3/4] rounded-lg object-cover border border-gray-300 dark:border-gray-700" />
+    </div>
+  </section>
+
+  <!-- Linha do Tempo -->
+  <h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Linha do Tempo</h2>
+  <section id="timeline" class="relative px-4 sm:px-6 py-8">
+    <div class="h-2 bg-gray-300 dark:bg-gray-600 rounded-full relative flex items-center justify-between overflow-x-auto">
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1922" data-event="1"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1930" data-event="2"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1942" data-event="3"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1950" data-event="4"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1964" data-event="5"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1985" data-event="6"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2000" data-event="7"></div>
+      <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2022" data-event="8"></div>
+    </div>
+    <div id="event-card"
+         class="invisible opacity-0 absolute bg-white dark:bg-teal-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-100 shadow-xl p-5 rounded-xl text-sm z-50 max-w-xs transition-all duration-300 pointer-events-none">
+    </div>
+  </section>
+
+  <style>
+    #event-card.active {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+
+</main>
 {% endblock %}
