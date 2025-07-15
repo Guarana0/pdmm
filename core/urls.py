@@ -14,6 +14,6 @@ urlpatterns = [
     path('revistas/revistaVerde/', views.revistaVerde, name='revistaVerde'),
     path('galeria/', views.galeria, name='galeria'),
     path('livros/', views.livros, name='livros'),
-    path('livros/galinhaCega/', views.galinhaCega, name='galinhaCega'),
+    path('livros/<slug:slug>/', views.livros_detail, name='livros_detail'),
     # ... adicione outras URLs específicas do app 'core' aqui se tiver
 ]

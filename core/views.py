@@ -9,8 +9,6 @@ from django.contrib.auth.views import PasswordChangeView
 
 class MyAdminLoginView(LoginView):
     template_name = 'admin/login.html'
-    
-
 
 def home(request):
     return render(request, 'core/home.html')
@@ -43,8 +41,9 @@ def galeria(request):
 def livros(request):
     return render(request, 'core/livros.html')
 
-def galinhaCega(request):
-    return render(request, 'core/livros/galinhaCega.html')
+def livros_detail(request, slug):
+    livro = get_object_or_404(Livros, slug=slug)
+    return render(request, 'core/livros_detail.html', {'livro': livro})
 
 class MyAdminPasswordChangeView(PasswordChangeView):
     """

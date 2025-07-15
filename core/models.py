@@ -44,6 +44,7 @@ class Livros(models.Model):
     capa = CloudinaryField('livros/capas/', null=True, blank=True)
 
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
 
     def __str__(self):
         return self.titulo

@@ -8,9 +8,9 @@
 
   <!-- Cabeçalho do Livro -->
   <div class="text-center mb-12">
-    <h1 class="text-5xl font-extrabold text-white">Galinha Cega</h1>
+    <h1 class="text-5xl font-extrabold text-white">{{ livro.titulo }}</h1>
     <p class="mt-2 text-xl text-gray-400">
-      por <a href="#" class="text-blue-400 hover:underline">João Alphonsus de Guimaraens</a> (Contos, 1935)
+      por <a href="#" class="text-blue-400 hover:underline">{{ livro.autor }}</a> (Contos, {{ livro.ano_publicacao }})
     </p>
   </div>
 
@@ -20,9 +20,7 @@
     <!-- Placeholder da Capa -->
     <div class="md:col-span-1 flex items-center justify-center">
       <div class="w-full h-auto p-4 border-2 border-dashed border-gray-600 rounded-lg flex flex-col items-center justify-center text-center text-gray-500" style="min-height: 400px;">
-        <!-- Você pode substituir o placeholder por uma tag <img> real -->
-        <!-- Ex: <img src="{% static 'path/para/capa.jpg' %}" alt="Capa do livro Galinha Cega" class="object-cover w-full h-full rounded-lg"> -->
-        <img src="{% static 'img/galinhaCega.jpg' %}" alt="Capa do livro Galinha Cega" class="object-cover w-full h-full rounded-lg"> 
+        <img src="{{ livro.capa.url }}" alt="Capa do livro Galinha Cega" class="object-cover w-full h-full rounded-lg"> 
       </div>
     </div>
 
