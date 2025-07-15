@@ -7,3 +7,4 @@ psycopg2-binary==2.9.10
 sqlparse==0.5.3
 typing-extensions==4.13.2
 whitenoise==6.7.0
+python-dotenv
