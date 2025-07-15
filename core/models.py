@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -12,18 +13,22 @@ class Autores(models.Model):
     data_falecimento = models.DateField(null=True, blank=True)
     local_nascimento = models.CharField(max_length=100, null=True, blank=True)
     biografia = models.TextField(null=True, blank=True)
-    foto_url = models.URLField(max_length=255, null=True, blank=True)
+    
+    # NOVO CAMPO DE IMAGEM
+    # O primeiro argumento 'autores/' é o nome da pasta no Cloudinary onde as fotos serão salvas
+    foto = CloudinaryField('autores/', null=True, blank=True)
+    
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
     
     def save(self, *args, **kwargs):
-        if not self.slug: # Se o slug não estiver definido, crie um
-            # Cria um slug combinando nome e sobrenome, remove acentos e espaços
+        if not self.slug:
             self.slug = slugify(self.nome + "-" + self.sobrenome)
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
+    
     
 # Tabela de Livros
 class Livros(models.Model):
@@ -33,7 +38,11 @@ class Livros(models.Model):
     genero = models.CharField(max_length=100)
     ano_publicacao = models.IntegerField()
     sinopse = models.TextField(null=True, blank=True)
-    capa_url = models.URLField(max_length=255, null=True, blank=True)
+    
+    # CAMPO DE IMAGEM SUBSTITUINDO O URLField
+    # As capas serão salvas na pasta 'livros/capas/' no Cloudinary
+    capa = CloudinaryField('livros/capas/', null=True, blank=True)
+
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
+print("!!! DEBUG: A chave API carregada é:", os.environ.get('CLOUDINARY_API_KEY')) # <-- ADICIONE ESTA LINHA
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,7 +58,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'widget_tweaks',
+    'cloudinary_storage',
+    'cloudinary'
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -95,9 +109,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # ou 'django.db.backends.mysql' para MySQL
         'NAME': 'postgres',
-        'USER': 'postgres.ywaeswgycxrjrpqcplnq',
-        'PASSWORD': 'zjvRcSMHTcJiCuCy',
-        'HOST': 'aws-0-sa-east-1.pooler.supabase.com',
+        'USER': 'postgres',
+        'PASSWORD': 'UkFn1QgwPaHbrMN1',
+        'HOST': 'db.aftucgdwkhxwrbfjwegr.supabase.co',
         'PORT': '5432',
     }
 }
