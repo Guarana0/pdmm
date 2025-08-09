@@ -1,5 +1,33 @@
-core/static/css/output.css
-package-lock.json
+
+# Ambiente Virtual do Python
+# É específico da máquina e pode ser muito grande.
+venv/
+env/
+.venv/
+*/venv/
+*/env/
+*/.venv/
+
+# Dependências do Node.js
+# Também são enormes e podem ser recriadas com "npm install".
 node_modules/
-staticfiles/
-.env
+
+# Arquivos de Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos Estáticos Coletados
+# São gerados pelo comando "collectstatic" e não devem estar no Git.
+/staticfiles/
+/static_root/
+
+# Arquivos de Log
+*.log
+logs/
+
+# Arquivos de configuração de IDEs e Editores
+.vscode/
+
+/core/static/css/output.css

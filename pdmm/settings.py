@@ -38,7 +38,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'django-insecure-e9=a!_ej4(w+ymkx-!4z0qi!@(p27k486yquo#g-ontlj)7oz8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -112,7 +112,7 @@ DATABASES = {
         'USER': 'postgres.aftucgdwkhxwrbfjwegr',
         'PASSWORD': 'UkFn1QgwPaHbrMN1',
         'HOST': 'aws-0-sa-east-1.pooler.supabase.com',
-        'PORT': '5432',
+        'PORT': '6543',
     }
 }
 
