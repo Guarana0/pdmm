@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404
 from .models import Autores
 from django.contrib.auth.views import PasswordChangeView
-
+from .models import Livros
+from django.conf import settings
 
 
 class MyAdminLoginView(LoginView):

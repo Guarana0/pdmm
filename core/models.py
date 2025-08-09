@@ -41,10 +41,15 @@ class Livros(models.Model):
     
     # CAMPO DE IMAGEM SUBSTITUINDO O URLField
     # As capas serão salvas na pasta 'livros/capas/' no Cloudinary
-    capa = CloudinaryField('livros/capas/', null=True, blank=True)
+    capa = CloudinaryField('livros/', null=True, blank=True)
 
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.titulo
