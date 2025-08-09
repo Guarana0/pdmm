@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 load_dotenv()
 
 
@@ -105,14 +106,10 @@ WSGI_APPLICATION = 'pdmm.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # ou 'django.db.backends.mysql' para MySQL
-        'NAME': 'postgres',
-        'USER': 'postgres.aftucgdwkhxwrbfjwegr',
-        'PASSWORD': 'UkFn1QgwPaHbrMN1',
-        'HOST': 'aws-0-sa-east-1.pooler.supabase.com',
-        'PORT': '6543',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600
+    ),
 }
 
 

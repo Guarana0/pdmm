@@ -10,3 +10,4 @@ whitenoise==6.7.0
 python-dotenv
 cloudinary
 django-cloudinary-storage
+dj_database_url
