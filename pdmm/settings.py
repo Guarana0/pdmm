@@ -14,7 +14,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
-print("!!! DEBUG: A chave API carregada é:", os.environ.get('CLOUDINARY_API_KEY')) # <-- ADICIONE ESTA LINHA
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
