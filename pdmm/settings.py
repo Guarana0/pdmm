@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import cloudinary
 import dj_database_url
-load_dotenv()
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -62,11 +62,12 @@ INSTALLED_APPS = [
     'cloudinary'
 ]
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
-    'API_KEY': os.getenv('API_KEY'),
-    'API_SECRET': os.getenv('API_SECRET'),
-}
+
+cloudinary.config(
+    cloud_name = os.environ.get('CLOUD_NAME'), 
+    api_key = os.environ.get('API_KEY'),
+    api_secret = os.environ.get('API_SECRET') 
+)
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
