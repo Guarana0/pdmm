@@ -10,7 +10,7 @@
   <div class="text-center mb-12">
     <h1 class="text-5xl font-extrabold text-white">{{ livro.titulo }}</h1>
     <p class="mt-2 text-xl text-gray-400">
-      por <a href="#" class="text-blue-400 hover:underline">{{ livro.autor }}</a> (Contos, {{ livro.ano_publicacao }})
+      por <a href="#" class="text-blue-400 hover:underline">{{ livro.autor }}</a> ({{ livro.genero }}, {{ livro.ano_publicacao }})
     </p>
   </div>
 
@@ -26,12 +26,7 @@
 
     <!-- Descrição do Livro -->
     <div class="md:col-span-2 text-lg leading-relaxed space-y-4 flex flex-col justify-center">
-      <p>
-        "Galinha Cega" é a obra-prima de João Alphonsus e um marco do conto moderno brasileiro. Publicado em 1935, o livro reúne narrativas curtas que mergulham na psicologia de pessoas comuns, revelando seus dramas íntimos, frustrações e a solidão inerente à condição humana. O conto que dá título ao livro é uma poderosa alegoria sobre a percepção e a alienação.
-      </p>
-      <p>
-        Com uma prosa econômica e precisa, o autor constrói atmosferas densas e personagens inesquecíveis, explorando as tensões da vida provinciana e a complexidade das relações familiares. A obra se afasta do regionalismo pitoresco para focar em um universalismo trágico, consolidando João Alphonsus como um mestre da forma curta e um dos mais importantes prosadores de sua geração.
-      </p>
+      <p>{{ livro.sinopse }}</p>
     </div>
   </div>
 
