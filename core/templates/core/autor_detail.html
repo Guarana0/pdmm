@@ -36,9 +36,7 @@
 
         <!-- Texto da Biografia -->
         <div class="text-base text-gray-700 dark:text-gray-300 space-y-4 text-justify leading-relaxed">
-          <p>
-            {{ autor.biografia }}
-          </p>
+          <p>{{ autor.biografia|linebreaks }}</p>
         </div>
       </section>
       
@@ -50,20 +48,16 @@
         {# Em um app real, isso seria um loop: {% for work in works %} ... {% endfor %} #}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Card de Obra 1 -->
+          {% for livro in autor.livros.all %}
           <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <h3 class="font-bold text-lg text-gray-900 dark:text-white">Galinha Cega</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Contos (1935)</p>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">{{ livro.titulo }}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{{ livro.get_genero_display }} ({{ livro.ano_publicacao }})</p>
           </div>
-          <!-- Card de Obra 2 -->
-          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <h3 class="font-bold text-lg text-gray-900 dark:text-white">Rola-Moça</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Romance (1938)</p>
+          {% empty %}
+          <div class="text-gray-600 dark:text-gray-400">
+              <p>Nenhuma obra cadastrada para este autor.</p>
           </div>
-          <!-- Card de Obra 3 -->
-          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <h3 class="font-bold text-lg text-gray-900 dark:text-white">Totônio Pacheco</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Novela (1935)</p>
-          </div>
+          {% endfor %}
         </div>
       </section>
 

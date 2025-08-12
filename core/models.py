@@ -2,9 +2,6 @@ from django.db import models
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
-
-# Tabela de autores
 class Autores(models.Model):
     id_autor = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
@@ -13,39 +10,52 @@ class Autores(models.Model):
     data_falecimento = models.DateField(null=True, blank=True)
     local_nascimento = models.CharField(max_length=100, null=True, blank=True)
     biografia = models.TextField(null=True, blank=True)
-    
-    # NOVO CAMPO DE IMAGEM
-    # O primeiro argumento 'autores/' é o nome da pasta no Cloudinary onde as fotos serão salvas
     foto = CloudinaryField('autores/', null=True, blank=True)
-    
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
     
+    class Meta:
+        ordering = ['nome', 'sobrenome']
+        verbose_name = 'Autor'
+        verbose_name_plural = 'Autores'
+
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.nome + "-" + self.sobrenome)
+            self.slug = slugify(f"{self.nome}-{self.sobrenome}")
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
-    
-    
-# Tabela de Livros
+
+    def get_absolute_url(self):
+        return f"/autores/{self.slug}/"
+
 class Livros(models.Model):
+    GENERO_CHOICES = [
+        ('CONTO', 'Contos'),
+        ('ROMANCE', 'Romance'),
+        ('POESIA', 'Poesia'),
+        ('CRONICA', 'Crônica'),
+        ('ENSAIO', 'Ensaio'),
+        ('OUTRO', 'Outro'),
+    ]
+
     id_livro = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=200)
     autor = models.ForeignKey(Autores, on_delete=models.CASCADE, related_name='livros')
-    genero = models.CharField(max_length=100)
+    genero = models.CharField(max_length=100, choices=GENERO_CHOICES)
     ano_publicacao = models.IntegerField()
     sinopse = models.TextField(null=True, blank=True)
-    
-    # CAMPO DE IMAGEM SUBSTITUINDO O URLField
-    # As capas serão salvas na pasta 'livros/capas/' no Cloudinary
     capa = CloudinaryField('livros/', null=True, blank=True)
-
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
-    
+    editora = models.ForeignKey('Editoras', on_delete=models.SET_NULL, null=True, blank=True, related_name='livros')
+
+    class Meta:
+        ordering = ['-ano_publicacao', 'titulo']
+        verbose_name = 'Livro'
+        verbose_name_plural = 'Livros'
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.titulo)
@@ -54,41 +64,91 @@ class Livros(models.Model):
     def __str__(self):
         return self.titulo
 
-# Tabela de Editoras
+    def get_absolute_url(self):
+        return f"/livros/{self.slug}/"
+
 class Editoras(models.Model):
     id_editora = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
     localizacao = models.CharField(max_length=255, null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+
+    class Meta:
+        ordering = ['nome']
+        verbose_name = 'Editora'
+        verbose_name_plural = 'Editoras'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nome)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.nome
 
-# Tabela de Revistas
 class Revistas(models.Model):
     id_revista = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=200)
     editora = models.ForeignKey(Editoras, on_delete=models.CASCADE, related_name='revistas')
     edicao = models.CharField(max_length=100)
     ano_publicacao = models.IntegerField()
-    capa_url = models.URLField(max_length=255, null=True, blank=True)
+    capa = CloudinaryField('revistas/', null=True, blank=True)  # Substituído URLField por CloudinaryField
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+
+    class Meta:
+        ordering = ['-ano_publicacao', 'titulo']
+        verbose_name = 'Revista'
+        verbose_name_plural = 'Revistas'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"{self.titulo}-{self.edicao}")
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.titulo
+        return f"{self.titulo} - {self.edicao}"
 
-# Tabela de Fotógrafos
 class Fotografos(models.Model):
     id_fotografo = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
     data_cadastro = models.DateTimeField(auto_now_add=True)
-    
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
 
-# Tabela de Fotos
+    class Meta:
+        ordering = ['nome']
+        verbose_name = 'Fotógrafo'
+        verbose_name_plural = 'Fotógrafos'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nome)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.nome
+
 class Fotos(models.Model):
     id_foto = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=500)
     fotografo = models.ForeignKey(Fotografos, on_delete=models.CASCADE, related_name='fotos')
     local = models.CharField(max_length=200)
-
+    imagem = CloudinaryField('fotos/', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    descricao = models.TextField(null=True, blank=True)
+    ano = models.IntegerField(null=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+
+    class Meta:
+        ordering = ['-ano', 'titulo']
+        verbose_name = 'Foto'
+        verbose_name_plural = 'Fotos'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.titulo
