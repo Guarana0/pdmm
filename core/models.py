@@ -13,7 +13,9 @@ class Autores(models.Model):
     foto = CloudinaryField('autores/', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
-    
+    # Adicione o campo ManyToMany para Referencias
+    referencias = models.ManyToManyField('ReferenciaPesquisa', blank=True, related_name='autores')
+
     class Meta:
         ordering = ['nome', 'sobrenome']
         verbose_name = 'Autor'
@@ -29,6 +31,19 @@ class Autores(models.Model):
 
     def get_absolute_url(self):
         return f"/autores/{self.slug}/"
+
+class ReferenciaPesquisa(models.Model):
+    titulo = models.CharField(max_length=255)
+    url = models.URLField(null=True, blank=True)
+    descricao = models.TextField(null=True, blank=True)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Referência de Pesquisa'
+        verbose_name_plural = 'Referências de Pesquisa'
+
+    def __str__(self):
+        return self.titulo
 
 class Livros(models.Model):
     GENERO_CHOICES = [
@@ -66,6 +81,20 @@ class Livros(models.Model):
 
     def get_absolute_url(self):
         return f"/livros/{self.slug}/"
+    
+class TrechoLivro(models.Model):
+    livro = models.ForeignKey('Livros', on_delete=models.CASCADE, related_name='trechos')
+    texto = models.TextField(help_text="Trecho selecionado do livro")
+    ordem = models.PositiveIntegerField(default=0, help_text="Ordem do trecho no livro (opcional)")
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['ordem', 'id']
+        verbose_name = 'Trecho do Livro'
+        verbose_name_plural = 'Trechos dos Livros'
+
+    def __str__(self):
+        return f"Trecho de {self.livro.titulo} (#{self.ordem})"
 
 class Editoras(models.Model):
     id_editora = models.AutoField(primary_key=True)
