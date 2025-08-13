@@ -7,7 +7,7 @@
     <div class="bg-gray-100 dark:bg-gray-900 py-10 px-4">
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {% for revista in revistas %}
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <a href="{% url 'core:revista_detail' revista.slug %}" class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                     {% if revista.capa %}
                         <img src="{{ revista.capa.url }}" alt="{{ revista.titulo }}" class="h-full w-full object-cover">
@@ -17,10 +17,10 @@
                 </div>
                 <div class="p-4">
                     <p class="text-sm text-gray-600 dark:text-gray-300">Edição: {{ revista.edicao }}</p>
-                    <h3 class="font-semibold text-black dark:text-white">{{ revista.titulo }}</h3>
+                    <h3 class="font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400">{{ revista.titulo }}</h3>
                     <p class="text-sm text-gray-400 dark:text-gray-400">{{ revista.ano_publicacao }}</p>
                 </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
 

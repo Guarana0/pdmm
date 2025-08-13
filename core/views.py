@@ -30,8 +30,6 @@ def revistas(request):
     return render(request, 'core/revistas.html')
 
 def diario_de_minas(request):
-    from django.core.paginator import Paginator
-    from .models import Revistas
     
     # Pega todas as revistas ordenadas por ano de publicação (mais recentes primeiro)
     revistas_list = Revistas.objects.all().order_by('-ano_publicacao')
@@ -61,6 +59,47 @@ def revistaVerde(request):
     revistas = paginator.get_page(page)
     
     return render(request, 'core/revistas/revistaVerde.html', {'revistas': revistas})
+
+def revista_detail(request, slug):
+    revista = get_object_or_404(Revistas, slug=slug)
+    
+    # Busca a revista anterior baseado no ano de publicação e título
+    revista_anterior = Revistas.objects.filter(
+        ano_publicacao__gte=revista.ano_publicacao
+    ).exclude(
+        id_revista=revista.id_revista
+    ).filter(
+        ano_publicacao=revista.ano_publicacao,
+        titulo__lt=revista.titulo
+    ).order_by('-ano_publicacao', '-titulo').first()
+    
+    if not revista_anterior:
+        revista_anterior = Revistas.objects.filter(
+            ano_publicacao__lt=revista.ano_publicacao
+        ).order_by('-ano_publicacao', '-titulo').first()
+    
+    # Busca a próxima revista baseado no ano de publicação e título
+    revista_proxima = Revistas.objects.filter(
+        ano_publicacao__lte=revista.ano_publicacao
+    ).exclude(
+        id_revista=revista.id_revista
+    ).filter(
+        ano_publicacao=revista.ano_publicacao,
+        titulo__gt=revista.titulo
+    ).order_by('ano_publicacao', 'titulo').first()
+    
+    if not revista_proxima:
+        revista_proxima = Revistas.objects.filter(
+            ano_publicacao__gt=revista.ano_publicacao
+        ).order_by('ano_publicacao', 'titulo').first()
+    
+    context = {
+        'revista': revista,
+        'revista_anterior': revista_anterior,
+        'revista_proxima': revista_proxima
+    }
+    
+    return render(request, 'core/revista_detail.html', context)
 
 def galeria(request):
     return render(request, 'core/galeria.html')

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Revistas{% endblock %}
+{% block description %}Revistas do Acervo{% endblock %}
+{% block keywords %}Revistas,Literatura,Modernismo{% endblock %}
+{% block content %}
+    <div class="bg-gray-100 dark:bg-gray-900 py-10 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {% for revista in revistas %}
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    {% if revista.capa %}
+                        <img src="{{ revista.capa.url }}" alt="{{ revista.titulo }}" class="h-full w-full object-cover">
+                    {% else %}
+                        <span class="text-gray-400 dark:text-gray-300 text-4xl">Sem capa</span>
+                    {% endif %}
+                </div>
+                <div class="p-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Edição: {{ revista.edicao }}</p>
+                    <h3 class="font-semibold text-black dark:text-white">{{ revista.titulo }}</h3>
+                    <p class="text-sm text-gray-400 dark:text-gray-400">{{ revista.ano_publicacao }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if revistas.has_other_pages %}
+        <nav aria-label="Page navigation" class="mt-8">
+            <ul class="flex items-center justify-center space-x-px h-10 text-base">
+                {% if revistas.has_previous %}
+                <li>
+                    <a href="?page={{ revistas.previous_page_number }}" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        <span class="sr-only">Previous</span>
+                        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+                
+                {% for i in revistas.paginator.page_range %}
+                    {% if revistas.number == i %}
+                    <li>
+                        <span class="flex items-center justify-center px-4 h-10 text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{{ i }}</span>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="?page={{ i }}" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ i }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if revistas.has_next %}
+                <li>
+                    <a href="?page={{ revistas.next_page_number }}" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        <span class="sr-only">Next</span>
+                        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+{% endblock %}

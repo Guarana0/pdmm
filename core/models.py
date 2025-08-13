@@ -139,6 +139,7 @@ class Revistas(models.Model):
     edicao = models.CharField(max_length=100)
     ano_publicacao = models.IntegerField()
     capa = CloudinaryField('revistas/', null=True, blank=True)  # Substituído URLField por CloudinaryField
+    pdf = CloudinaryField('revistas/pdfs/', null=True, blank=True, resource_type='raw')  # Add this line
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
 
