@@ -1,27 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-  Galeria
-{% endblock %}
-{% block description %}
-  Galeria de fotos
-{% endblock %}
-{% block keywords %}
-  galeria, fotos, imagens
-{% endblock %}
+{% block title %}Galeria{% endblock %}
+{% block description %}Galeria de fotos{% endblock %}
+{% block keywords %}galeria, fotos, imagens{% endblock %}
 {% block content %}
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-
+  <div class="min-h-screen bg-gray-white dark:bg-gray-900">
     <div class="container mx-auto px-4 py-12">
-
-      <!-- Título da página -->
-    
-
       <!-- Gallery Section -->
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-
         <!-- Gallery Item 1 -->
         <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
           <a href="{% static 'img/cafeEstrela.jpg' %}" class="block">

@@ -6,6 +6,8 @@ from .models import Autores
 from django.contrib.auth.views import PasswordChangeView
 from .models import Livros
 from django.conf import settings
+from django.core.paginator import Paginator
+from .models import Revistas
 
 
 class MyAdminLoginView(LoginView):
@@ -28,13 +30,37 @@ def revistas(request):
     return render(request, 'core/revistas.html')
 
 def diario_de_minas(request):
-    return render(request, 'core/revistas/diarioDeMinas.html')
+    from django.core.paginator import Paginator
+    from .models import Revistas
+    
+    # Pega todas as revistas ordenadas por ano de publicação (mais recentes primeiro)
+    revistas_list = Revistas.objects.all().order_by('-ano_publicacao')
+    
+    # Define quantos itens por página
+    paginator = Paginator(revistas_list, 4)  # 4 revistas por página (1 linha de 4 cards)
+    
+    # Pega o número da página da query string
+    page = request.GET.get('page')
+    revistas = paginator.get_page(page)
+    
+    return render(request, 'core/revistas/diarioDeMinas.html', {'revistas': revistas})
 
 def leiteCriollo(request):
     return render(request, 'core/revistas/leiteCriollo.html')
 
 def revistaVerde(request):
-    return render(request, 'core/revistas/revistaVerde.html')
+    
+    # Pega todas as revistas ordenadas por ano de publicação (mais recentes primeiro)
+    revistas_list = Revistas.objects.all().order_by('-ano_publicacao')
+    
+    # Define quantos itens por página
+    paginator = Paginator(revistas_list, 8)  # 8 revistas por página (2 linhas de 4 cards)
+    
+    # Pega o número da página da query string
+    page = request.GET.get('page')
+    revistas = paginator.get_page(page)
+    
+    return render(request, 'core/revistas/revistaVerde.html', {'revistas': revistas})
 
 def galeria(request):
     return render(request, 'core/galeria.html')
