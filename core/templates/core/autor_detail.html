@@ -67,15 +67,14 @@
           Referências e Leituras
         </h2>
         <ul class="space-y-3">
-          {# Em um app real, isso seria um loop: {% for ref in references %} ... {% endfor %} #}
+          {% for ref in autor.referencias.all %}
           <li class="flex items-start">
             <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-            <span class="text-gray-700 dark:text-gray-300">CANDIDO, Antonio. "A nova narrativa". In: ______. A educação pela noite & outros ensaios. São Paulo: Ática, 1987.</span>
+            <span class="text-gray-700 dark:text-gray-300">{{ ref.abnt_format }}</span>
           </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-            <span class="text-gray-700 dark:text-gray-300">BOSI, Alfredo. História Concisa da Literatura Brasileira. São Paulo: Cultrix, 2017.</span>
-          </li>
+          {% empty %}
+          <li class="text-gray-600 dark:text-gray-400">Nenhuma referência cadastrada para este autor.</li>
+          {% endfor %}
         </ul>
       </section>
     </article>

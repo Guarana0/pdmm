@@ -7,15 +7,13 @@ class Autores(models.Model):
     nome = models.CharField(max_length=100)
     sobrenome = models.CharField(max_length=100)
     data_nascimento = models.DateField(null=True, blank=True)
-    data_falecimento = models.DateField(null=True, blank=True)
+    data_falecimento= models.DateField(null=True, blank=True)
     local_nascimento = models.CharField(max_length=100, null=True, blank=True)
     biografia = models.TextField(null=True, blank=True)
     foto = CloudinaryField('autores/', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
-    # Adicione o campo ManyToMany para Referencias
-    referencias = models.ManyToManyField('ReferenciaPesquisa', blank=True, related_name='autores')
-
+    
     class Meta:
         ordering = ['nome', 'sobrenome']
         verbose_name = 'Autor'
@@ -31,19 +29,37 @@ class Autores(models.Model):
 
     def get_absolute_url(self):
         return f"/autores/{self.slug}/"
-
-class ReferenciaPesquisa(models.Model):
-    titulo = models.CharField(max_length=255)
-    url = models.URLField(null=True, blank=True)
-    descricao = models.TextField(null=True, blank=True)
+    
+class Referencias(models.Model):
+    autor = models.ForeignKey(Autores, on_delete=models.CASCADE, related_name='referencias')
+    titulo = models.CharField(max_length=255, help_text="Título da referência ou site")
+    descricao = models.TextField(null=True, blank=True, help_text="Descrição opcional")
+    tem_link = models.BooleanField(default=False, help_text="Marque se existe um link para a referência")
+    link = models.URLField(null=True, blank=True, help_text="URL da referência (opcional)")
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    data_acesso = models.DateField(null=True, blank=True, help_text="Data de acesso ao site (para ABNT)")
 
     class Meta:
+        ordering = ['-data_cadastro', 'titulo']
         verbose_name = 'Referência de Pesquisa'
         verbose_name_plural = 'Referências de Pesquisa'
 
     def __str__(self):
-        return self.titulo
+        return f"{self.titulo} ({'com link' if self.tem_link else 'sem link'})"
+
+    def abnt_format(self):
+        # Exemplo simples de formatação ABNT para site
+        partes = []
+        if self.autor:
+            partes.append(f"{self.autor.sobrenome.upper()}, {self.autor.nome}.")
+        partes.append(f"{self.titulo}.")
+        if self.tem_link and self.link:
+            partes.append(f"Disponível em: <{self.link}>.")
+            if self.data_acesso:
+                partes.append(f"Acesso em: {self.data_acesso.strftime('%d %b. %Y')}.")
+            else:
+                partes.append(f"Acesso em: [data de acesso].")
+        return ' '.join(partes)
 
 class Livros(models.Model):
     GENERO_CHOICES = [
