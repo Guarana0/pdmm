@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block description %}Detalhes do Autor Modernista Mineiro{% endblock %}
+{% block keywords %}Autor, Modernismo, Literatura{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-10 max-w-4xl">
+        <!-- Card Principal -->
+        <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+            <!-- Imagem de Destaque -->
+            <div class="relative h-64 sm:h-96">
+                <img src="https://via.placeholder.com/800x400" alt="Modernismo Mineiro" class="w-full h-full object-cover rounded-t-2xl">
+                <figcaption class="absolute bottom-0 left-0 w-full bg-black/40 text-white text-sm p-2 text-center rounded-b-2xl">
+                    Descrição da imagem relacionada à notícia 
+                </figcaption>
+            </div>
+
+            <div class="px-8 py-10">
+                <!-- Título -->
+                <h1 class="text-4xl font-extrabold mb-4 text-gray-900">O Modernismo Mineiro e sua Influência Nacional</h1>
+
+                <!-- Subtítulo -->
+                <p class="text-xl text-blue-900 mb-6 italic">Uma análise aprofundada da efervescência cultural e literária que moldou a identidade brasileira.</p>
+
+                <!-- Autor e Data -->
+                <div class="flex flex-col sm:flex-row sm:items-center text-sm text-gray-500 mb-8 border-b border-gray-200 pb-4 gap-2 sm:gap-6">
+                    <span>Por: <a href="#" class="font-medium hover:text-gray-800">Equipe Editorial</a></span>
+                    <span>Publicado em: 06/05/2008</span>
+                </div>
+
+                <!-- Conteúdo Principal -->
+                <div class="space-y-6 text-gray-800 leading-relaxed">
+                    <p>O movimento modernista no Brasil, embora com seu epicentro em São Paulo na Semana de Arte Moderna de 1922, encontrou em Minas Gerais um solo fértil para o desenvolvimento de suas ideias e estéticas, culminando em uma influência que reverberou por todo o cenário cultural e literário do país.</p>
+
+                    <h2 class="text-2xl font-bold text-gray-900">As Raízes do Modernismo em Minas</h2>
+                    <p>Minas Gerais, com sua rica tradição barroca e sua paisagem montanhosa, ofereceu um contraponto interessante à modernidade frenética das grandes metrópoles. Escritores como Carlos Drummond de Andrade, João Alphonsus e Murilo Mendes, entre outros, emergiram desse contexto.</p>
+
+                    <!-- Espaço para imagem -->
+                    <figure class="my-6">
+                        <img src="https://via.placeholder.com/700x400" alt="Escritores Mineiros" class="w-full h-64 sm:h-80 object-cover rounded-lg">
+                        <figcaption class="text-sm text-gray-500 text-center mt-2">Alguns dos principais escritores do Modernismo Mineiro.</figcaption>
+                    </figure>
+
+                    <blockquote class="bg-gray-50 border-l-4 border-blue-900 pl-4 py-3 italic text-gray-700">
+                        "Minas é, antes de tudo, o tempo e a sua memória." - Carlos Drummond de Andrade
+                    </blockquote>
+
+                    <h2 class="text-2xl font-bold text-gray-900">A Influência Nacional e o Legado</h2>
+                    <p>A projeção nacional do modernismo mineiro foi inegável. A poesia de Drummond, com sua ironia fina e profundidade existencial, tornou-se um marco.</p>
+
+                    <figure class="my-6">
+                        <img src="https://via.placeholder.com/700x400" alt="Legado Modernista" class="w-full h-64 sm:h-80 object-cover rounded-lg">
+                        <figcaption class="text-sm text-gray-500 text-center mt-2">O legado do modernismo mineiro permanece vivo na literatura brasileira.</figcaption>
+                    </figure>
+
+                    <p>O modernismo mineiro, portanto, não foi apenas um capítulo local, mas um pilar fundamental na construção da identidade literária e cultural brasileira.</p>
+
+                    <h2 class="text-2xl font-bold text-gray-900">Para Aprofundar</h2>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><a href="#" class="text-blue-400 hover:underline">Livros sobre o Modernismo Mineiro</a></li>
+                        <li><a href="#" class="text-blue-400 hover:underline">Artigos acadêmicos relacionados</a></li>
+                        <li><a href="#" class="text-blue-400 hover:underline">Poemas de Carlos Drummond de Andrade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Campo de Referências -->
+                <div class="mt-12 border-t border-gray-200 pt-6">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-900">Referências</h2>
+                    <ul class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>ANDRADE, Carlos Drummond de. <em>Obras completas</em>. Rio de Janeiro: Editora XYZ, 2001.</li>
+                        <li>MINAS GERAIS. Secretaria de Cultura. <em>Modernismo Mineiro: História e Literatura</em>. Belo Horizonte, 2005.</li>
+                        <li>PEREIRA, João. <em>Influência do Modernismo no Brasil</em>. São Paulo: Editora ABC, 2010.</li>
+                    </ul>
+                </div>
+
+                <!-- Botão de Voltar -->
+                <div class="mt-10 text-center">
+                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                        &larr; Voltar para Notícias Literárias
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

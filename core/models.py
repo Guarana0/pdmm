@@ -31,8 +31,9 @@ class Autores(models.Model):
         return f"/autores/{self.slug}/"
     
 class Referencias(models.Model):
-    autor = models.ForeignKey(Autores, on_delete=models.CASCADE, related_name='referencias')
+    autor_biografado = models.ForeignKey(Autores, on_delete=models.CASCADE, related_name='referencias')
     titulo = models.CharField(max_length=255, help_text="Título da referência ou site")
+    autor_referencia = models.CharField(max_length=200, null=True, blank=True, help_text="Nome do autor da referência")
     descricao = models.TextField(null=True, blank=True, help_text="Descrição opcional")
     tem_link = models.BooleanField(default=False, help_text="Marque se existe um link para a referência")
     link = models.URLField(null=True, blank=True, help_text="URL da referência (opcional)")
@@ -48,17 +49,36 @@ class Referencias(models.Model):
         return f"{self.titulo} ({'com link' if self.tem_link else 'sem link'})"
 
     def abnt_format(self):
-        # Exemplo simples de formatação ABNT para site
+        # Formatação ABNT para referências
         partes = []
-        if self.autor:
-            partes.append(f"{self.autor.sobrenome.upper()}, {self.autor.nome}.")
-        partes.append(f"{self.titulo}.")
+        if self.autor_referencia:
+            # Se o autor da referência tem vírgula, assume formato "SOBRENOME, Nome"
+            if ',' in self.autor_referencia:
+                partes.append(f"{self.autor_referencia}.")
+            else:
+                # Se não tem vírgula, assume formato "Nome Sobrenome"
+                nomes = self.autor_referencia.strip().split()
+                if len(nomes) > 1:
+                    sobrenome = nomes[-1].upper()
+                    nome = ' '.join(nomes[:-1])
+                    partes.append(f"{sobrenome}, {nome}.")
+                else:
+                    partes.append(f"{self.autor_referencia.upper()}.")
+        
+        partes.append(f"**{self.titulo}**.")
+        
         if self.tem_link and self.link:
             partes.append(f"Disponível em: <{self.link}>.")
             if self.data_acesso:
-                partes.append(f"Acesso em: {self.data_acesso.strftime('%d %b. %Y')}.")
+                meses = {
+                    1: 'jan.', 2: 'fev.', 3: 'mar.', 4: 'abr.', 5: 'mai.', 6: 'jun.',
+                    7: 'jul.', 8: 'ago.', 9: 'set.', 10: 'out.', 11: 'nov.', 12: 'dez.'
+                }
+                mes = meses.get(self.data_acesso.month, str(self.data_acesso.month))
+                partes.append(f"Acesso em: {self.data_acesso.day} {mes} {self.data_acesso.year}.")
             else:
-                partes.append(f"Acesso em: [data de acesso].")
+                partes.append("Acesso em: [data de acesso].")
+        
         return ' '.join(partes)
 
 class Livros(models.Model):
@@ -198,3 +218,53 @@ class Fotos(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Noticias(models.Model):
+    titulo = models.CharField(max_length=200)
+    subtitulo = models.CharField(max_length=300, null=True, blank=True, help_text="Subtítulo ou descrição breve da notícia")
+    conteudo = models.TextField()
+    autor = models.ForeignKey(Autores, on_delete=models.SET_NULL, null=True, blank=True, related_name='noticias')
+    autor_nome = models.CharField(max_length=100, null=True, blank=True, help_text="Nome do autor se não for um autor cadastrado")
+    data_publicacao = models.DateTimeField(auto_now_add=True)
+    imagem_capa = CloudinaryField('noticias/', null=True, blank=True)
+    imagem_capa_legenda = models.CharField(max_length=200, null=True, blank=True, help_text="Legenda da imagem de capa")
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+    publicada = models.BooleanField(default=True, help_text="Define se a notícia está publicada")
+    destaque = models.BooleanField(default=False, help_text="Define se a notícia aparece em destaque")
+    
+    class Meta:
+        ordering = ['-data_publicacao', 'titulo']
+        verbose_name = 'Notícia'
+        verbose_name_plural = 'Notícias'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.titulo
+
+    def get_absolute_url(self):
+        return f"/noticias/{self.slug}/"
+    
+    def get_autor_nome(self):
+        """Retorna o nome do autor, seja ele cadastrado ou não"""
+        if self.autor:
+            return f"{self.autor.nome} {self.autor.sobrenome}"
+        return self.autor_nome or "Equipe Editorial"
+
+class ImagemNoticia(models.Model):
+    noticia = models.ForeignKey(Noticias, on_delete=models.CASCADE, related_name='imagens_extras')
+    imagem = CloudinaryField('noticias/extras/', null=True, blank=True)
+    legenda = models.CharField(max_length=200, null=True, blank=True)
+    ordem = models.PositiveIntegerField(default=0, help_text="Ordem de exibição da imagem na notícia")
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['ordem', 'id']
+        verbose_name = 'Imagem da Notícia'
+        verbose_name_plural = 'Imagens das Notícias'
+
+    def __str__(self):
+        return f"Imagem de {self.noticia.titulo} (#{self.ordem})"

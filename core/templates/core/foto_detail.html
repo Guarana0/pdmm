@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ foto.titulo }}{% endblock %}
+{% block description %}{{ foto.descricao|default:"Fotografia do período modernista mineiro" }}{% endblock %}
+{% block keywords %}Fotografia, Modernismo, {{ foto.local }}, {{ foto.fotografo.nome }}{% endblock %}
+
+{% block content %}
+<main class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+    <!-- Cabeçalho da Foto -->
+    <header class="text-center mb-8 md:mb-12">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+        {{ foto.titulo }}
+      </h1>
+      <p class="mt-2 text-lg md:text-xl text-gray-600 dark:text-gray-400">
+        Fotografia de {{ foto.fotografo.nome }}{% if foto.ano %} - {{ foto.ano }}{% endif %}
+      </p>
+    </header>
+
+    <article>
+      <!-- Seção Principal: Imagem da Foto -->
+      <section class="flex flex-col items-center mb-12">
+        {% if foto.imagem %}
+        <div class="w-full max-w-4xl">
+          <img 
+            src="{{ foto.imagem.url }}"
+            alt="{{ foto.titulo }}" 
+            class="w-full h-auto object-contain rounded-lg border-4 border-gray-200 dark:border-gray-700 shadow-2xl"
+          />
+        </div>
+        {% else %}
+        <div class="w-full max-w-4xl h-96 bg-gray-200 dark:bg-gray-700 rounded-lg border-4 border-gray-200 dark:border-gray-700 shadow-lg flex items-center justify-center">
+          <span class="text-gray-500 dark:text-gray-400 text-xl">Imagem não disponível</span>
+        </div>
+        {% endif %}
+      </section>
+
+      <!-- Grid de Informações -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Coluna Principal: Descrição -->
+        <div class="lg:col-span-2">
+          {% if foto.descricao %}
+          <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+              Sobre a Fotografia
+            </h2>
+            <div class="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+              {{ foto.descricao|linebreaks }}
+            </div>
+          </section>
+          {% endif %}
+
+          <!-- Informações do Fotógrafo -->
+          <section class="mt-8 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-700">
+            <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+              <svg class="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Fotógrafo
+            </h3>
+            <p class="text-lg text-gray-700 dark:text-gray-300 font-semibold">{{ foto.fotografo.nome }}</p>
+            <a href="{% url 'fotografo_detail' foto.fotografo.slug %}" class="inline-flex items-center mt-3 text-blue-600 dark:text-blue-400 hover:underline">
+              <span>Ver mais fotos deste fotógrafo</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </section>
+        </div>
+
+        <!-- Sidebar: Informações Técnicas -->
+        <aside class="space-y-6">
+          
+          <!-- Card de Localização -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-bold mb-3 text-gray-900 dark:text-white flex items-center">
+              <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Local
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300">{{ foto.local }}</p>
+          </div>
+
+          <!-- Card de Data -->
+          {% if foto.ano %}
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-bold mb-3 text-gray-900 dark:text-white flex items-center">
+              <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              Ano
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300">{{ foto.ano }}</p>
+          </div>
+          {% endif %}
+
+          <!-- Card de Informações Técnicas -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-bold mb-3 text-gray-900 dark:text-white flex items-center">
+              <svg class="w-5 h-5 mr-2 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Detalhes
+            </h3>
+            <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <p><strong>Fotógrafo:</strong> {{ foto.fotografo.nome }}</p>
+              <p><strong>Local:</strong> {{ foto.local }}</p>
+              {% if foto.ano %}<p><strong>Ano:</strong> {{ foto.ano }}</p>{% endif %}
+              <p><strong>Cadastrado em:</strong> {{ foto.data_cadastro|date:"d/m/Y" }}</p>
+            </div>
+          </div>
+
+          <!-- Botão de Voltar -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <a href="{% url 'fotos_list' %}" 
+               class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Voltar para Galeria
+            </a>
+          </div>
+
+        </aside>
+      </div>
+
+      <!-- Seção de Fotos Relacionadas -->
+      {% if fotos_relacionadas %}
+      <section class="mt-12 md:mt-16">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3">
+          Outras Fotos de {{ foto.fotografo.nome }}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {% for foto_rel in fotos_relacionadas %}
+          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
+            <a href="{% url 'foto_detail' foto_rel.slug %}">
+              {% if foto_rel.imagem %}
+              <img src="{{ foto_rel.imagem.url }}" alt="{{ foto_rel.titulo }}" 
+                   class="w-full h-40 object-cover rounded-md mb-3">
+              {% else %}
+              <div class="w-full h-40 bg-gray-200 dark:bg-gray-600 rounded-md mb-3 flex items-center justify-center">
+                <span class="text-gray-400 text-sm">Sem imagem</span>
+              </div>
+              {% endif %}
+              <h3 class="font-semibold text-sm text-gray-900 dark:text-white truncate">{{ foto_rel.titulo }}</h3>
+              <p class="text-xs text-gray-600 dark:text-gray-400">{{ foto_rel.local }}{% if foto_rel.ano %} - {{ foto_rel.ano }}{% endif %}</p>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+    </article>
+
+  </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animação suave ao carregar a página
+    const elements = document.querySelectorAll('section, aside > div');
+    elements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+});
+</script>
+{% endblock %}

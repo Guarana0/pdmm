@@ -16,5 +16,6 @@ urlpatterns = [
     path('galeria/', views.galeria, name='galeria'),
     path('livros/', views.livros, name='livros'),
     path('livros/<slug:slug>/', views.livros_detail, name='livros_detail'),
-    # ... adicione outras URLs específicas do app 'core' aqui se tiver
+    path('noticias/<slug:slug>/', views.noticia_detail, name='noticia_detail'),
+    path('galeria/<slug:slug>/', views.foto_detail, name='foto_detail'),
 ]

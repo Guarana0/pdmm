@@ -8,6 +8,8 @@ from .models import Livros
 from django.conf import settings
 from django.core.paginator import Paginator
 from .models import Revistas
+from .models import Noticias
+from .models import Fotos
 
 
 class MyAdminLoginView(LoginView):
@@ -110,6 +112,16 @@ def livros(request):
 def livros_detail(request, slug):
     livro = get_object_or_404(Livros, slug=slug)
     return render(request, 'core/livros_detail.html', {'livro': livro})
+
+def noticia_detail(request, slug):
+    noticia = get_object_or_404(Noticias, slug=slug)
+    return render(request, 'core/noticia_detail.html', {'noticia': noticia})
+
+def foto_detail(request, slug):
+    foto = get_object_or_404(Fotos, slug=slug)
+    return render(request, 'core/foto_detail.html', {'foto': foto})
+
+
 
 class MyAdminPasswordChangeView(PasswordChangeView):
     """
