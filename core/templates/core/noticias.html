@@ -26,56 +26,40 @@
 
       <!-- Título da seção -->
       <h1 class="text-3xl font-extrabold mb-10 text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700 pb-4 text-left">
-        Notícias Literárias
+        Notícias
       </h1>
 
       <!-- Lista de notícias -->
       <div class="space-y-6">
 
-        <!-- Notícia 1 -->
-        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
-          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
-          <div class="flex-1 p-8 flex flex-col justify-center">
-            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">História Literária</span>
-            <h2 class="text-2xl font-bold leading-snug mb-3">O Modernismo Mineiro e sua influência nacional</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">06/05/2008</p>
+        {% for noticia in noticias %}
+          <a href="{% url 'core:noticia_detail' noticia.slug %}" class="block">
+            <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
+              <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                {% if noticia.imagem_capa %}
+                  <img src="{{ noticia.imagem_capa.url }}" alt="{{ noticia.titulo }}" class="w-full h-full object-cover rounded-l-xl" />
+                {% else %}
+                  <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                    <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="flex-1 p-8 flex flex-col justify-center">
+                <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">História Literária</span>
+                <h2 class="text-2xl font-bold leading-snug mb-3">{{ noticia.titulo }}</h2>
+                {% if noticia.subtitulo %}
+                  <p class="text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">{{ noticia.subtitulo }}</p>
+                {% endif %}
+                <p class="text-sm text-gray-600 dark:text-gray-400">{{ noticia.data_publicacao|date:'d/m/Y' }}</p>
+              </div>
+            </article>
+          </a>
+        {% empty %}
+          <div class="text-center py-12">
+            <p class="text-gray-500 dark:text-gray-400 text-lg">Nenhuma notícia encontrada.</p>
           </div>
-        </article>
+        {% endfor %}
 
-        <!-- Notícia 2 -->
-        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
-          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
-          <div class="flex-1 p-8 flex flex-col justify-center">
-            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">Evento Literário</span>
-            <h2 class="text-2xl font-bold leading-snug mb-3">Centenário da Semana de Arte Moderna é celebrado em BH</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">12/02/2022</p>
-          </div>
-        </article>
-
-        <!-- Notícia 3 -->
-        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
-          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
-          <div class="flex-1 p-8 flex flex-col justify-center">
-            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">Literatura Contemporânea</span>
-            <h2 class="text-2xl font-bold leading-snug mb-3">Jovens autores mineiros se destacam na Flip</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">28/07/2023</p>
-          </div>
-        </article>
-
-        <!-- Notícia 4 -->
-        <article class="flex items-stretch bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer overflow-hidden w-full max-w-full">
-          <div class="w-48 sm:w-56 bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
-          <div class="flex-1 p-8 flex flex-col justify-center">
-            <span class="text-blue-800 dark:text-blue-400 text-sm font-semibold mb-3 block uppercase tracking-wide">Lançamento de Livro</span>
-            <h2 class="text-2xl font-bold leading-snug mb-3">Nova obra revisita a poesia modernista em Minas</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">09/03/2024</p>
-          </div>
-        </article>
-
-      </div>
-
-    </main>
-  </div>
-
-</body>
 {% endblock %}

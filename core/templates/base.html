@@ -105,13 +105,14 @@ display=swap" rel="stylesheet" />
             <a href="{% url 'core:autores' %}" class="nav-link flex items-center p-3 rounded-lg"><i class="fas fa-users mr-3 w-5"></i> Autores</a>
             <div>
               <a id="revistas-link" class="nav-link flex items-center justify-between p-3 rounded-lg cursor-pointer">
-                <span><i class="fas fa-book-journal-whills mr-3 w-5"></i> Revistas</span>
+                <span><i class="fas fa-book-journal-whills mr-3 w-5"></i> Periódicos</span>
                 <i class="fas fa-chevron-down"></i>
               </a>
               <div id="submenu" class="submenu">
                 <a href="{% url 'core:diario_de_minas' %}">Diario de Minas</a>
                 <a href="{% url 'core:revistaVerde' %}">Revista Verde</a>
                 <a href="{% url 'core:leiteCriollo' %}">Leite Criollo</a>
+                <a href="{% url 'core:diario_de_minas' %}">"A revista"</a>
               </div>
             </div>
             <a href="{% url 'core:galeria' %}" class="nav-link flex items-center p-3 rounded-lg"><i class="fas fa-images mr-3 w-5"></i> Galeria</a>

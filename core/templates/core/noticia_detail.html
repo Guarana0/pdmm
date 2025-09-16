@@ -1,87 +1,180 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{% endblock %}
-{% block description %}Detalhes do Autor Modernista Mineiro{% endblock %}
-{% block keywords %}Autor, Modernismo, Literatura{% endblock %}
+{% block title %}{{ noticia.titulo }}{% endblock %}
+{% block description %}{{ noticia.resumo|default:noticia.subtitulo|default:"Detalhes da notícia - Projeto Modernismo Mineiro"|truncatewords:20 }}{% endblock %}
+{% block keywords %}{% if noticia.tags %}{{ noticia.tags }}{% else %}Notícia, Modernismo, Literatura, Minas Gerais{% endif %}{% endblock %}
 
 {% block content %}
-    <div class="container mx-auto px-4 py-10 max-w-4xl">
-        <!-- Card Principal -->
-        <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
-            <!-- Imagem de Destaque -->
-            <div class="relative h-64 sm:h-96">
-                <img src="https://via.placeholder.com/800x400" alt="Modernismo Mineiro" class="w-full h-full object-cover rounded-t-2xl">
-                <figcaption class="absolute bottom-0 left-0 w-full bg-black/40 text-white text-sm p-2 text-center rounded-b-2xl">
-                    Descrição da imagem relacionada à notícia 
-                </figcaption>
-            </div>
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
 
-            <div class="px-8 py-10">
+        <!-- Card Principal -->
+        <div class="bg-white dark:bg-gray-800 shadow-xl rounded-2xl overflow-hidden mb-8">
+            <!-- Imagem de Destaque -->
+            {% if noticia.imagem_capa %}
+            <div class="relative h-64 sm:h-96 md:h-[500px]">
+                <img src="{{ noticia.imagem_capa.url }}" alt="{{ noticia.titulo }}" class="w-full h-full object-cover">
+                {% if noticia.imagem_capa_legenda %}
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <figcaption class="text-white text-sm text-center">
+                        {{ noticia.imagem_capa_legenda }}
+                    </figcaption>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <div class="px-6 sm:px-8 py-8 md:py-12">
+                <!-- Tags -->
+                {% if noticia.tags %}
+                <div class="flex flex-wrap gap-2 mb-6">
+                    {% for tag in noticia.get_tags_list %}
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full font-medium">
+                        {{ tag }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 <!-- Título -->
-                <h1 class="text-4xl font-extrabold mb-4 text-gray-900">O Modernismo Mineiro e sua Influência Nacional</h1>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100 leading-tight">
+                    {{ noticia.titulo }}
+                </h1>
 
                 <!-- Subtítulo -->
-                <p class="text-xl text-blue-900 mb-6 italic">Uma análise aprofundada da efervescência cultural e literária que moldou a identidade brasileira.</p>
+                {% if noticia.subtitulo %}
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">
+                    {{ noticia.subtitulo }}
+                </p>
+                {% endif %}
 
-                <!-- Autor e Data -->
-                <div class="flex flex-col sm:flex-row sm:items-center text-sm text-gray-500 mb-8 border-b border-gray-200 pb-4 gap-2 sm:gap-6">
-                    <span>Por: <a href="#" class="font-medium hover:text-gray-800">Equipe Editorial</a></span>
-                    <span>Publicado em: 06/05/2008</span>
+                <!-- Meta informações -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-500 dark:text-gray-400 mb-8 border-b border-gray-200 dark:border-gray-700 pb-6 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            </svg>
+                            Por: <span class="font-medium text-gray-700 dark:text-gray-200">{{ noticia.get_autor_nome }}</span>
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                            </svg>
+                            {{ noticia.data_publicacao|date:'d/m/Y às H:i' }}
+                        </span>
+                        {% if noticia.tempo_leitura %}
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            {{ noticia.tempo_leitura }} min de leitura
+                        </span>
+                        {% endif %}
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            {{ noticia.visualizacoes }} visualizações
+                        </span>
+                        <!-- Botões de compartilhamento -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs">Compartilhar:</span>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ noticia.titulo }}" target="_blank" class="text-blue-400 hover:text-blue-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Conteúdo Principal -->
-                <div class="space-y-6 text-gray-800 leading-relaxed">
-                    <p>O movimento modernista no Brasil, embora com seu epicentro em São Paulo na Semana de Arte Moderna de 1922, encontrou em Minas Gerais um solo fértil para o desenvolvimento de suas ideias e estéticas, culminando em uma influência que reverberou por todo o cenário cultural e literário do país.</p>
-
-                    <h2 class="text-2xl font-bold text-gray-900">As Raízes do Modernismo em Minas</h2>
-                    <p>Minas Gerais, com sua rica tradição barroca e sua paisagem montanhosa, ofereceu um contraponto interessante à modernidade frenética das grandes metrópoles. Escritores como Carlos Drummond de Andrade, João Alphonsus e Murilo Mendes, entre outros, emergiram desse contexto.</p>
-
-                    <!-- Espaço para imagem -->
-                    <figure class="my-6">
-                        <img src="https://via.placeholder.com/700x400" alt="Escritores Mineiros" class="w-full h-64 sm:h-80 object-cover rounded-lg">
-                        <figcaption class="text-sm text-gray-500 text-center mt-2">Alguns dos principais escritores do Modernismo Mineiro.</figcaption>
-                    </figure>
-
-                    <blockquote class="bg-gray-50 border-l-4 border-blue-900 pl-4 py-3 italic text-gray-700">
-                        "Minas é, antes de tudo, o tempo e a sua memória." - Carlos Drummond de Andrade
-                    </blockquote>
-
-                    <h2 class="text-2xl font-bold text-gray-900">A Influência Nacional e o Legado</h2>
-                    <p>A projeção nacional do modernismo mineiro foi inegável. A poesia de Drummond, com sua ironia fina e profundidade existencial, tornou-se um marco.</p>
-
-                    <figure class="my-6">
-                        <img src="https://via.placeholder.com/700x400" alt="Legado Modernista" class="w-full h-64 sm:h-80 object-cover rounded-lg">
-                        <figcaption class="text-sm text-gray-500 text-center mt-2">O legado do modernismo mineiro permanece vivo na literatura brasileira.</figcaption>
-                    </figure>
-
-                    <p>O modernismo mineiro, portanto, não foi apenas um capítulo local, mas um pilar fundamental na construção da identidade literária e cultural brasileira.</p>
-
-                    <h2 class="text-2xl font-bold text-gray-900">Para Aprofundar</h2>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li><a href="#" class="text-blue-400 hover:underline">Livros sobre o Modernismo Mineiro</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">Artigos acadêmicos relacionados</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">Poemas de Carlos Drummond de Andrade</a></li>
-                    </ul>
+                <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
+                    {{ noticia.conteudo|linebreaks }}
                 </div>
 
-                <!-- Campo de Referências -->
-                <div class="mt-12 border-t border-gray-200 pt-6">
-                    <h2 class="text-2xl font-bold mb-4 text-gray-900">Referências</h2>
-                    <ul class="list-decimal list-inside space-y-2 text-gray-700">
-                        <li>ANDRADE, Carlos Drummond de. <em>Obras completas</em>. Rio de Janeiro: Editora XYZ, 2001.</li>
-                        <li>MINAS GERAIS. Secretaria de Cultura. <em>Modernismo Mineiro: História e Literatura</em>. Belo Horizonte, 2005.</li>
-                        <li>PEREIRA, João. <em>Influência do Modernismo no Brasil</em>. São Paulo: Editora ABC, 2010.</li>
-                    </ul>
+                <!-- Galeria de Imagens Extras -->
+                {% if noticia.imagens_extras.all %}
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Galeria</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {% for imagem in noticia.imagens_extras.all %}
+                        <figure class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden">
+                            <img src="{{ imagem.imagem.url }}" alt="{{ imagem.legenda|default:noticia.titulo }}" class="w-full h-64 object-cover">
+                            {% if imagem.legenda %}
+                            <figcaption class="p-4 text-sm text-gray-600 dark:text-gray-300">
+                                {{ imagem.legenda }}
+                            </figcaption>
+                            {% endif %}
+                        </figure>
+                        {% endfor %}
+                    </div>
                 </div>
+                {% endif %}
 
-                <!-- Botão de Voltar -->
-                <div class="mt-10 text-center">
-                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
-                        &larr; Voltar para Notícias Literárias
-                    </a>
+                <!-- Referências -->
+                {% if noticia.referencias.all %}
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Referências</h2>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <ol class="list-decimal list-inside space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            {% for referencia in noticia.referencias.all %}
+                            <li class="leading-relaxed">
+                                <span class="font-medium">{{ referencia.titulo }}</span>
+                                {% if referencia.autor_referencia %} - {{ referencia.autor_referencia }}{% endif %}
+                                {% if referencia.link %}
+                                <br><span class="text-blue-600 dark:text-blue-400">
+                                    Disponível em: <a href="{{ referencia.link }}" target="_blank" class="underline hover:no-underline">{{ referencia.link }}</a>
+                                </span>
+                                {% if referencia.data_acesso %}<br><span class="text-gray-500">Acesso em: {{ referencia.data_acesso|date:'d/m/Y' }}</span>{% endif %}
+                                {% endif %}
+                                {% if referencia.descricao %}<br><span class="text-gray-600 dark:text-gray-400 italic">{{ referencia.descricao }}</span>{% endif %}
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
                 </div>
-
+                {% endif %}
             </div>
+        </div>
+
+        <!-- Navegação entre notícias -->
+        <div class="flex flex-col sm:flex-row sm:justify-between gap-4 mb-8">
+            {% if noticia_anterior %}
+            <a href="{% url 'core:noticia_detail' noticia_anterior.slug %}" class="flex-1 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 border-l-4 border-blue-500">
+                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">← Anterior</div>
+                <div class="text-gray-900 dark:text-gray-100 font-medium line-clamp-2">{{ noticia_anterior.titulo }}</div>
+            </a>
+            {% else %}
+            <div class="flex-1"></div>
+            {% endif %}
+            
+            {% if noticia_proxima %}
+            <a href="{% url 'core:noticia_detail' noticia_proxima.slug %}" class="flex-1 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 border-r-4 border-blue-500 text-right">
+                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Próxima →</div>
+                <div class="text-gray-900 dark:text-gray-100 font-medium line-clamp-2">{{ noticia_proxima.titulo }}</div>
+            </a>
+            {% else %}
+            <div class="flex-1"></div>
+            {% endif %}
+        </div>
+
+        <!-- Voltar para listagem -->
+        <div class="text-center">
+            <a href="{% url 'core:noticias' %}" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+                </svg>
+                Voltar para Notícias
+            </a>
         </div>
     </div>
 {% endblock %}

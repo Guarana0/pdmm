@@ -26,7 +26,8 @@ def autor_detail(request, slug):
     return render(request, 'core/autor_detail.html', {'autor': autor})
 
 def noticias(request):
-    return render(request, 'core/noticias.html')
+    noticias_list = Noticias.objects.filter(publicada=True).order_by('-data_publicacao')
+    return render(request, 'core/noticias.html', {'noticias': noticias_list})
 
 def revistas(request):
     return render(request, 'core/revistas.html')
@@ -104,7 +105,8 @@ def revista_detail(request, slug):
     return render(request, 'core/revista_detail.html', context)
 
 def galeria(request):
-    return render(request, 'core/galeria.html')
+    fotos = Fotos.objects.all().order_by('-ano', 'titulo')
+    return render(request, 'core/galeria.html', {'fotos': fotos})
 
 def livros(request):
     return render(request, 'core/livros.html')
@@ -114,12 +116,39 @@ def livros_detail(request, slug):
     return render(request, 'core/livros_detail.html', {'livro': livro})
 
 def noticia_detail(request, slug):
-    noticia = get_object_or_404(Noticias, slug=slug)
-    return render(request, 'core/noticia_detail.html', {'noticia': noticia})
+    noticia = get_object_or_404(Noticias, slug=slug, publicada=True)
+    
+    # Incrementa as visualizações
+    noticia.incrementar_visualizacoes()
+    
+    # Atualiza o tempo de leitura se não estiver definido
+    if not noticia.tempo_leitura:
+        noticia.tempo_leitura = noticia.calcular_tempo_leitura()
+        noticia.save(update_fields=['tempo_leitura'])
+    
+    # Busca notícia anterior
+    noticia_anterior = Noticias.objects.filter(
+        data_publicacao__lt=noticia.data_publicacao,
+        publicada=True
+    ).order_by('-data_publicacao').first()
+    
+    # Busca próxima notícia
+    noticia_proxima = Noticias.objects.filter(
+        data_publicacao__gt=noticia.data_publicacao,
+        publicada=True
+    ).order_by('data_publicacao').first()
+    
+    context = {
+        'noticia': noticia,
+        'noticia_anterior': noticia_anterior,
+        'noticia_proxima': noticia_proxima,
+    }
+    
+    return render(request, 'core/noticia_detail.html', context)
 
 def foto_detail(request, slug):
     foto = get_object_or_404(Fotos, slug=slug)
-    return render(request, 'core/foto_detail.html', {'foto': foto})
+    return render(request, 'core/galeria_detail.html', {'foto': foto})
 
 
 

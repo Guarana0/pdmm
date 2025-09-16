@@ -198,7 +198,6 @@ class Fotografos(models.Model):
 class Fotos(models.Model):
     id_foto = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=500)
-    fotografo = models.ForeignKey(Fotografos, on_delete=models.CASCADE, related_name='fotos')
     local = models.CharField(max_length=200)
     imagem = CloudinaryField('fotos/', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
@@ -218,6 +217,10 @@ class Fotos(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+    def get_fotografo_nome(self):
+        """Retorna o nome do fotógrafo ou 'Desconhecido' se não houver"""
+        return self.fotografo.nome if self.fotografo else "Desconhecido"
 
 class Noticias(models.Model):
     titulo = models.CharField(max_length=200)
@@ -226,11 +229,16 @@ class Noticias(models.Model):
     autor = models.ForeignKey(Autores, on_delete=models.SET_NULL, null=True, blank=True, related_name='noticias')
     autor_nome = models.CharField(max_length=100, null=True, blank=True, help_text="Nome do autor se não for um autor cadastrado")
     data_publicacao = models.DateTimeField(auto_now_add=True)
+    data_edicao = models.DateTimeField(auto_now=True, help_text="Data da última edição")
     imagem_capa = CloudinaryField('noticias/', null=True, blank=True)
     imagem_capa_legenda = models.CharField(max_length=200, null=True, blank=True, help_text="Legenda da imagem de capa")
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
     publicada = models.BooleanField(default=True, help_text="Define se a notícia está publicada")
     destaque = models.BooleanField(default=False, help_text="Define se a notícia aparece em destaque")
+    tags = models.CharField(max_length=500, null=True, blank=True, help_text="Tags separadas por vírgula (ex: modernismo, literatura, minas gerais)")
+    resumo = models.TextField(max_length=500, null=True, blank=True, help_text="Resumo da notícia para SEO e compartilhamento")
+    tempo_leitura = models.PositiveIntegerField(null=True, blank=True, help_text="Tempo estimado de leitura em minutos")
+    visualizacoes = models.PositiveIntegerField(default=0, help_text="Número de visualizações da notícia")
     
     class Meta:
         ordering = ['-data_publicacao', 'titulo']
@@ -253,6 +261,74 @@ class Noticias(models.Model):
         if self.autor:
             return f"{self.autor.nome} {self.autor.sobrenome}"
         return self.autor_nome or "Equipe Editorial"
+    
+    def incrementar_visualizacoes(self):
+        """Incrementa o contador de visualizações"""
+        self.visualizacoes += 1
+        self.save(update_fields=['visualizacoes'])
+    
+    def get_tags_list(self):
+        """Retorna as tags como uma lista"""
+        if self.tags:
+            return [tag.strip() for tag in self.tags.split(',')]
+        return []
+    
+    def calcular_tempo_leitura(self):
+        """Calcula o tempo estimado de leitura baseado no conteúdo"""
+        if self.conteudo:
+            # Estimativa: 200 palavras por minuto
+            palavras = len(self.conteudo.split())
+            tempo = max(1, round(palavras / 200))
+            return tempo
+        return 1
+
+class ReferenciaNoticia(models.Model):
+    """Modelo para referências específicas de notícias"""
+    noticia = models.ForeignKey(Noticias, on_delete=models.CASCADE, related_name='referencias')
+    titulo = models.CharField(max_length=255, help_text="Título da referência")
+    autor_referencia = models.CharField(max_length=200, null=True, blank=True, help_text="Nome do autor da referência")
+    descricao = models.TextField(null=True, blank=True, help_text="Descrição ou resumo da referência")
+    link = models.URLField(null=True, blank=True, help_text="URL da referência")
+    data_acesso = models.DateField(null=True, blank=True, help_text="Data de acesso (para referências online)")
+    ordem = models.PositiveIntegerField(default=0, help_text="Ordem de exibição")
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['ordem', 'titulo']
+        verbose_name = 'Referência da Notícia'
+        verbose_name_plural = 'Referências das Notícias'
+
+    def __str__(self):
+        return f"{self.titulo} - {self.noticia.titulo}"
+
+    def abnt_format(self):
+        """Formata a referência no padrão ABNT"""
+        partes = []
+        if self.autor_referencia:
+            if ',' in self.autor_referencia:
+                partes.append(f"{self.autor_referencia}.")
+            else:
+                nomes = self.autor_referencia.strip().split()
+                if len(nomes) > 1:
+                    sobrenome = nomes[-1].upper()
+                    nome = ' '.join(nomes[:-1])
+                    partes.append(f"{sobrenome}, {nome}.")
+                else:
+                    partes.append(f"{self.autor_referencia.upper()}.")
+        
+        partes.append(f"**{self.titulo}**.")
+        
+        if self.link:
+            partes.append(f"Disponível em: <{self.link}>.")
+            if self.data_acesso:
+                meses = {
+                    1: 'jan.', 2: 'fev.', 3: 'mar.', 4: 'abr.', 5: 'mai.', 6: 'jun.',
+                    7: 'jul.', 8: 'ago.', 9: 'set.', 10: 'out.', 11: 'nov.', 12: 'dez.'
+                }
+                mes = meses.get(self.data_acesso.month, str(self.data_acesso.month))
+                partes.append(f"Acesso em: {self.data_acesso.day} {mes} {self.data_acesso.year}.")
+        
+        return ' '.join(partes)
 
 class ImagemNoticia(models.Model):
     noticia = models.ForeignKey(Noticias, on_delete=models.CASCADE, related_name='imagens_extras')
