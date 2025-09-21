@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erro 400 • Requisição Inválida</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bg-img {
+      background: url('/static/img/erro-bg.jpg') center center/cover no-repeat, linear-gradient(135deg,rgba(20,20,30,0.85),rgba(30,41,59,0.92));
+      min-height: 100vh;
+      position: relative;
+    }
+    .bg-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,rgba(20,20,30,0.85),rgba(30,41,59,0.92));
+      z-index: 0;
+    }
+    .fallback-bg {
+      background: linear-gradient(135deg,#232946 0%,#121629 100%);
+      min-height: 100vh;
+    }
+    .panel {
+      background: rgba(30,41,59,0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="text-slate-100 flex items-center justify-center p-6" style="min-height:100vh">
+  <div class="w-full h-full absolute top-0 left-0 -z-10">
+    <div class="bg-img w-full h-full"></div>
+    <div class="fallback-bg w-full h-full"></div>
+  </div>
+  <main class="w-full max-w-xl mx-auto flex flex-col items-center justify-center" style="z-index:1;">
+    <div class="panel p-8 mt-16 mb-8 text-center">
+      <p class="text-sm uppercase tracking-widest font-semibold text-sky-400 mb-2">Erro 400</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-emerald-300">Requisição Inválida</h1>
+      <p class="mt-2 text-slate-200 leading-relaxed text-lg">O servidor recebeu uma requisição que não pôde interpretar.<br>Isso pode ter ocorrido por parâmetros malformados, dados ausentes ou envio duplicado.<br>Se o erro persistir, revise os dados enviados ou tente novamente mais tarde.</p>
+      <div class="pt-6 text-xs text-slate-400">Portal do Modernismo Mineiro</div>
+    </div>
+  </main>
+</body>
+</html>
