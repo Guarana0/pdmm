@@ -11,6 +11,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        gray: {
+          900: '#1a1a1a'
+        },
+        'dark-bg': '#2C2C2C',
         green: {
           1000: '#1B5144',
           550: '#667C3D',
@@ -27,6 +31,25 @@ module.exports = {
           700: '#6A4F3A',
           600: '#8A6B4C',
         },
+        // Brand palette aligned with theme.css variables
+        brand: {
+          primary: {
+            600: '#14532D',
+            700: '#0F3F24',
+            800: '#0B3B1E',
+          },
+          accent: {
+            500: '#2563EB',
+            600: '#1D4ED8',
+            700: '#073B73',
+          },
+          gold: {
+            400: '#C2A349',
+          },
+        },
+        paper: '#FAFAF7',
+        surface: '#FFFFFF',
+        ink: '#111827',
   },
 }  },
   plugins: [],
