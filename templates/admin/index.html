@@ -1,0 +1,259 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+    <div class="bg-white rounded-2xl card-shadow-lg p-6 hover-lift border border-gray-50">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 rounded-xl gradient-primary stat-icon">
+          <i class="fas fa-eye text-white text-xl"></i>
+        </div>
+        <div class="text-right">
+          <div class="flex items-center text-green-600 text-sm font-medium">
+            <i class="fas fa-arrow-up mr-1"></i>
+            +12.5%
+          </div>
+        </div>
+      </div>
+      <h3 class="text-3xl font-bold text-gray-900 mb-1">24,847</h3>
+      <p class="text-gray-600 text-sm font-medium">Visitas Totais</p>
+      <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
+        <div class="gradient-primary h-2 rounded-full" style="width: 68%"></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl card-shadow-lg p-6 hover-lift border border-gray-50">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 rounded-xl gradient-success stat-icon">
+          <i class="fas fa-book-open text-white text-xl"></i>
+        </div>
+        <div class="text-right">
+          <div class="flex items-center text-green-600 text-sm font-medium">
+            <i class="fas fa-arrow-up mr-1"></i>
+            +8.2%
+          </div>
+        </div>
+      </div>
+      <h3 class="text-3xl font-bold text-gray-900 mb-1">1,247</h3>
+      <p class="text-gray-600 text-sm font-medium">Obras Cadastradas</p>
+      <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
+        <div class="gradient-success h-2 rounded-full" style="width: 82%"></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl card-shadow-lg p-6 hover-lift border border-gray-50">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 rounded-xl gradient-purple stat-icon">
+          <i class="fas fa-user-friends text-white text-xl"></i>
+        </div>
+        <div class="text-right">
+          <div class="flex items-center text-green-600 text-sm font-medium">
+            <i class="fas fa-arrow-up mr-1"></i>
+            +15.3%
+          </div>
+        </div>
+      </div>
+      <h3 class="text-3xl font-bold text-gray-900 mb-1">486</h3>
+      <p class="text-gray-600 text-sm font-medium">Autores Ativos</p>
+      <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
+        <div class="gradient-purple h-2 rounded-full" style="width: 75%"></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl card-shadow-lg p-6 hover-lift border border-gray-50">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 rounded-xl gradient-warning stat-icon">
+          <i class="fas fa-download text-white text-xl"></i>
+        </div>
+        <div class="text-right">
+          <div class="flex items-center text-green-600 text-sm font-medium">
+            <i class="fas fa-arrow-up mr-1"></i>
+            +23.1%
+          </div>
+        </div>
+      </div>
+      <h3 class="text-3xl font-bold text-gray-900 mb-1">8,942</h3>
+      <p class="text-gray-600 text-sm font-medium">Downloads</p>
+      <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
+        <div class="gradient-warning h-2 rounded-full" style="width: 91%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+    <div class="xl:col-span-1">
+      <div class="bg-white rounded-2xl card-shadow-lg border border-gray-50 overflow-hidden">
+        <div class="p-6 border-b border-gray-100 gradient-primary">
+          <div class="flex items-center justify-between text-white">
+            <h2 class="text-xl font-bold flex items-center">
+              <i class="fas fa-calendar-alt mr-3"></i>
+              Junho 2025
+            </h2>
+            <div class="flex space-x-2">
+              <button class="p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-7 gap-1 mb-4">
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Dom</div>
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Seg</div>
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Ter</div>
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Qua</div>
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Qui</div>
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Sex</div>
+            <div class="text-center text-xs font-semibold text-gray-500 py-2">Sáb</div>
+          </div>
+          <div class="grid grid-cols-7 gap-1">
+            <div class="calendar-day flex items-center justify-center text-gray-300 text-sm cursor-pointer rounded-lg hover:bg-gray-50">30</div>
+            <div class="calendar-day flex items-center justify-center text-gray-300 text-sm cursor-pointer rounded-lg hover:bg-gray-50">31</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">1</div>
+            <div class="calendar-day calendar-today flex items-center justify-center text-sm font-bold cursor-pointer rounded-lg shadow-md">2</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">3</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">4</div>
+            <div class="calendar-day calendar-event flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">5</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">6</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">7</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">8</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">9</div>
+            <div class="calendar-day calendar-event flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">10</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">11</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">12</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">13</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">14</div>
+            <div class="calendar-day calendar-event flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">15</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">16</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">17</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">18</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">19</div>
+            <div class="calendar-day calendar-event flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">20</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">21</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">22</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">23</div>
+            <div class="calendar-day calendar-event flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">24</div>
+            <div class="calendar-day calendar-event flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">25</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">26</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">27</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">28</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">29</div>
+            <div class="calendar-day flex items-center justify-center text-gray-900 text-sm font-medium cursor-pointer rounded-lg hover:bg-blue-50">30</div>
+            <div class="calendar-day flex items-center justify-center text-gray-300 text-sm cursor-pointer rounded-lg hover:bg-gray-50">1</div>
+            <div class="calendar-day flex items-center justify-center text-gray-300 text-sm cursor-pointer rounded-lg hover:bg-gray-50">2</div>
+            <div class="calendar-day flex items-center justify-center text-gray-300 text-sm cursor-pointer rounded-lg hover:bg-gray-50">3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="xl:col-span-1">
+      <div class="bg-white rounded-2xl card-shadow-lg border border-gray-50 overflow-hidden">
+        <div class="p-6 border-b border-gray-100 gradient-success">
+          <h2 class="text-xl font-bold text-white flex items-center">
+            <i class="fas fa-list-alt mr-3"></i>
+            Obras Recentes
+          </h2>
+        </div>
+        <div class="p-6">
+          <div class="overflow-x-auto custom-scrollbar">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Título</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Autor</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ano</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoria</th>
+                  <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Memórias Póstumas de Brás Cubas</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Machado de Assis</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1881</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Romance</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a><a href="#" class="text-red-600 hover:text-red-900">Excluir</a></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">O Cortiço</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Aluísio Azevedo</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1890</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Naturalismo</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a><a href="#" class="text-red-600 hover:text-red-900">Excluir</a></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Vidas Secas</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Graciliano Ramos</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1938</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Romance</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a><a href="#" class="text-red-600 hover:text-red-900">Excluir</a></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Grande Sertão: Veredas</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">João Guimarães Rosa</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1956</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Ficção</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a><a href="#" class="text-red-600 hover:text-red-900">Excluir</a></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Claro Enigma</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Carlos Drummond de Andrade</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1951</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Poesia</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a><a href="#" class="text-red-600 hover:text-red-900">Excluir</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl card-shadow-lg border border-gray-50 overflow-hidden">
+    <div class="p-6 border-b border-gray-100 gradient-success">
+      <h2 class="text-xl font-bold text-white flex items-center">
+        <i class="fas fa-users-cog mr-3"></i>
+        Administradores
+      </h2>
+    </div>
+    <div class="p-6">
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome Completo</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Alisson</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Alisson@gmail.com</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Online</span></td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Ver Perfil</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Lucas Galarani</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">lucas@gmail.com</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Offline</span></td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Ver Perfil</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Caio Vitor</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">caio.vitor@gmial.com</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Offline</span></td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Ver Perfil</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

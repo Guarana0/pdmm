@@ -9,6 +9,7 @@
       {% endblock %}
     </title>
     {% load static %}
+  <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
     <link rel="icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon" />
     <link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon" />
@@ -16,23 +17,96 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&
 display=swap" rel="stylesheet" />
     <style>
+      :root {
+        --sidebar-gradient: linear-gradient(to bottom right, #000000, #0f172a, #1e3a8a, #3b82f6);
+      }
       body {
         font-family: 'Inter', sans-serif;
       }
+      html.dark body {
+        background-color: #2a2a2a !important;
+      }
       .sidebar-gradient {
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #1e40af 60%, #2563eb 100%);
+        background: var(--sidebar-gradient);
       }
       .nav-link {
         transition: all 0.2s ease;
       }
-      .nav-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateX(4px);
+      .nav-link:hover { background: var(--nav-hover); transform: translateX(4px); }
+      /* Chat widget basic styles */
+      .chat-widget {
+        position: fixed;
+        bottom: 16px;
+        right: 40px;
+        z-index: 60;
       }
-      .nav-link.active {
-        background: rgba(255, 255, 255, 0.15);
-        border-right: 3px solid #3b82f6;
+      .chat-button {
+        width: 72px;
+        height: 72px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
+        border: none;
+        cursor: pointer;
+        background-color: var(--chat-button-bg);
+        color: #fff;
+        transition: background 0.2s;
       }
+      .chat-button:hover { background-color: var(--chat-button-hover); }
+      html.dark .chat-button { background-color: var(--chat-button-bg); color: #f3f4f6; }
+
+      .chat-panel {
+        position: fixed;
+        bottom: 96px; /* acima do botão maior */
+        right: 40px;
+        width: 340px;
+        max-height: 60vh;
+        display: none;
+        flex-direction: column;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: var(--chat-panel-bg);
+        color: var(--chat-panel-ink);
+        box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        overflow: hidden;
+        transform: translateY(8px);
+        opacity: 0;
+      }
+      /* Remove circle variant handled by CSS variables */
+      .chat-panel.open {
+        display: flex;
+        animation: chatPop 220ms ease-out forwards, var(--chatPulseAnim, none) 1400ms ease-out 120ms;
+      }
+      @keyframes chatPop {
+        0% { transform: translateY(8px) scale(0.98); opacity: 0; }
+        60% { transform: translateY(-2px) scale(1.01); opacity: 1; }
+        100% { transform: translateY(0) scale(1); opacity: 1; }
+      }
+      @keyframes chatPulseLight {
+        0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.35); }
+        70% { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+        100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+      }
+      @keyframes chatPulseDark {
+        0% { box-shadow: 0 0 0 0 rgba(147,197,253,0.35); }
+        70% { box-shadow: 0 0 0 12px rgba(147,197,253,0); }
+        100% { box-shadow: 0 0 0 0 rgba(147,197,253,0); }
+      }
+      .chat-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 10px 12px; font-weight: 600; background: var(--chat-header-bg); color: var(--chat-header-ink);
+      }
+      .chat-messages { padding: 10px; gap: 8px; display: flex; flex-direction: column; overflow-y: auto; }
+  .chat-input { display: flex; gap: 8px; padding: 10px; border-top: 1px solid var(--border); }
+  .chat-input input { flex: 1; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); outline: none; background: var(--surface); color: var(--ink); }
+      .chat-input button { padding: 8px 12px; border-radius: 8px; border: none; background: var(--brand-accent-500); color: #fff; cursor: pointer; }
+      html.dark .chat-input button { background: #3b82f6; }
+      .msg { max-width: 85%; padding: 8px 10px; border-radius: 10px; }
+      .msg.user { align-self: flex-end; background: var(--chat-user-bg); color: inherit; }
+      .msg.bot { align-self: flex-start; background: var(--chat-bot-bg); color: inherit; }
+      .nav-link.active { background: rgba(255,255,255,0.15); border-right: 3px solid var(--nav-active-border); }
       #menu-toggle {
         display: none;
       }
@@ -85,20 +159,19 @@ display=swap" rel="stylesheet" />
         color: #cbd5e1;
         border-radius: 4px;
       }
-      .submenu a:hover {
-        background-color: #3b82f6;
-        color: white;
-      }
+      .submenu a:hover { background-color: var(--brand-accent-500); color: white; }
     </style>
   </head>
-  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 h-full">
+  <body class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 h-full">
     <div class="flex min-h-screen relative">
       <!-- Toggle -->
       <input type="checkbox" id="menu-toggle" />
-      <label for="menu-toggle" class="lg:hidden p-2 text-blue-900 text-3xl dark:bg-slate-800 dark:text-blue-300">☰</label>
+      <label for="menu-toggle" class="lg:hidden p-2 text-blue-900 teixt-3xl dark:bg-gray-700 dark:text-blue-300">☰</label>
       <!-- Sidebar -->
-      <aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50">
-        <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+      <aside class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50 flex flex-col">
+        <div class="w-full flex items-center justify-center py-6">
+          <img src="{% static 'img/pdmm.png' %}" alt="Logo" class="w-40 h-45 object-contain" />
+        </div>
         <div class="p-6">
           <nav class="space-y-2">
             <a href="{% url 'core:home' %}" class="nav-link active flex items-center p-3 rounded-lg"><i class="fas fa-home mr-3 w-5"></i> Inicio</a>
@@ -128,19 +201,39 @@ display=swap" rel="stylesheet" />
           </div>
         </div>
       </aside>
-      <main id="main-content" class="flex-1 p-8 ml-64 bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <main id="main-content" class="flex-1 p-8 ml-64" style="background: var(--paper); color: var(--ink);">
         {% block content %}
         {% endblock %}
       </main>
     </div>
+    <!-- Floating Chat Widget -->
+    <div id="chat-widget" class="chat-widget" aria-live="polite">
+      <button id="chat-toggle" class="chat-button" aria-label="Abrir chat" title="Chat">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 2H4a2 2 0 0 0-2 2v14l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/>
+        </svg>
+      </button>
+    </div>
+  <div id="chat-panel" class="chat-panel" role="dialog" aria-modal="false" aria-labelledby="chat-title">
+      <div class="chat-header">
+        <span id="chat-title">Zina</span>
+        <button id="chat-close" aria-label="Fechar chat" style="background:transparent;border:none;color:inherit;cursor:pointer">✕</button>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <div class="msg bot">Olá, meu nome é Zina, eu sou a IA do portal do modernismo mineiro. Como posso ajudar?</div>
+      </div>
+      <div class="chat-input">
+        <input id="chat-input" type="text" placeholder="Digite uma mensagem..." />
+        <button id="chat-send">Enviar</button>
+      </div>
+    </div>
     <!-- Footer -->
-    <footer class="bg-black dark:bg-gray-950 text-gray-300 dark:text-gray-400 py-12 px-6">
+    <footer class="bg-black text-gray-300 dark:text-gray-200 py-12 px-6">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <h2 class="text-2xl font-bold text-blue-400 mb-4">PDMM</h2>
+          <h2 class="text-2xl font-bold text-blue-400 mb-4">PMM</h2>
           <p class="text-sm leading-relaxed">Portal do Modernismo Mineiro: um espaço para estudantes e pesquisadores conhecerem e divulgarem as obras do modernismo em Minas Gerais.</p>
-          <p class="mt-4 text-xs text-gray-400 select-none">© 2025 PDMM. Todos os direitos reservados.</p>
-          <br />
+      <p class="mt-4 text-xs text-gray-400 select-none">© 2025 PMM. Todos os direitos reservados.</p>
           <div class="flex space-x-4">
             <a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform hover:scale-110">
               <svg class="w-6 h-6" fill="currentColor">
@@ -173,7 +266,7 @@ display=swap" rel="stylesheet" />
               <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Início</a>
             </li>
             <li>
-              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Sobre</a>
+              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Autores</a>
             </li>
             <li>
               <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Obras</a>
@@ -201,10 +294,11 @@ display=swap" rel="stylesheet" />
           </ul>
         </div>
         <div class="flex flex-col items-start md:items-end justify-center">
-          <img src="{% static 'img/pdmm2.png' %}" alt="Logo" class="w-50 h-55 object-contain" />
+          <img src="{% static 'img/pdmm.png' %}" alt="Logo" class="w-50 h-55 object-contain" />
         </div>
       </div>
     </footer>
     <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
   </body>
 </html>

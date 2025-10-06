@@ -10,7 +10,7 @@
   autores, literatura, informação, tempo, noticias, livros, fotos
 {% endblock %}
 {% block content %}
-<main class="flex-1 p-4 sm:p-6 lg:p-12 space-y-12 max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<main class="flex-1 p-4 sm:p-6 lg:p-12 space-y-12 max-w-screen-2xl mx-auto">
 
   <!-- Principais Notícias -->
   <div class="w-full">
@@ -103,7 +103,7 @@
   <!-- Linha do Tempo -->
   <h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Linha do Tempo</h2>
   <section id="timeline" class="relative px-4 sm:px-6 py-8">
-    <div class="h-2 bg-gray-300 dark:bg-gray-600 rounded-full relative flex items-center justify-between px-8">
+    <div class="h-2 bg-gray-300 dark:bg-gray-500 rounded-full relative flex items-center justify-between px-8">
       <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1922" data-event="1"></div>
       <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1930" data-event="2"></div>
       <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="1942" data-event="3"></div>
@@ -114,7 +114,7 @@
       <div class="timeline-dot w-6 h-6 bg-blue-900 dark:bg-blue-300 rounded-full hover:scale-110 transition-transform cursor-pointer" title="2022" data-event="8"></div>
     </div>
     <div id="event-card"
-         class="invisible opacity-0 absolute bg-white dark:bg-teal-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-100 shadow-xl p-5 rounded-xl text-sm z-50 max-w-xs transition-all duration-300 pointer-events-none">
+         class="invisible opacity-0 absolute bg-white dark:bg-gray-500 border border-gray-300 dark:border-gray-400 text-gray-800 dark:text-gray-100 shadow-xl p-5 rounded-xl text-sm z-50 max-w-xs transition-all duration-300 pointer-events-none">
     </div>
   </section>
 

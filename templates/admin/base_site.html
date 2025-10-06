@@ -1,0 +1,205 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}Dashboard Administrativo - Portal Literário{% endblock %}</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/output.css' %}">
+        <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .sidebar-gradient {
+            background: linear-gradient(to bottom right, #073B73, #1e40af 75%);
+        }
+
+        .card-shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .card-shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .gradient-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .gradient-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .gradient-purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            min-height: 44px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.05);
+        }
+
+        .calendar-today {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .calendar-event::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 6px;
+            height: 6px;
+            background: #f59e0b;
+            border-radius: 50%;
+        }
+
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f5f9;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .stat-icon {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+
+        .nav-link {
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-right: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen antialiased">
+
+    <div class="fixed left-0 top-0 h-full w-64 sidebar-gradient text-white shadow-2xl z-50 flex flex-col">
+        <!-- Cabeçalho / Logo -->
+        <div class="px-5 pt-5 pb-4 flex-shrink-0 border-b border-white/10">
+            <div class="flex items-center gap-3">
+                <img src="{% static 'img/pdmm.png' %}" alt="Logo PDMM" class="h-14 w-14 object-contain drop-shadow-md"/>
+                <span class="font-semibold tracking-wide text-sm leading-tight">Portal<br>Modernismo</span>
+            </div>
+        </div>
+        <!-- Navegação (rolável) -->
+        <nav class="flex-1 overflow-y-auto custom-scrollbar px-3 py-4 space-y-1 text-sm">
+            <a href="#" class="nav-link active flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-chart-pie mr-3 w-5 text-white/80"></i>
+                Dashboard
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-feather-alt mr-3 w-5 text-white/60"></i>
+                Autores
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-book-open mr-3 w-5 text-white/60"></i>
+                Obras
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-newspaper mr-3 w-5 text-white/60"></i>
+                Notícias
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-photo-video mr-3 w-5 text-white/60"></i>
+                Galeria
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-building mr-3 w-5 text-white/60"></i>
+                Editoras
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-book-reader mr-3 w-5 text-white/60"></i>
+                Trechos
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-atlas mr-3 w-5 text-white/60"></i>
+                Referências
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-users mr-3 w-5 text-white/60"></i>
+                Usuários
+            </a>
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md">
+                <i class="fas fa-chart-bar mr-3 w-5 text-white/60"></i>
+                Relatórios
+            </a>
+        </nav>
+        <!-- Footer / Configurações -->
+        <div class="px-3 py-3 border-t border-white/10 flex-shrink-0">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-md text-sm">
+                <i class="fas fa-cog mr-3 w-5 text-white/60"></i>
+                Configurações
+            </a>
+        </div>
+    </div>
+
+    <div class="ml-64 min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm border-b border-gray-100 p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">{% block header_title %}Dashboard Administrativo{% endblock %}</h1>
+                    <p class="text-gray-600 mt-1">{% block header_subtitle %}Gerencie seu portal literário com eficiência e elegância{% endblock %}</p>
+                </div>
+            </div>
+        </header>
+        <main class="p-6 space-y-8 flex-1">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

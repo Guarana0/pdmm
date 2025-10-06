@@ -1,0 +1,68 @@
+/* Portal do Modernismo Mineiro - Tema */
+
+:root {
+  /* Cores principais do projeto */
+  --primary-blue: #073B73;
+  --secondary-blue: #1e40af;
+  --accent-blue: #3b82f6;
+  
+  /* Gradientes */
+  --sidebar-gradient: linear-gradient(to bottom right, #000000, #0f172a, #1e3a8a, #3b82f6);
+  --sidebar-gradient-metallic: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #64748b 75%, #94a3b8 100%);
+  
+  /* Variáveis de tema */
+  --paper: #f8fafc;
+  --ink: #374151;
+  --surface: #f1f5f9;
+  --border: #e5e7eb;
+  
+  /* Navegação */
+  --nav-hover: rgba(255, 255, 255, 0.1);
+  --nav-active-border: rgba(255, 255, 255, 0.8);
+  
+  /* Chat widget */
+  --chat-button-bg: var(--primary-blue);
+  --chat-button-hover: var(--secondary-blue);
+  --chat-panel-bg: white;
+  --chat-panel-ink: #374151;
+  --chat-header-bg: var(--primary-blue);
+  --chat-header-ink: white;
+  --chat-user-bg: var(--accent-blue);
+  --chat-bot-bg: #f3f4f6;
+  
+  /* Cores de marca */
+  --brand-accent-500: var(--accent-blue);
+  
+  /* Animações */
+  --chatPulseAnim: chatPulseLight;
+}
+
+/* Tema escuro */
+html.dark {
+  --paper: #2a2a2a;
+  --ink: #f1f5f9;
+  --surface: #353535;
+  --border: #4a4a4a;
+  --chat-panel-bg: #353535;
+  --chat-panel-ink: #f1f5f9;
+  --chat-bot-bg: #4a4a4a;
+  --chatPulseAnim: chatPulseDark;
+}
+
+/* Classes utilitárias de tema */
+.sidebar-gradient {
+  background: var(--sidebar-gradient);
+}
+
+.theme-paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.theme-surface {
+  background: var(--surface);
+}
+
+.theme-border {
+  border-color: var(--border);
+}

@@ -11,5 +11,9 @@ urlpatterns = [
     path('admin/password_change/', views.MyAdminPasswordChangeView.as_view(), name='admin_password_change'),
 ]
 
-# Custom 404 handler (uses templates/404.html). Only active when DEBUG = False.
+# Error handlers (use corresponding templates when DEBUG = False)
+# Ensure you have: 400.html, 403.html, 404.html, 500.html in your templates root.
+handler400 = 'django.views.defaults.bad_request'
+handler403 = 'django.views.defaults.permission_denied'
 handler404 = 'django.views.defaults.page_not_found'
+handler500 = 'django.views.defaults.server_error'
