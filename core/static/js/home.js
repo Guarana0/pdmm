@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const timeline = document.getElementById('timeline');
 
   const events = {
-    1: { year: '1922', title: 'Semana de Arte Moderna', description: 'Início do Modernismo no Brasil com eventos culturais inovadores.' },
-    2: { year: '1930', title: 'Revolução de 1930', description: 'Mudança política importante que influenciou a cultura e as artes.' },
-    3: { year: '1942', title: 'Publicação de obras modernistas', description: 'Lançamento de livros e revistas importantes do modernismo mineiro.' },
-    4: { year: '1950', title: 'Consolidação do Modernismo', description: 'Modernismo torna-se dominante na cultura mineira e nacional.' },
-    5: { year: '1964', title: 'Golpe Militar', description: 'Período de censura e repressão, afetando profundamente a produção cultural.' },
-    6: { year: '1985', title: 'Retorno à Democracia', description: 'Renascimento cultural e abertura para novas expressões artísticas.' },
-    7: { year: '2000', title: 'Era Digital', description: 'Novas mídias e formas de expressão revolucionam a arte contemporânea.' },
-    8: { year: '2022', title: 'Centenário da Semana de Arte Moderna', description: 'Reflexões sobre o legado modernista e sua influência atual.' }
+    1: { year: '1920', title: 'Chegada da Primeira Geração Modernista', description: 'A primeira leva de autores de diversos cantos de Minas Gerais chegam a capital (Belo Horizonte).' },
+    2: { year: '1921', title: 'Drummond como pontapé ao Modernismo na capital', description: 'Em 1921, Carlos Drummond de Andrade com influência dos poemas de Manual Bandeira, escreve poemas que viriam a ser os fundamentos a ideia do Modernismo.' },
+    3: { year: '1923', title: 'Forma-se o grupo da capital mineira', description: 'Lançamento de livros e revistas importantes do modernismo mineiro.' },
+    4: { year: '1924', title: 'Consolidação do Modernismo', description: 'O grupo se consolida na capital mineira.' },
+    5: { year: '1925', title: 'criação de "A Revista"', description: 'Com dois anos de duração e três edições, A Revista é o verdadeiro modernismo representado atráves das primeiras publicações da escola literaria aqui em Minas Gerais.' },
+    6: { year: '1927', title: 'Surge em Cataguases a revista "Verde"', description: 'Tirando o foco do modernismo da capital, a revista "Verde" surge como uma importante publicação em Cataguases para o modernismo e também como efeito literario na região.' },
+    7: { year: '1928', title: 'Publica-se "Poemas Cronologicos" de Enrique Resende', description: 'Esta obra é um marco na poesia modernista mineira, trazendo uma nova perspectiva sobre a identidade e a cultura local.' },
+    8: { year: '1929', title: 'O grupo se dispersa', description: 'Os polos como Rio de Janeiro e São Paulo e além de outros motivos fazem com que a primeira geração modernista mineira começasse a se afastar e buscar novos rumos.' }
   };
 
   timeline.querySelectorAll('.timeline-dot').forEach(dot => {
