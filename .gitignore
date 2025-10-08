@@ -31,3 +31,4 @@ logs/
 .vscode/
 
 /core/static/css/output.css
+.env

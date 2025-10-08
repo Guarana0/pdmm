@@ -11,12 +11,19 @@ from .models import Revistas
 from .models import Noticias
 from .models import Fotos
 
+from .features.aleatoriedadeImagens import escolherImagensLivros
+from .features.aleatoriedadeImagens import escolherImagensFotos
+
 
 class MyAdminLoginView(LoginView):
     template_name = 'admin/login.html'
 
 def home(request):
-    return render(request, 'core/home.html')
+    # Obtém até 4 capas (ou placeholders) da função utilitária
+    capas = escolherImagensLivros()
+    imagens = escolherImagensFotos()
+    return render(request, 'core/home.html', {'capas': capas, 'imagens': imagens})
+
 
 def autores(request):
     return render(request, 'core/autores.html')
@@ -149,8 +156,6 @@ def noticia_detail(request, slug):
 def foto_detail(request, slug):
     foto = get_object_or_404(Fotos, slug=slug)
     return render(request, 'core/galeria_detail.html', {'foto': foto})
-
-
 
 class MyAdminPasswordChangeView(PasswordChangeView):
     """
