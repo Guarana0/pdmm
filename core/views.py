@@ -26,7 +26,13 @@ def home(request):
 
 
 def autores(request):
-    return render(request, 'core/autores.html')
+    autores = Autores.objects.all()
+
+    # 2. Renderiza o template, passando a lista 'autores' no contexto
+    contexto = {
+        'autores': autores
+    }
+    return render(request, 'core/autores.html', contexto)
 
 def autor_detail(request, slug):
     autor = get_object_or_404(Autores, slug=slug)

@@ -10,46 +10,29 @@
   autores, literatura, informação
 {% endblock %}
 {% block content %}
-  <main class="flex-1 p-4 lg:p-8 overflow-y-auto bg-gray-200 dark:bg-gray-800 min-h-screen">
+  <main class="flex-1 p-4 lg:p-8 overflow-y-auto bg-gray-800 min-h-screen">   {# só uma cor, sem dark/bg-gray-200 #}
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Autores</h1>
+      <h1 class="text-3xl font-bold text-gray-100">Autores</h1>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-      <!-- Card: Carlos Drummond -->
-      <a href="{% url 'core:autor_detail' slug='carlos-drummond' %}" class="block bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden">
-        <div class="w-full h-80 bg-gray-200 dark:bg-gray-600">
-          <img src="{% static 'img/drummond.jpg' %}" alt="Carlos Drummond" class="w-full h-full object-cover" />
-        </div>
-        <div class="p-4">
-          <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-gray-100">Carlos Drummond</h2>
-          <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-1">Poeta Modernista</p>
-        </div>
-      </a>
-
-      <!-- Card: João Alphonsus -->
-      <a href="{% url 'core:autor_detail' slug='joao-alphonsus' %}" class="block bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden">
-        <div class="w-full h-80 bg-gray-200 dark:bg-gray-600">
-          <img src="{% static 'img/joaoAlphonsus.jpg' %}" alt="João Alphonsus" class="w-full h-full object-cover" />
-        </div>
-        <div class="p-4">
-          <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-gray-100">João Alphonsus</h2>
-          <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-1">Escritor Mineiro</p>
-        </div>
-      </a>
-
-      <!-- Card: Pedro Nava -->
-      <a href="{% url 'core:autor_detail' slug='pedro-nava' %}" class="block bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden">
-        <div class="w-full h-80 bg-gray-200 dark:bg-gray-600">
-          <img src="{% static 'img/pedroNava.jpg' %}" alt="João Alphonsus" class="w-full h-full object-cover" />
-        </div>
-        <div class="p-4">
-          <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-gray-100">Pedro Nava</h2>
-          <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-1">Escritor Mineiro</p>
-        </div>
-      </a>
-
+      {% for autor in autores %}
+      <a href="{% url 'core:autor_detail' slug=autor.slug %}"
+      class="block bg-gray-600 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden">
+      <div class="w-full h-80 bg-gray-500">
+      {% if autor.foto %}
+        <img src="{{ autor.foto.url }}" alt="{{ autor.nome }} {{ autor.sobrenome }}" class="w-full h-full object-cover" />
+      {% else %}
+        <img src="{% static 'img/default.jpg' %}" alt="{{ autor.nome }} {{ autor.sobrenome }}" class="w-full h-full object-cover" />
+      {% endif %}
+    </div>
+    <div class="p-4">
+      <h2 class="text-center text-xl font-semibold text-gray-100">{{ autor.nome }} {{ autor.sobrenome }}</h2>
+    </div>
+    </a>
+      {% empty %}
+      <p class="col-span-4 text-center text-gray-300">Nenhum autor cadastrado.</p>
+      {% endfor %}
     </div>
   </main>
 {% endblock %}
