@@ -11,68 +11,24 @@
   <!-- Grid para os cards de livros -->
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-    <!-- Card de Livro 1 -->
-    <a href="{% url 'core:livros_detail' slug='galinha-cega' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
+    {% for livro in livros %}
+    <a href="{% url 'core:livros_detail' slug=livro.slug %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
       <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-        <!-- Placeholder para a capa do livro -->
-        <img src="{% static 'img/galinhaCega.jpg' %}" alt="Capa do livro Galinha Cega" class="object-cover w-full h-full rounded-lg">
+        {% if livro.capa %}
+          <img src="{{ livro.capa.url }}" alt="Capa do livro {{ livro.titulo }}" class="object-cover w-full h-full rounded-lg" />
+        {% else %}
+          <img src="{% static 'img/default.jpg' %}" alt="Sem capa" class="object-cover w-full h-full rounded-lg" />
+        {% endif %}
       </div>
       <div class="p-4">
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">João Alphonsus</p>
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Galinha Cega</h3>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1926</p>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">{{ livro.autor.nome }} {{ livro.autor.sobrenome }}</p>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">{{ livro.titulo }}</h3>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em {{ livro.ano_publicacao }}</p>
       </div>
     </a>
-
-    <!-- Card de Livro 2 -->
-    <a href="{% url 'core:livros_detail' slug='alguma-poesia' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
-      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-<img src="{% static 'img/algumaPoesia.jpg' %}" alt="Capa do livro Galinha Cega" class="object-cover w-full h-full rounded-lg">
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Carlos Drummond de Andrade</p>
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Alguma Poesia</h3>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1930</p>
-      </div>
-    </a>
-
-    <!-- Card de Livro 3 -->
-    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
-      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Murilo Mendes</p>
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Poemas</h3>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1930</p>
-      </div>
-    </a>
-
-    <!-- Card de Livro 4 -->
-    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
-      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Emílio Moura</p>
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Canto da Descoberta</h3>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 1929</p>
-      </div>
-    </a>
-
-    <!-- Card de Livro 5 -->
-    <a href="#" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-transparent hover:border-blue-500">
-      <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-        <i class="fas fa-book text-gray-400 dark:text-gray-500 text-6xl"></i>
-      </div>
-      <div class="p-4">
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">Autor de Exemplo</p>
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">Título do Livro</h3>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em 19XX</p>
-      </div>
-    </a>
-    
-    <!-- Adicione quantos cards mais você precisar, apenas copiando e colando o bloco acima -->
+    {% empty %}
+      <p class="col-span-4 text-center text-gray-500">Nenhum livro cadastrado.</p>
+    {% endfor %}
 
   </div>
 

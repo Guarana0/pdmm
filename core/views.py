@@ -122,7 +122,9 @@ def galeria(request):
     return render(request, 'core/galeria.html', {'fotos': fotos})
 
 def livros(request):
-    return render(request, 'core/livros.html')
+    # Obtém todos os livros ordenados por ano (mais recentes primeiro) e título
+    livros_qs = Livros.objects.all().order_by('-ano_publicacao', 'titulo')
+    return render(request, 'core/livros.html', {'livros': livros_qs})
 
 def livros_detail(request, slug):
     livro = get_object_or_404(Livros, slug=slug)
