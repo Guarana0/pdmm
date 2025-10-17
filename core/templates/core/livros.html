@@ -21,13 +21,13 @@
         {% endif %}
       </div>
       <div class="p-4">
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate">{{ livro.autor.nome }} {{ livro.autor.sobrenome }}</p>
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">{{ livro.titulo }}</h3>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Publicado em {{ livro.ano_publicacao }}</p>
+  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 truncate font-ptsans">{{ livro.autor.nome }} {{ livro.autor.sobrenome }}</p>
+  <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 font-montserrat">{{ livro.titulo }}</h3>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-2 font-ptsans">Publicado em {{ livro.ano_publicacao }}</p>
       </div>
     </a>
     {% empty %}
-      <p class="col-span-4 text-center text-gray-500">Nenhum livro cadastrado.</p>
+  <p class="col-span-4 text-center text-gray-500 font-ptsans">Nenhum livro cadastrado.</p>
     {% endfor %}
 
   </div>

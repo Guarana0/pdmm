@@ -14,14 +14,16 @@
     <link rel="icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon" />
     <link rel="shortcut icon" href="{% static 'img/logoIco.ico' %}" type="image/x-icon" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&
-display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
     <style>
       :root {
         --sidebar-gradient: linear-gradient(to bottom right, #000000, #0f172a, #1e3a8a, #3b82f6);
       }
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Montserrat', 'PT Sans', Arial, sans-serif;
+      }
+      :root {
+        font-family: 'Montserrat', 'PT Sans', Arial, sans-serif;
       }
       html.dark body {
         background-color: #2a2a2a !important;
@@ -231,45 +233,21 @@ display=swap" rel="stylesheet" />
     <footer class="bg-black text-gray-300 dark:text-gray-200 py-12 px-6">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <h2 class="text-2xl font-bold text-blue-400 mb-4">PMM</h2>
-          <p class="text-sm leading-relaxed">Portal do Modernismo Mineiro: um espaço para estudantes e pesquisadores conhecerem e divulgarem as obras do modernismo em Minas Gerais.</p>
-      <p class="mt-4 text-xs text-gray-400 select-none">© 2025 PMM. Todos os direitos reservados.</p>
-          <div class="flex space-x-4">
-            <a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform hover:scale-110">
-              <svg class="w-6 h-6" fill="currentColor">
-                <path d="M22 12a10 10 0 10-11.5
-9.9v-7h-2v-3h2v-2a3 3 0 013-3h2v3h-2a1 1 0 00-1 1v2h3l-1 3h-2v7A10 10 0 0022
-12z" />
-              </svg>
-            </a>
-            <a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform hover:scale-110">
-              <svg class="w-6 h-6" fill="currentColor">
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53
-4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0
-20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-              </svg>
-            </a>
-            <a href="#" class="hover:text-blue-400 dark:hover:text-white transition transform hover:scale-110">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1112.63 8a4 4
-0 013.37 3.37z" />
-                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-              </svg>
-            </a>
-          </div>
+      <h2 class="text-2xl font-bold text-blue-400 mb-4 font-montserrat">PMM</h2>
+          <p class="text-sm leading-relaxed font-ptsans">Portal do Modernismo Mineiro: um espaço para estudantes e pesquisadores conhecerem e divulgarem as obras do modernismo em Minas Gerais.</p>
+  <p class="mt-4 text-xs text-gray-400 select-none font-ptsans">© 2025 PMM. Todos os direitos reservados.</p>
         </div>
         <div>
-          <h3 class="text-lg font-semibold mb-3 text-white">Navegação</h3>
-          <ul class="space-y-2 text-gray-400 dark:text-gray-300 text-sm">
+          <h3 class="text-lg font-semibold mb-3 text-white font-montserrat">Navegação</h3>
+          <ul class="space-y-2 text-gray-400 dark:text-gray-300 text-sm font-ptsans">
             <li>
-              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Início</a>
+              <a href="{% url 'core:home' %}" class="hover:text-blue-400 dark:hover:text-white transition">Início</a>
             </li>
             <li>
-              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Autores</a>
+              <a href="{% url 'core:autores' %}" class="hover:text-blue-400 dark:hover:text-white transition">Escritores</a>
             </li>
             <li>
-              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Obras</a>
+              <a href="{% url 'core:livros' %}" class="hover:text-blue-400 dark:hover:text-white transition">Obras</a>
             </li>
             <li>
               <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Contato</a>
@@ -277,8 +255,8 @@ display=swap" rel="stylesheet" />
           </ul>
         </div>
         <div>
-          <h3 class="text-lg font-semibold mb-3 text-white">Recursos</h3>
-          <ul class="space-y-2 text-gray-400 dark:text-gray-300 text-sm">
+          <h3 class="text-lg font-semibold mb-3 text-white font-montserrat">Recursos</h3>
+          <ul class="space-y-2 text-gray-400 dark:text-gray-300 text-sm font-ptsans">
             <li>
               <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Artigos</a>
             </li>
@@ -286,10 +264,7 @@ display=swap" rel="stylesheet" />
               <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Eventos</a>
             </li>
             <li>
-              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Galeria</a>
-            </li>
-            <li>
-              <a href="#" class="hover:text-blue-400 dark:hover:text-white transition">Blog</a>
+              <a href="{% url 'core:galeria' %}" class="hover:text-blue-400 dark:hover:text-white transition">Galeria</a>
             </li>
           </ul>
         </div>

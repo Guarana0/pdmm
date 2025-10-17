@@ -33,7 +33,7 @@
 
       <div class="space-y-6">
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ foto.titulo }}</h1>
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-montserrat">{{ foto.titulo }}</h1>
           <div class="space-y-3">
             {% if foto.local %}
               <div class="flex items-center text-gray-600 dark:text-gray-300">
@@ -72,7 +72,7 @@
               Descrição
             </h2>
             <div class="prose prose-gray dark:prose-invert max-w-none">
-              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{{ foto.descricao|linebreaks }}</p>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed font-ptsans">{{ foto.descricao|linebreaks }}</p>
             </div>
           </div>
         {% endif %}

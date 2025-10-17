@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ["Montserrat", "Arial", "sans-serif"],
+        ptsans: ["PT Sans", "Arial", "sans-serif"],
+      },
       colors: {
         gray: {
           900: '#1a1a1a'
