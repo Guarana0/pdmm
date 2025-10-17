@@ -165,6 +165,9 @@ def foto_detail(request, slug):
     foto = get_object_or_404(Fotos, slug=slug)
     return render(request, 'core/galeria_detail.html', {'foto': foto})
 
+def sobreNos(request):
+    return render(request, 'core/sobreNos.html')
+
 class MyAdminPasswordChangeView(PasswordChangeView):
     """
     Custom view to handle the admin password change form.

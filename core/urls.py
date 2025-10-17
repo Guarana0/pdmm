@@ -18,4 +18,5 @@ urlpatterns = [
     path('livros/<slug:slug>/', views.livros_detail, name='livros_detail'),
     path('noticias/<slug:slug>/', views.noticia_detail, name='noticia_detail'),
     path('galeria/<slug:slug>/', views.foto_detail, name='foto_detail'),
+    path('sobreNos/', views.sobreNos, name='sobreNos'),
 ]

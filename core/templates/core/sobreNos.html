@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sobre Nós {% endblock %}
+
+{% block description %} Nossas informações, criadores, historia {% endblock %}
+
+{% block keywords %} informacao, sobre nos, historia, criadores {% endblock %}
+
+{% block content %}
+<main class="w-full bg-gray-100 dark:bg-gray-900/60">
+	<!-- Seção Principal -->
+	<section class="w-full bg-white dark:bg-gray-900 py-20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-10">
+			<div class="grid grid-cols-1 xl:grid-cols-3 gap-12 items-start">
+				<div class="xl:col-span-2 space-y-8">
+					<h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 font-montserrat leading-tight mb-8">Portal do Modernismo Mineiro</h1>
+					<p class="text-lg text-gray-700 dark:text-gray-300 font-ptsans leading-relaxed">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod, urna eu tincidunt consectetur, nisi nisl aliquam eros, eu dictum enim sapien nec enim. Mauris euismod, sem eu facilisis cursus, sapien justo cursus erat, nec dictum enim sapien nec enim.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Seção Criadores -->
+	<section class="bg-white dark:bg-gray-900 py-20">
+		<div class="max-w-7xl mx-auto px-6 sm:px-10">
+			<h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 font-montserrat text-center mb-16">Criadores</h2>
+			<div class="flex flex-col sm:flex-row justify-center gap-8 max-w-4xl mx-auto">
+				<!-- Criador 1 -->
+				<div class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center flex-1 max-w-xs">
+					<img src="{% static 'img/galarani.jpg' %}" alt="Lucas Galarani" class="w-22 h-22  mx-auto object-cover mb-4 border-2 border-gray-300 dark:border-gray-600">
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 font-montserrat mb-2">Lucas Galarani</h3>
+					<p class="text-sm text-gray-600 dark:text-gray-400 font-ptsans mb-1">Aluno de Informática</p>
+					<p class="text-xs text-gray-500 dark:text-gray-300 font-ptsans mt-4">lucasdainfo.cefet@gmail.com</p>
+				</div>
+				
+				<!-- Criador 2 -->
+				<div class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center flex-1 max-w-xs">
+					<img src="{% static 'img/default.jpg' %}" alt="Caio Vitor" class="w-22 h-22  mx-auto object-cover mb-4 border-2 border-gray-300 dark:border-gray-600">
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 font-montserrat mb-2">Caio Vitor</h3>
+					<p class="text-sm text-gray-600 dark:text-gray-400 font-ptsans mb-1">Aluno de Informática</p>
+					<p class="text-xs text-gray-500 dark:text-gray-300 font-ptsans mt-4">caiovitorvalente1404@gmail.com</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Seção Orientadores -->
+	<section class="bg-white dark:bg-gray-900 py-20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-10">
+			<h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 font-montserrat text-center mb-16">Orientadores</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+				<div class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center">
+					<img src="{% static 'img/default.jpg' %}" alt="André Leão" class="w-20 h-20 rounded-full mx-auto object-cover mb-4 border-2 border-gray-300 dark:border-gray-600">
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 font-montserrat mb-2">André Leão</h3>
+					<p class="text-sm text-gray-600 dark:text-gray-400 font-ptsans mb-3">Orientador</p>
+					<p class="text-base text-gray-700 dark:text-gray-300 font-ptsans">andreleao@cefetmg.br</p>
+				</div>
+				<div class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center">
+					<img src="{% static 'img/default.jpg' %}" alt="Alisson Rodrigo" class="w-20 h-20 rounded-full mx-auto object-cover mb-4 border-2 border-gray-300 dark:border-gray-600">
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 font-montserrat mb-2">Alisson Rodrigo</h3>
+					<p class="text-sm text-gray-600 dark:text-gray-400 font-ptsans mb-3">Co-orientador</p>
+					<p class="text-base text-gray-700 dark:text-gray-300 font-ptsans">alissonrs@cefetmg.br</p>
+				</div>
+				<div class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center">
+					<img src="{% static 'img/default.jpg' %}" alt="Humberto Vilella" class="w-20 h-20 rounded-full mx-auto object-cover mb-4 border-2 border-gray-300 dark:border-gray-600">
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 font-montserrat mb-2">Humberto Vilella</h3>
+					<p class="text-sm text-gray-600 dark:text-gray-400 font-ptsans mb-3">Orientador Auxiliar</p>
+					<p class="text-base text-gray-700 dark:text-gray-300 font-ptsans">humberto.villela@cefetmg.br</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</main>
+{% endblock %}
