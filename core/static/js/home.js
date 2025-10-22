@@ -71,20 +71,57 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(nextSlide, 5000);
   });
 
-// Fecha menu mobile ao clicar
-    document.querySelectorAll('aside nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        const menuToggle = document.getElementById('menu-toggle');
-        if(menuToggle.checked) menuToggle.checked = false;
-      });
-    });
-
     // Submenu "Revistas"
+    const revistasMenu = document.getElementById('revistas-menu');
     const revistasLink = document.getElementById('revistas-link');
     const submenu = document.getElementById('submenu');
 
-    revistasLink.addEventListener('click', () => {
-      submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    const isMobile = () => window.innerWidth <= 1023;
+
+    if (!isMobile()) {
+      revistasMenu.addEventListener('mouseenter', () => {
+        submenu.style.display = 'flex';
+      });
+
+      revistasMenu.addEventListener('mouseleave', () => {
+        submenu.style.display = 'none';
+      });
+    }
+
+    revistasLink.addEventListener('click', (event) => {
+      if (isMobile()) {
+        event.preventDefault();
+        const isVisible = submenu.style.display === 'flex';
+        // Hide any other open submenus if you have more than one
+        document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+        submenu.style.display = isVisible ? 'none' : 'flex';
+      }
+    });
+
+    // Close mobile menu and submenu when a link is clicked
+    document.querySelectorAll('aside nav a:not(#revistas-link)').forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMobile()) {
+          submenu.style.display = 'none';
+          const menuToggle = document.getElementById('menu-toggle');
+          if (menuToggle.checked) {
+            menuToggle.checked = false;
+          }
+        }
+      });
+    });
+
+    // Close submenu when a submenu item is clicked
+    submenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if(isMobile()) {
+                submenu.style.display = 'none';
+                const menuToggle = document.getElementById('menu-toggle');
+                if (menuToggle.checked) {
+                    menuToggle.checked = false;
+                }
+            }
+        });
     });
 
     document.addEventListener('DOMContentLoaded', () => {
