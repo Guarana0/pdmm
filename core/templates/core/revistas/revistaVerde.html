@@ -4,7 +4,7 @@
 {% block description %}Revistas do Acervo{% endblock %}
 {% block keywords %}Revistas,Literatura,Modernismo{% endblock %}
 {% block content %}
-    <div class="bg-gray-100 dark:bg-gray-900 py-10 px-4">
+    <div class="bg-gray-50 dark:bg-gray-900 py-10 px-4">
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {% for revista in revistas %}
             <a href="{% url 'core:revista_detail' revista.slug %}" class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
