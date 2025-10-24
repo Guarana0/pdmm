@@ -1,0 +1,44 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls %}
+
+{% block extrastyle %}
+    {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+        <h1 class="text-3xl font-bold text-gray-800">Autores</h1>
+        <a href="{% url 'admin:core_autores_add' %}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-plus mr-2"></i>
+            Adicionar Autor
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for autor in cl.result_list %}
+      <a href="{% url 'admin:core_autores_change' autor.pk %}"
+         class="block bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden border">
+          <div class="w-full h-80 bg-gray-200">
+              {% if autor.foto %}
+                  <img src="{{ autor.foto.url }}" alt="{{ autor.nome }}" class="w-full h-full object-cover" />
+              {% else %}
+                  <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                      <i class="fas fa-user fa-4x text-gray-300"></i>
+                  </div>
+              {% endif %}
+          </div>
+          <div class="p-4">
+              <h2 class="text-center text-xl font-semibold text-gray-800">{{ autor.nome }} {{ autor.sobrenome }}</h2>
+          </div>
+      </a>
+      {% empty %}
+      <p class="col-span-full text-center text-gray-500">Nenhum autor cadastrado.</p>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}
