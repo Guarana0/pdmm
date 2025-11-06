@@ -195,15 +195,42 @@ class Fotografos(models.Model):
     def __str__(self):
         return self.nome
 
+class Locais(models.Model):
+    nome = models.CharField(max_length=200, unique=True, help_text="Nome do local (ex: Belo Horizonte, Praça da Liberdade)")
+    descricao = models.TextField(null=True, blank=True, help_text="Descrição do local")
+    cidade = models.CharField(max_length=100, null=True, blank=True, help_text="Cidade")
+    estado = models.CharField(max_length=50, null=True, blank=True, help_text="Estado")
+    slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['nome']
+        verbose_name = 'Local'
+        verbose_name_plural = 'Locais'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nome)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.nome
+
+    def get_fotos_count(self):
+        """Retorna o número de fotos deste local"""
+        return self.fotos.count()
+
 class Fotos(models.Model):
     id_foto = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=500)
-    local = models.CharField(max_length=200)
+    local = models.ForeignKey(Locais, on_delete=models.CASCADE, related_name='fotos', help_text="Local onde a foto foi tirada")
+    local_detalhes = models.CharField(max_length=200, null=True, blank=True, help_text="Detalhes específicos do local (ex: 'sala principal', 'fachada')")
     imagem = CloudinaryField('fotos/', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     descricao = models.TextField(null=True, blank=True)
     ano = models.IntegerField(null=True, blank=True)
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=255)
+    fotografo = models.ForeignKey(Fotografos, on_delete=models.SET_NULL, null=True, blank=True, related_name='fotos', help_text="Fotógrafo responsável pela foto")
 
     class Meta:
         ordering = ['-ano', 'titulo']
@@ -221,6 +248,17 @@ class Fotos(models.Model):
     def get_fotografo_nome(self):
         """Retorna o nome do fotógrafo ou 'Desconhecido' se não houver"""
         return self.fotografo.nome if self.fotografo else "Desconhecido"
+    
+    def get_local_completo(self):
+        """Retorna o local completo incluindo detalhes específicos"""
+        local_nome = self.local.nome
+        if self.local_detalhes:
+            return f"{local_nome} - {self.local_detalhes}"
+        return local_nome
+    
+    def get_outras_fotos_local(self, limit=6):
+        """Retorna outras fotos do mesmo local, excluindo a foto atual"""
+        return Fotos.objects.filter(local=self.local).exclude(id_foto=self.id_foto).order_by('-ano', 'titulo')[:limit]
 
 class Noticias(models.Model):
     titulo = models.CharField(max_length=200)

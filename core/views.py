@@ -163,7 +163,27 @@ def noticia_detail(request, slug):
 
 def foto_detail(request, slug):
     foto = get_object_or_404(Fotos, slug=slug)
-    return render(request, 'core/galeria_detail.html', {'foto': foto})
+    
+    # Busca outras fotos do mesmo local
+    outras_fotos_local = foto.get_outras_fotos_local(limit=6)
+    
+    # Busca foto anterior e próxima (navegação geral)
+    foto_anterior = Fotos.objects.filter(
+        id_foto__lt=foto.id_foto
+    ).order_by('-id_foto').first()
+    
+    foto_proxima = Fotos.objects.filter(
+        id_foto__gt=foto.id_foto
+    ).order_by('id_foto').first()
+    
+    context = {
+        'foto': foto,
+        'outras_fotos_local': outras_fotos_local,
+        'foto_anterior': foto_anterior,
+        'foto_proxima': foto_proxima,
+    }
+    
+    return render(request, 'core/galeria_detail.html', context)
 
 def sobreNos(request):
     return render(request, 'core/sobreNos.html')

@@ -6,6 +6,7 @@ admin.site.login = views.MyAdminLoginView.as_view()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
     path('', include('core.urls')),
     path('admin/login/', views.MyAdminLoginView.as_view(), name='admin_login'),
     path('admin/password_change/', views.MyAdminPasswordChangeView.as_view(), name='admin_password_change'),

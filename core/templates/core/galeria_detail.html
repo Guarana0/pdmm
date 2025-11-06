@@ -41,7 +41,7 @@
                   <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
                 </svg>
                 <span class="font-medium">Local:</span>
-                <span class="ml-2">{{ foto.local }}</span>
+                <span class="ml-2">{{ foto.get_local_completo }}</span>
               </div>
             {% endif %}
             {% if foto.ano %}
@@ -117,6 +117,53 @@
             Ver todas as fotos
           </a>
         </div>
+
+        {% if outras_fotos_local %}
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+              <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Mais fotos de {{ foto.local.nome }}
+            </h2>
+            <div class="grid grid-cols-2 gap-3">
+              {% for outra_foto in outras_fotos_local %}
+                <a href="{% url 'core:foto_detail' outra_foto.slug %}" class="group block">
+                  <div class="relative overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-700 aspect-square">
+                    {% if outra_foto.imagem %}
+                      <img 
+                        src="{{ outra_foto.imagem.url }}" 
+                        alt="{{ outra_foto.titulo }}" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    {% else %}
+                      <div class="w-full h-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                        </svg>
+                      </div>
+                    {% endif %}
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/50 to-transparent">
+                      <p class="text-white text-xs font-medium truncate">{{ outra_foto.titulo }}</p>
+                      {% if outra_foto.ano %}
+                        <p class="text-white/80 text-xs">{{ outra_foto.ano }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+            {% if outras_fotos_local|length >= 6 %}
+              <div class="mt-4 text-center">
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  Mostrando 6 de {{ foto.local.get_fotos_count }} fotos de {{ foto.local.nome }}
+                </p>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -11,3 +11,4 @@ python-dotenv
 cloudinary
 django-cloudinary-storage
 dj_database_url
+django-summernote
