@@ -2,14 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404
-from .models import Autores
 from django.contrib.auth.views import PasswordChangeView
-from .models import Livros
 from django.conf import settings
 from django.core.paginator import Paginator
-from .models import Revistas
-from .models import Noticias
-from .models import Fotos
+from .models import Revistas, Noticias, Fotos, Autores, Livros
 
 from .features.aleatoriedadeImagens import escolherImagensLivros
 from .features.aleatoriedadeImagens import escolherImagensFotos
