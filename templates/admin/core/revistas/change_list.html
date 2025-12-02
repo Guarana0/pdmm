@@ -1,0 +1,86 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls admin_list %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+        <h1 class="text-3xl font-bold text-gray-800">
+            {% if request.GET.titulo %}
+                {{ request.GET.titulo }}
+            {% else %}
+                Revistas
+            {% endif %}
+        </h1>
+        <a href="{% url 'admin:core_revistas_add' %}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-plus mr-2"></i>
+            Adicionar Revista
+        </a>
+    </div>
+
+    <!-- Search Form -->
+    {% block search %}{% search_form cl %}{% endblock %}
+
+    <!-- Filters -->
+    {% if cl.has_filters %}
+    <div class="mb-6">
+        <details class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <summary class="cursor-pointer font-medium text-gray-700">Filtros</summary>
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {% for spec in cl.filter_specs %}
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-900 mb-2">{{ spec.title }}</h3>
+                        <ul class="space-y-1">
+                        {% for choice in spec.choices %}
+                            <li>
+                                <a href="{{ choice.query_string }}" class="text-sm {% if choice.selected %}text-blue-600 font-bold{% else %}text-gray-600 hover:text-blue-500{% endif %}">
+                                    {{ choice.display }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </details>
+    </div>
+    {% endif %}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for revista in cl.result_list %}
+      <a href="{% url 'admin:core_revistas_change' revista.pk %}"
+         class="block bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden border">
+          <div class="w-full h-80 bg-gray-200 relative">
+              {% if revista.capa %}
+                  <img src="{{ revista.capa.url }}" alt="{{ revista.titulo }}" class="w-full h-full object-cover" />
+              {% else %}
+                  <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                      <i class="fas fa-book fa-4x text-gray-300"></i>
+                  </div>
+              {% endif %}
+              <div class="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">
+                  {{ revista.ano_publicacao }}
+              </div>
+          </div>
+          <div class="p-4">
+              <h2 class="text-center text-lg font-semibold text-gray-800 truncate">{{ revista.titulo }}</h2>
+              <p class="text-center text-sm text-gray-500">Edição: {{ revista.edicao }}</p>
+          </div>
+      </a>
+      {% empty %}
+      <p class="col-span-full text-center text-gray-500">Nenhuma revista cadastrada.</p>
+      {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% block pagination %}{% pagination cl %}{% endblock %}
+</div>
+{% endblock %}

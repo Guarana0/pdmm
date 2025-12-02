@@ -12,6 +12,7 @@ urlpatterns = [
     path('revistas/diarioDeMinas/', views.diario_de_minas, name='diario_de_minas'),
     path('revistas/leiteCriollo/', views.leiteCriollo, name='leiteCriollo'),
     path('revistas/revistaVerde/', views.revistaVerde, name='revistaVerde'),
+    path('revistas/aRevista/', views.aRevista, name='aRevista'),
     path('revistas/<slug:slug>/', views.revista_detail, name='revista_detail'),
     path('galeria/', views.galeria, name='galeria'),
     path('livros/', views.livros, name='livros'),

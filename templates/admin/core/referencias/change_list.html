@@ -1,0 +1,86 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls admin_list %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+        <h1 class="text-3xl font-bold text-gray-800">Referências de Pesquisa</h1>
+        <a href="{% url 'admin:core_referencias_add' %}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-plus mr-2"></i>
+            Adicionar Referência
+        </a>
+    </div>
+
+    <!-- Search Form -->
+    {% block search %}{% search_form cl %}{% endblock %}
+
+    <!-- Filters -->
+    {% if cl.has_filters %}
+    <div class="mb-6">
+        <details class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <summary class="cursor-pointer font-medium text-gray-700">Filtros</summary>
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {% for spec in cl.filter_specs %}
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-900 mb-2">{{ spec.title }}</h3>
+                        <ul class="space-y-1">
+                        {% for choice in spec.choices %}
+                            <li>
+                                <a href="{{ choice.query_string }}" class="text-sm {% if choice.selected %}text-blue-600 font-bold{% else %}text-gray-600 hover:text-blue-500{% endif %}">
+                                    {{ choice.display }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </details>
+    </div>
+    {% endif %}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for ref in cl.result_list %}
+      <a href="{% url 'admin:core_referencias_change' ref.pk %}"
+         class="block bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden border flex flex-col h-full">
+          <div class="w-full h-32 bg-gray-100 flex items-center justify-center border-b border-gray-100 relative">
+              <i class="fas fa-atlas fa-3x text-gray-300"></i>
+              {% if ref.tem_link %}
+                <div class="absolute top-2 right-2 bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
+                    <i class="fas fa-link mr-1"></i> Online
+                </div>
+              {% endif %}
+          </div>
+          <div class="p-4 flex-1 flex flex-col">
+              <h2 class="text-center text-lg font-semibold text-gray-800 mb-1 leading-tight">{{ ref.titulo }}</h2>
+              <p class="text-center text-xs text-blue-600 font-medium mb-2">Sobre: {{ ref.autor_biografado.nome }} {{ ref.autor_biografado.sobrenome }}</p>
+              
+              {% if ref.autor_referencia %}
+              <p class="text-gray-500 text-sm text-center mb-2">
+                  <i class="fas fa-user-edit mr-1 text-gray-400"></i> {{ ref.autor_referencia }}
+              </p>
+              {% endif %}
+              
+              {% if ref.descricao %}
+              <p class="text-gray-600 text-xs line-clamp-3 mt-auto text-center">{{ ref.descricao }}</p>
+              {% endif %}
+          </div>
+      </a>
+      {% empty %}
+      <p class="col-span-full text-center text-gray-500">Nenhuma referência cadastrada.</p>
+      {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% block pagination %}{% pagination cl %}{% endblock %}
+</div>
+{% endblock %}

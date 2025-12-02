@@ -72,6 +72,19 @@ def revistaVerde(request):
     
     return render(request, 'core/revistas/revistaVerde.html', {'revistas': revistas})
 
+def aRevista(request):
+    # Pega todas as revistas ordenadas por ano de publicação (mais recentes primeiro)
+    revistas_list = Revistas.objects.all().order_by('-ano_publicacao')
+    
+    # Define quantos itens por página
+    paginator = Paginator(revistas_list, 8)
+    
+    # Pega o número da página da query string
+    page = request.GET.get('page')
+    revistas = paginator.get_page(page)
+    
+    return render(request, 'core/revistas/aRevista.html', {'revistas': revistas})
+
 def revista_detail(request, slug):
     revista = get_object_or_404(Revistas, slug=slug)
     

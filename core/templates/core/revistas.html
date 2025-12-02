@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Revistas{% endblock %}
+{% block description %}Acervo de Revistas do Modernismo Mineiro{% endblock %}
+{% block keywords %}Revistas,Literatura,Modernismo,Minas Gerais{% endblock %}
+{% block content %}
+<div class="bg-gray-100 dark:bg-gray-900 py-10 px-4 min-h-screen">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center font-montserrat">Periódicos do Modernismo Mineiro</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Diario de Minas -->
+            <a href="{% url 'core:diario_de_minas' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-48 bg-blue-900 flex items-center justify-center">
+                    <i class="fas fa-newspaper text-6xl text-white opacity-80 group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">Diário de Minas</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Acompanhe as publicações históricas do Diário de Minas e sua importância para o movimento.</p>
+                </div>
+            </a>
+
+            <!-- Revista Verde -->
+            <a href="{% url 'core:revistaVerde' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-48 bg-green-800 flex items-center justify-center">
+                    <i class="fas fa-leaf text-6xl text-white opacity-80 group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400">Revista Verde</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">O periódico de Cataguases que marcou o modernismo com sua ousadia e inovação.</p>
+                </div>
+            </a>
+
+            <!-- Leite Criollo -->
+            <a href="{% url 'core:leiteCriollo' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-48 bg-yellow-700 flex items-center justify-center">
+                    <i class="fas fa-book-open text-6xl text-white opacity-80 group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-yellow-600 dark:group-hover:text-yellow-400">Leite Criollo</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Explore as edições de Leite Criollo e seu impacto cultural e literário.</p>
+                </div>
+            </a>
+
+            <!-- A Revista -->
+            <a href="{% url 'core:aRevista' %}" class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-48 bg-gray-800 flex items-center justify-center">
+                    <i class="fas fa-bookmark text-6xl text-white opacity-80 group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-400">"A Revista"</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">A publicação seminal que ajudou a definir os rumos do modernismo em Minas.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
